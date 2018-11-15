@@ -1,6 +1,5 @@
 (* ::Package:: *)
 
-
 (* ::Title:: *)
 (*TelegramBot*)
 
@@ -64,6 +63,10 @@ sendMessage::usage =
 sendMessage[bot, chatID, text, options]"
 
 
+sendPhoto::usage = 
+"sendPhoto[bot, chatID, image]"
+
+
 (* ::Section:: *)
 (*Begin private context*)
 
@@ -76,7 +79,7 @@ Begin["`Private`"]
 
 
 Options[TelegramBot] = 
-	{"Evaluate" -> CloudEvaluate}
+	{"Evaluate" -> Evaluate}
 
 
 $telegramBotAPI = 
@@ -105,19 +108,27 @@ telegramBotExecute[
 		requestBody = Switch[type, 
 			"Query", "", 
 			"URLEncoded", URLBuild[{}, requestParameters], 
-			"JSON", ImportString[ExportString[requestParameters, "JSON"], "Text"]
+			"JSON", ImportString[ExportString[requestParameters, "JSON"], "Text"], 
+			"FormData", requestParameters
 		];
 		contentType = Switch[type, 
 			"Query", None, 
 			"URLEncoded", "application/x-www-form-urlencoded; charset=utf-8", 
-			"JSON", "application/json; charset=utf-8"
+			"JSON", "application/json; charset=utf-8", 
+			"FormData", "multipart/form-data; charset=utf-8"
 		]; 
 
-		request = HTTPRequest[url, <|
-			Method -> httpMethod, 
-			"Body" -> requestBody, 
-			"ContentType" -> contentType
-		|>];
+		If[type =!= "FormData", 
+			request = HTTPRequest[url, <|
+				Method -> httpMethod, 
+				"Body" -> requestBody, 
+				"ContentType" -> contentType
+			|>], 
+			request = HTTPRequest[url, <|
+				Method -> httpMethod, 
+				"Body" -> requestBody
+			|>]
+		];
 		
 		response = evaluate[URLRead[request]];
 		responseBody = response["Body"];
@@ -232,6 +243,14 @@ SyntaxInformation[sendMessage] =
 
 TelegramBot /: sendMessage[bot_TelegramBot, chatID: _String | _Integer, text_String, options: OptionsPattern[sendMessage]] := 
 	telegramBotExecute[bot, "sendMessage", {"chat_id" -> chatID, "text" -> text}, optionValues[sendMessage, options]]
+
+
+(* ::Subsubsection:: *)
+(*sendPhoto*)
+
+
+sendPhoto[bot_TelegramBot, chatID: _String | _Integer, file_String?FileExistsQ] := 
+	telegramBotExecute[bot, "sendPhoto", {"chat_id" -> chatID, "photo" -> File[file]}, {}, "FormData"]
 
 
 (* ::Section:: *)
