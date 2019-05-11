@@ -64,7 +64,7 @@ sendMessage[bot, chatID, text, options]"
 
 
 sendPhoto::usage = 
-"sendPhoto[bot, chatID, image]"
+"sendPhoto[bot, chatID, file]"
 
 
 (* ::Section:: *)
@@ -115,20 +115,14 @@ telegramBotExecute[
 			"Query", None, 
 			"URLEncoded", "application/x-www-form-urlencoded; charset=utf-8", 
 			"JSON", "application/json; charset=utf-8", 
-			"FormData", "multipart/form-data; charset=utf-8"
+			"FormData", "multipart/form-data"
 		]; 
 
-		If[type =!= "FormData", 
-			request = HTTPRequest[url, <|
-				Method -> httpMethod, 
-				"Body" -> requestBody, 
-				"ContentType" -> contentType
-			|>], 
-			request = HTTPRequest[url, <|
-				Method -> httpMethod, 
-				"Body" -> requestBody
-			|>]
-		];
+		request = HTTPRequest[url, <|
+			Method -> httpMethod,
+			"ContentType" -> contentType,  
+			"Body" -> requestBody
+		|>];
 		
 		response = evaluate[URLRead[request]];
 		responseBody = response["Body"];
@@ -249,8 +243,13 @@ TelegramBot /: sendMessage[bot_TelegramBot, chatID: _String | _Integer, text_Str
 (*sendPhoto*)
 
 
-sendPhoto[bot_TelegramBot, chatID: _String | _Integer, file_String?FileExistsQ] := 
-	telegramBotExecute[bot, "sendPhoto", {"chat_id" -> chatID, "photo" -> File[file]}, {}, "FormData"]
+TelegramBot /: sendPhoto[TelegramBot[token_String], chatID: _String | _Integer, file_String] := 
+	ImportString[URLRead[HTTPRequest[
+URLBuild[{"https://api.telegram.org", "bot" <> token, "sendPhoto"}],
+<|
+	"Body" -> {"chat_id" -> chatID, "photo" -> File[file]}
+|>
+]]["Body"], "RawJSON"]
 
 
 (* ::Section:: *)
