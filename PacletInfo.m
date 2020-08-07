@@ -1,11 +1,16 @@
 (* Paclet Info File *)
 
-(* created 2018.10.24*)
+(* created 2020/03/06*)
 
 Paclet[
-  Name -> "TelegramBot",
-  Version -> "0.0.1",
-  MathematicaVersion -> "6+",
-  Extensions -> {
-    {"Documentation", Language -> "English"}
-}]
+    Name -> "TelegramBot",
+    Version -> "0.0.1",
+    MathematicaVersion -> "11.3+",
+    Creator -> "Kirill Belov",
+    Extensions -> 
+        {
+            {"Documentation", Language -> "English"}
+        }
+]
+
+

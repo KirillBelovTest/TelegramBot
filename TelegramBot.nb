@@ -10,307 +10,247 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     15079,        347]
-NotebookOptionsPosition[     13471,        310]
-NotebookOutlinePosition[     13813,        325]
-CellTagsIndexPosition[     13770,        322]
+NotebookDataLength[     11002,        288]
+NotebookOptionsPosition[      9116,        249]
+NotebookOutlinePosition[      9486,        265]
+CellTagsIndexPosition[      9443,        262]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[
- RowBox[{"<<", "TelegramBot`"}]], "Code",
- CellChangeTimes->{{3.749406674335116*^9, 3.7494066788585234`*^9}},
- CellLabel->"In[8]:=",ExpressionUUID->"f2f3dcfa-5bab-4e57-9614-fb8ac9e3fec9"],
 
 Cell[CellGroupData[{
+Cell[TextData[{
+ "Initialization ",
+ Cell[BoxData[
+  ButtonBox[
+   StyleBox["\<\"\[FilledRightTriangle]\"\>", "Section",
+    StripOnInput->False],
+   Appearance->"Frameless",
+   ButtonFunction:>(SelectionMove[
+      EvaluationBox[], All, Expression]; SelectionMove[
+      InputNotebook[], All, Cell]; SelectionMove[
+      InputNotebook[], All, CellGroup]; SelectionEvaluateCreateCell[
+      InputNotebook[]]; Null),
+   Evaluator->Automatic,
+   Method->"Preemptive"]],ExpressionUUID->
+  "0004c6cd-0046-45f6-a94f-4fc58502b19a"]
+}], "Section",ExpressionUUID->"b80e3964-abf4-474c-95d5-3857bb5398c7"],
 
-Cell[BoxData[
- RowBox[{"bot", " ", "=", " ", 
-  RowBox[{
-  "TelegramBot", "[", "\"\<452821339:AAEmVVjkCMRfrO4u3AGBB7QWHrkGDqWwTvs\>\"",
-    "]"}]}]], "Code",
- CellChangeTimes->{{3.7494066823724966`*^9, 3.7494066923527107`*^9}},
- CellLabel->"In[9]:=",ExpressionUUID->"8c7b1307-4786-4d4b-aa08-175e8ed732d7"],
-
-Cell[BoxData[
- RowBox[{"TelegramBot", 
-  "[", "\<\"452821339:AAEmVVjkCMRfrO4u3AGBB7QWHrkGDqWwTvs\"\>", 
-  "]"}]], "Output",
- CellChangeTimes->{3.749406694124688*^9, 3.7494068795617385`*^9, 
-  3.7494069105538645`*^9, 3.7494069892065163`*^9, 3.7494301313062396`*^9},
- CellLabel->"Out[9]=",ExpressionUUID->"45c00b35-d833-4607-bb02-196d27672017"]
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$HistoryLength", " ", "=", " ", "0"}], ";"}], "\n", 
+ RowBox[{"Get", "[", "\"\<ExchangeLink`\>\"", "]"}], "\n", 
+ RowBox[{"Get", "[", "\"\<TelegramBot`\>\"", "]"}]}], "Code",
+ CellLabel->"In[3]:=",ExpressionUUID->"f2f3dcfa-5bab-4e57-9614-fb8ac9e3fec9"]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
- RowBox[{"getMe", "[", "bot", "]"}]], "Code",
- CellChangeTimes->{{3.7494066969270897`*^9, 3.749406699682508*^9}},
- CellLabel->"In[10]:=",ExpressionUUID->"37cef60c-92e4-45b2-b3af-aeb76f0033e2"],
+Cell[TextData[{
+ "Creating the bot ",
+ Cell[BoxData[
+  ButtonBox[
+   StyleBox["\<\"\[FilledRightTriangle]\"\>", "Section",
+    StripOnInput->False],
+   Appearance->"Frameless",
+   ButtonFunction:>(SelectionMove[
+      EvaluationBox[], All, Expression]; SelectionMove[
+      InputNotebook[], All, Cell]; SelectionMove[
+      InputNotebook[], All, CellGroup]; SelectionEvaluateCreateCell[
+      InputNotebook[]]; Null),
+   Evaluator->Automatic,
+   Method->"Preemptive"]],ExpressionUUID->
+  "9e81aeec-961e-4ac2-a5d0-2f35ab598993"]
+}], "Section",ExpressionUUID->"df2c2c1e-ba73-4e8a-9c93-9cb114c2a986"],
 
 Cell[BoxData[
- RowBox[{"\[LeftAssociation]", 
+ RowBox[{
   RowBox[{
-   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
-   RowBox[{"\<\"result\"\>", "\[Rule]", 
-    RowBox[{"\[LeftAssociation]", 
+   RowBox[{"bot", " ", "=", " ", 
+    RowBox[{
+    "TalkBot", "[", "\"\<452821339:AAEmVVjkCMRfrO4u3AGBB7QWHrkGDqWwTvs\>\"", 
+     "]"}]}], ";"}], " "}]], "Code",
+ CellLabel->"In[5]:=",ExpressionUUID->"9ba25eba-fa38-4108-b446-6fb086c73c95"],
+
+Cell[CellGroupData[{
+
+Cell["Price", "Subsubsection",ExpressionUUID->"456ee935-3d77-440b-a08e-1a127f593457"],
+
+Cell["What is the price/cost of [[Bitcoin]]?", "Item",
+ CellChangeTimes->{{3.792494008181451*^9, 3.792494023834272*^9}, {
+   3.792494411651513*^9, 3.79249441395298*^9}, {3.792494614610124*^9, 
+   3.792494625123866*^9}, 3.7924954339998407`*^9, {3.792496909236014*^9, 
+   3.7924969165668507`*^9}, {3.792498041803833*^9, 
+   3.7924980476727324`*^9}},ExpressionUUID->"91b376c0-18b7-4361-a0eb-\
+68b4ddb8858e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"bot", "[", 
      RowBox[{
-      RowBox[{"\<\"id\"\>", "\[Rule]", "452821339"}], ",", 
-      RowBox[{"\<\"is_bot\"\>", "\[Rule]", "True"}], ",", 
-      RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"CryptoPostmanBot\"\>"}], 
-      ",", 
-      RowBox[{"\<\"username\"\>", "\[Rule]", "\<\"CryptoPostmanBot\"\>"}]}], 
-     "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]], "Output",
- CellChangeTimes->{
-  3.749406933994358*^9, {3.749407001896183*^9, 3.749407066851739*^9}, {
-   3.749407566321085*^9, 3.7494075737318106`*^9}, 3.7494301385340953`*^9},
- CellLabel->"Out[10]=",ExpressionUUID->"15de77d0-9e02-4e9f-b900-53ae7e56737b"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["$CloudCreditsAvailable"], "Code",
- CellChangeTimes->{{3.74940701626492*^9, 3.7494070197458897`*^9}},
- CellLabel->"In[23]:=",ExpressionUUID->"fd4d01b6-32a1-45bc-b06b-ba83aff73ac5"],
-
-Cell[BoxData["12208"], "Output",
- CellChangeTimes->{{3.749407020726333*^9, 3.7494070787108965`*^9}, {
-   3.7494075637895327`*^9, 3.7494075765381804`*^9}, {3.749430140058197*^9, 
-   3.749430159301107*^9}, 3.749430385803566*^9},
- CellLabel->"Out[23]=",ExpressionUUID->"b265c6b9-28ed-4c8d-ad01-f7a8776874e3"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"getUpdates", "[", "bot", "]"}]], "Code",
- CellChangeTimes->{{3.7494301487412076`*^9, 3.7494301525809884`*^9}},
- CellLabel->"In[18]:=",ExpressionUUID->"3323e376-105a-4a9b-9973-d05919542920"],
-
-Cell[BoxData[
- RowBox[{"\[LeftAssociation]", 
-  RowBox[{
-   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
-   RowBox[{"\<\"result\"\>", "\[Rule]", 
-    RowBox[{"{", 
+     "\"\<dialog\>\"", ",", " ", 
+      "\"\<what is the `value` of `currency`[?] [in] [dollars][?]\>\""}], 
+     "]"}], " ", "=", " ", "\n", "\t", 
+    RowBox[{
      RowBox[{
-      RowBox[{"\[LeftAssociation]", 
-       RowBox[{
-        RowBox[{"\<\"update_id\"\>", "\[Rule]", "416592279"}], ",", 
-        RowBox[{"\<\"message\"\>", "\[Rule]", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"message_id\"\>", "\[Rule]", "1724"}], ",", 
-           RowBox[{"\<\"from\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
-              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
-              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
-              ",", 
-              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
-              
-              RowBox[{"\<\"username\"\>", 
-               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
-              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru-RU\"\>"}]}],
-              "\[RightAssociation]"}]}], ",", 
-           RowBox[{"\<\"chat\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
-              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
-              ",", 
-              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
-              
-              RowBox[{"\<\"username\"\>", 
-               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
-              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
-             "\[RightAssociation]"}]}], ",", 
-           RowBox[{"\<\"date\"\>", "\[Rule]", "1540417311"}], ",", 
-           RowBox[{"\<\"sticker\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"width\"\>", "\[Rule]", "512"}], ",", 
-              RowBox[{"\<\"height\"\>", "\[Rule]", "512"}], ",", 
-              RowBox[{"\<\"emoji\"\>", "\[Rule]", "\<\"\:d83d\:de31\"\>"}], 
-              ",", 
-              
-              RowBox[{"\<\"set_name\"\>", 
-               "\[Rule]", "\<\"CryptoHamster\"\>"}], ",", 
-              RowBox[{"\<\"thumb\"\>", "\[Rule]", 
-               RowBox[{"\[LeftAssociation]", 
-                RowBox[{
-                 
-                 RowBox[{"\<\"file_id\"\>", 
-                  "\[Rule]", "\<\"AAQCABODeJoOAAQPQrdR3E2Wt2qWAAIC\"\>"}], 
-                 ",", 
-                 RowBox[{"\<\"file_size\"\>", "\[Rule]", "8198"}], ",", 
-                 RowBox[{"\<\"width\"\>", "\[Rule]", "128"}], ",", 
-                 RowBox[{"\<\"height\"\>", "\[Rule]", "128"}]}], 
-                "\[RightAssociation]"}]}], ",", 
-              
-              RowBox[{"\<\"file_id\"\>", 
-               "\[Rule]", "\<\"CAADAgAD5AUAAtJaiAEO7NADttATJgI\"\>"}], ",", 
-              RowBox[{"\<\"file_size\"\>", "\[Rule]", "58604"}]}], 
-             "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]}]}], 
-       "\[RightAssociation]"}], ",", 
-      RowBox[{"\[LeftAssociation]", 
-       RowBox[{
-        RowBox[{"\<\"update_id\"\>", "\[Rule]", "416592280"}], ",", 
-        RowBox[{"\<\"channel_post\"\>", "\[Rule]", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"message_id\"\>", "\[Rule]", "3128"}], ",", 
-           RowBox[{"\<\"chat\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"id\"\>", "\[Rule]", 
-               RowBox[{"-", "1001265905824"}]}], ",", 
-              RowBox[{"\<\"title\"\>", "\[Rule]", "\<\"CryptoPostbox\"\>"}], 
-              ",", 
-              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"channel\"\>"}]}], 
-             "\[RightAssociation]"}]}], ",", 
-           RowBox[{"\<\"date\"\>", "\[Rule]", "1540441397"}], ",", 
-           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"test\"\>"}]}], 
-          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
-      RowBox[{"\[LeftAssociation]", 
-       RowBox[{
-        RowBox[{"\<\"update_id\"\>", "\[Rule]", "416592281"}], ",", 
-        RowBox[{"\<\"message\"\>", "\[Rule]", 
-         RowBox[{"\[LeftAssociation]", 
-          RowBox[{
-           RowBox[{"\<\"message_id\"\>", "\[Rule]", "2576"}], ",", 
-           RowBox[{"\<\"from\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
-              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
-              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
-              ",", 
-              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
-              
-              RowBox[{"\<\"username\"\>", 
-               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
-              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru-RU\"\>"}]}],
-              "\[RightAssociation]"}]}], ",", 
-           RowBox[{"\<\"chat\"\>", "\[Rule]", 
-            RowBox[{"\[LeftAssociation]", 
-             RowBox[{
-              RowBox[{"\<\"id\"\>", "\[Rule]", 
-               RowBox[{"-", "1001181068302"}]}], ",", 
-              
-              RowBox[{"\<\"title\"\>", 
-               "\[Rule]", "\<\"CryptoNewcomersTeam\"\>"}], ",", 
-              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"supergroup\"\>"}]}], 
-             "\[RightAssociation]"}]}], ",", 
-           RowBox[{"\<\"date\"\>", "\[Rule]", "1540441464"}], ",", 
-           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"/test\"\>"}], ",", 
-           RowBox[{"\<\"entities\"\>", "\[Rule]", 
-            RowBox[{"{", 
-             RowBox[{"\[LeftAssociation]", 
-              RowBox[{
-               RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
-               RowBox[{"\<\"length\"\>", "\[Rule]", "5"}], ",", 
-               RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bot_command\"\>"}]}], 
-              "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}],
-        "\[RightAssociation]"}]}], "}"}]}]}], 
-  "\[RightAssociation]"}]], "Output",
- CellChangeTimes->{
-  3.749430154596818*^9, 3.749430204476091*^9, {3.7494302580232115`*^9, 
-   3.7494302715004416`*^9}},
- CellLabel->"Out[18]=",ExpressionUUID->"d6f810fd-810d-42f7-b265-37945f1d7ba5"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Options", "[", "sendMessage", "]"}]], "Code",
- CellChangeTimes->{{3.749430292242508*^9, 3.7494302954966125`*^9}},
- CellLabel->"In[20]:=",ExpressionUUID->"f376340e-2280-4cb4-8a95-21376fe970b9"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"\<\"parse_mode\"\>", "\[Rule]", "Automatic"}], ",", 
-   RowBox[{"\<\"disable_web_page_preview\"\>", "\[Rule]", "Automatic"}], ",", 
-   RowBox[{"\<\"disable_notification\"\>", "\[Rule]", "Automatic"}], ",", 
-   RowBox[{"\<\"reply_to_message_id\"\>", "\[Rule]", "Automatic"}], ",", 
-   RowBox[{"\<\"reply_markup\"\>", "\[Rule]", "Automatic"}]}], 
-  "}"}]], "Output",
- CellChangeTimes->{3.7494302965010333`*^9},
- CellLabel->"Out[20]=",ExpressionUUID->"6c9427ca-f9fe-4216-9413-59d34fdb1e71"]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"sendMessage", "[", 
-  RowBox[{"bot", ",", " ", 
-   RowBox[{"-", "1001181068302"}], ",", " ", 
-   "\"\<*\:043a\:0440\:0435\:0434\:0438\:0442\:044b \:0432\:0441\:0435 \:0442\
-\:0430\:043a\:0438 \:0442\:0440\:0430\:0442\:044f\:0442\:0441\:044f - \:043c\
-\:043e\:0436\:043d\:043e \:0438\:0441\:043f\:043e\:043b\:044c\:0437\:043e\
-\:0432\:0430\:0442\:044c \:0432 \:0441\:043b\:0443\:0447\:0430\:0435 \:043e\
-\:0448\:0438\:0431\:043a\:0438 \:043f\:043e\:0447\:0442\:044b*\>\"", ",", " ", 
-   RowBox[{"\"\<parse_mode\>\"", " ", "->", " ", "\"\<Markdown\>\""}]}], 
-  "]"}]], "Code",
- CellChangeTimes->{{3.7494302153638124`*^9, 3.749430227864606*^9}, {
-  3.749430278886198*^9, 3.749430376138137*^9}},
- CellLabel->"In[22]:=",ExpressionUUID->"643ecbf3-3715-4b79-8df3-72c0101551c2"],
-
-Cell[BoxData[
- RowBox[{"\[LeftAssociation]", 
-  RowBox[{
-   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
-   RowBox[{"\<\"result\"\>", "\[Rule]", 
-    RowBox[{"\[LeftAssociation]", 
-     RowBox[{
-      RowBox[{"\<\"message_id\"\>", "\[Rule]", "2579"}], ",", 
-      RowBox[{"\<\"from\"\>", "\[Rule]", 
-       RowBox[{"\[LeftAssociation]", 
+      RowBox[{"StringTemplate", "[", "\"\<The price of `1` is `2`\>\"", "]"}],
+       "[", 
+      RowBox[{"#currency", ",", " ", "\n", "\t", 
+       RowBox[{"ToExpression", "[", 
         RowBox[{
-         RowBox[{"\<\"id\"\>", "\[Rule]", "452821339"}], ",", 
-         RowBox[{"\<\"is_bot\"\>", "\[Rule]", "True"}], ",", 
-         RowBox[{"\<\"first_name\"\>", 
-          "\[Rule]", "\<\"CryptoPostmanBot\"\>"}], ",", 
-         RowBox[{"\<\"username\"\>", 
-          "\[Rule]", "\<\"CryptoPostmanBot\"\>"}]}], 
-        "\[RightAssociation]"}]}], ",", 
-      RowBox[{"\<\"chat\"\>", "\[Rule]", 
-       RowBox[{"\[LeftAssociation]", 
+         RowBox[{"BinancePrice", "[", 
+          RowBox[{"#currency", " ", "<>", " ", "\"\<USDT\>\""}], "]"}], "[", 
+         "\"\<price\>\"", "]"}], "]"}]}], "]"}], "&"}]}], ";"}], 
+  " "}]], "Code",
+ CellLabel->"In[6]:=",ExpressionUUID->"f6498eae-687e-43de-b5de-a48cdae51f55"],
+
+Cell[CellGroupData[{
+
+Cell["What\[CloseCurlyQuote]s the price/cost of [[Bitcoin]]?", "Item",
+ CellChangeTimes->{{3.792494008181451*^9, 3.792494023834272*^9}, {
+   3.792494411651513*^9, 3.79249441395298*^9}, {3.792494614610124*^9, 
+   3.792494625123866*^9}, 3.7924954339998407`*^9, {3.792496909236014*^9, 
+   3.7924969165668507`*^9}, {3.792498042077229*^9, 3.7924980497228603`*^9}, {
+   3.7925858007821712`*^9, 
+   3.792585800784047*^9}},ExpressionUUID->"b59070de-5e53-46bc-b39a-\
+a10f2be90d15"],
+
+Cell["What is the price of [[Bitcoin]] in [[dollars]]?", "Subitem",
+ CellChangeTimes->{{3.792494008181451*^9, 3.792494023834272*^9}, {
+   3.792494411651513*^9, 3.79249441395298*^9}, {3.792494614610124*^9, 
+   3.792494625123866*^9}, 3.7924954339998407`*^9, {3.792496909236014*^9, 
+   3.7924969165668507`*^9}, {3.792498042077229*^9, 3.7924980497228603`*^9}, 
+   3.792585802345716*^9},ExpressionUUID->"ebecf989-9b59-47fe-b152-\
+d5ec8b503d90"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"bot", "[", 
+     RowBox[{
+     "\"\<dialog\>\"", ",", " ", 
+      "\"\<what's the `value` of `currency`[?] [in] [dollars][?]\>\""}], 
+     "]"}], " ", "=", " ", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringTemplate", "[", "\"\<The price of `1` is `2`\>\"", "]"}],
+       "[", 
+      RowBox[{"#currency", ",", " ", "\n", "\t", 
+       RowBox[{"ToExpression", "[", 
         RowBox[{
-         RowBox[{"\<\"id\"\>", "\[Rule]", 
-          RowBox[{"-", "1001181068302"}]}], ",", 
-         RowBox[{"\<\"title\"\>", "\[Rule]", "\<\"CryptoNewcomersTeam\"\>"}], 
-         ",", 
-         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"supergroup\"\>"}]}], 
-        "\[RightAssociation]"}]}], ",", 
-      RowBox[{"\<\"date\"\>", "\[Rule]", "1540441576"}], ",", 
-      RowBox[{"\<\"text\"\>", 
-       "\[Rule]", "\<\"\:043a\:0440\:0435\:0434\:0438\:0442\:044b \
-\:0432\:0441\:0435 \:0442\:0430\:043a\:0438 \:0442\:0440\:0430\:0442\:044f\
-\:0442\:0441\:044f - \:043c\:043e\:0436\:043d\:043e \:0438\:0441\:043f\:043e\
-\:043b\:044c\:0437\:043e\:0432\:0430\:0442\:044c \:0432 \:0441\:043b\:0443\
-\:0447\:0430\:0435 \:043e\:0448\:0438\:0431\:043a\:0438 \:043f\:043e\:0447\
-\:0442\:044b\"\>"}], ",", 
-      RowBox[{"\<\"entities\"\>", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"\[LeftAssociation]", 
-         RowBox[{
-          RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
-          RowBox[{"\<\"length\"\>", "\[Rule]", "68"}], ",", 
-          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bold\"\>"}]}], 
-         "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}], 
-  "\[RightAssociation]"}]], "Output",
- CellChangeTimes->{3.7494302303871365`*^9, 3.7494302803813314`*^9, 
-  3.749430312650739*^9, 3.749430379049475*^9},
- CellLabel->"Out[22]=",ExpressionUUID->"4b354c6a-492f-4276-8c6f-ddd882e692cb"]
+         RowBox[{"BinancePrice", "[", 
+          RowBox[{"#currency", " ", "<>", " ", "\"\<USDT\>\""}], "]"}], "[", 
+         "\"\<price\>\"", "]"}], "]"}]}], "]"}], "&"}]}], ";"}], 
+  " "}]], "Code",
+ CellLabel->"In[7]:=",ExpressionUUID->"1a3711db-9fcb-48a1-9ab3-048d3621400c"],
+
+Cell["Price/Cost of [[Bitcoin]]? ", "Item",
+ CellChangeTimes->{{3.792494008181451*^9, 3.792494023834272*^9}, {
+   3.792494411651513*^9, 3.79249441395298*^9}, {3.792494614610124*^9, 
+   3.792494625123866*^9}, 3.7924954339998407`*^9, {3.792496909236014*^9, 
+   3.792496927390863*^9}, {3.7924980542947817`*^9, 
+   3.7924980553147697`*^9}},ExpressionUUID->"5d32bc36-95f0-4c90-9998-\
+525f013ee6a9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"bot", "[", 
+     RowBox[{
+     "\"\<dialog\>\"", ",", " ", "\"\<`value` [of] `currency`[?]\>\""}], 
+     "]"}], " ", "=", " ", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringTemplate", "[", "\"\<The price of `1` is `2`\>\"", "]"}],
+       "[", 
+      RowBox[{"#currency", ",", " ", "\n", "\t", 
+       RowBox[{"ToExpression", "[", 
+        RowBox[{
+         RowBox[{"BinancePrice", "[", 
+          RowBox[{"#currency", " ", "<>", " ", "\"\<USDT\>\""}], "]"}], "[", 
+         "\"\<price\>\"", "]"}], "]"}]}], "]"}], "&"}]}], ";"}], 
+  " "}]], "Code",
+ CellLabel->"In[8]:=",ExpressionUUID->"1ba77b37-88e4-45ca-b2db-46efcf900566"],
+
+Cell["[[Bitcoin]] Price/Cost?", "Item",
+ CellChangeTimes->{{3.792494008181451*^9, 3.792494023834272*^9}, {
+   3.792494411651513*^9, 3.79249441395298*^9}, {3.792494614610124*^9, 
+   3.792494625123866*^9}, 3.7924954339998407`*^9, {3.792496909236014*^9, 
+   3.792496938028612*^9}, {3.7924980571411*^9, 3.792498058017764*^9}, {
+   3.792589061399634*^9, 
+   3.792589061400125*^9}},ExpressionUUID->"0e07ff08-f689-4924-af43-\
+7aebeb161f83"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"bot", "[", 
+     RowBox[{"\"\<dialog\>\"", ",", " ", "\"\<`currency` `value`[?]\>\""}], 
+     "]"}], " ", "=", " ", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringTemplate", "[", "\"\<The price of `1` is `2`\>\"", "]"}],
+       "[", 
+      RowBox[{"#currency", ",", " ", "\n", "\t", 
+       RowBox[{"ToExpression", "[", 
+        RowBox[{
+         RowBox[{"BinancePrice", "[", 
+          RowBox[{"#currency", " ", "<>", " ", "\"\<USDT\>\""}], "]"}], "[", 
+         "\"\<price\>\"", "]"}], "]"}]}], "]"}], "&"}]}], ";"}], 
+  " "}]], "Code",
+ CellLabel->"In[9]:=",ExpressionUUID->"aed16ebd-42a8-4342-b83a-f39371610c25"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"CloudDeploy", "[", "bot", "]"}]], "Code",
+ CellLabel->"In[10]:=",ExpressionUUID->"dcc94286-6138-4d3d-8c8b-dd796f13540a"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"lexis\"\>", "\[Rule]", 
+    InterpretationBox[
+     RowBox[{"CloudObject", "[", 
+      TemplateBox[{
+       "\"https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/lexis\"",
+        "https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/lexis"},
+       "HyperlinkURL"], "]"}],
+     CloudObject[
+     "https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/lexis"],
+     SelectWithContents->True]}], ",", 
+   RowBox[{"\<\"webhook\"\>", "\[Rule]", 
+    InterpretationBox[
+     RowBox[{"CloudObject", "[", 
+      TemplateBox[{
+       "\"https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/webhook\"",
+        "https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/webhook"},
+       "HyperlinkURL"], "]"}],
+     CloudObject[
+     "https://www.wolframcloud.com/obj/kirillbelovtest/talkbot/\
+1yax8lg2yvzk5ataq17t8bttjev4rhmmreue8b4cds1txshxjj/webhook"],
+     SelectWithContents->True]}]}], "\[RightAssociation]"}]], "Output",
+ CellLabel->"Out[10]=",ExpressionUUID->"3b96acc6-fa21-4501-be85-178ca54fb9d6"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 },
-WindowSize->{775, 872},
-WindowMargins->{{Automatic, 43}, {22, Automatic}},
-FrontEndVersion->"11.3 for Microsoft Windows (64-bit) (March 6, 2018)",
+WindowSize->{766, 772},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+TrackCellChangeTimes->False,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -324,30 +264,31 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 201, 3, 50, "Code",ExpressionUUID->"f2f3dcfa-5bab-4e57-9614-fb8ac9e3fec9"],
 Cell[CellGroupData[{
-Cell[784, 27, 305, 6, 50, "Code",ExpressionUUID->"8c7b1307-4786-4d4b-aa08-175e8ed732d7"],
-Cell[1092, 35, 342, 6, 32, "Output",ExpressionUUID->"45c00b35-d833-4607-bb02-196d27672017"]
+Cell[580, 22, 595, 15, 71, "Section",ExpressionUUID->"b80e3964-abf4-474c-95d5-3857bb5398c7"],
+Cell[1178, 39, 288, 5, 87, "Code",ExpressionUUID->"f2f3dcfa-5bab-4e57-9614-fb8ac9e3fec9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1471, 46, 206, 3, 50, "Code",ExpressionUUID->"37cef60c-92e4-45b2-b3af-aeb76f0033e2"],
-Cell[1680, 51, 801, 16, 52, "Output",ExpressionUUID->"15de77d0-9e02-4e9f-b900-53ae7e56737b"]
-}, Open  ]],
+Cell[1503, 49, 597, 15, 71, "Section",ExpressionUUID->"df2c2c1e-ba73-4e8a-9c93-9cb114c2a986"],
+Cell[2103, 66, 274, 7, 50, "Code",ExpressionUUID->"9ba25eba-fa38-4108-b446-6fb086c73c95"],
 Cell[CellGroupData[{
-Cell[2518, 72, 193, 2, 50, "Code",ExpressionUUID->"fd4d01b6-32a1-45bc-b06b-ba83aff73ac5"],
-Cell[2714, 76, 305, 4, 32, "Output",ExpressionUUID->"b265c6b9-28ed-4c8d-ad01-f7a8776874e3"]
-}, Open  ]],
+Cell[2402, 77, 85, 0, 44, "Subsubsection",ExpressionUUID->"456ee935-3d77-440b-a08e-1a127f593457"],
+Cell[2490, 79, 404, 6, 31, "Item",ExpressionUUID->"91b376c0-18b7-4361-a0eb-68b4ddb8858e"],
+Cell[2897, 87, 736, 20, 87, "Code",ExpressionUUID->"f6498eae-687e-43de-b5de-a48cdae51f55"],
 Cell[CellGroupData[{
-Cell[3056, 85, 213, 3, 50, "Code",ExpressionUUID->"3323e376-105a-4a9b-9973-d05919542920"],
-Cell[3272, 90, 6332, 131, 318, "Output",ExpressionUUID->"d6f810fd-810d-42f7-b265-37945f1d7ba5"]
+Cell[3658, 111, 472, 7, 31, "Item",ExpressionUUID->"b59070de-5e53-46bc-b39a-a10f2be90d15"],
+Cell[4133, 120, 439, 6, 26, "Subitem",ExpressionUUID->"ebecf989-9b59-47fe-b152-d5ec8b503d90"]
 }, Open  ]],
+Cell[4587, 129, 735, 20, 87, "Code",ExpressionUUID->"1a3711db-9fcb-48a1-9ab3-048d3621400c"],
+Cell[5325, 151, 393, 6, 31, "Item",ExpressionUUID->"5d32bc36-95f0-4c90-9998-525f013ee6a9"],
+Cell[5721, 159, 701, 19, 87, "Code",ExpressionUUID->"1ba77b37-88e4-45ca-b2db-46efcf900566"],
+Cell[6425, 180, 433, 7, 31, "Item",ExpressionUUID->"0e07ff08-f689-4924-af43-7aebeb161f83"],
+Cell[6861, 189, 690, 18, 87, "Code",ExpressionUUID->"aed16ebd-42a8-4342-b83a-f39371610c25"],
 Cell[CellGroupData[{
-Cell[9641, 226, 216, 3, 50, "Code",ExpressionUUID->"f376340e-2280-4cb4-8a95-21376fe970b9"],
-Cell[9860, 231, 539, 10, 52, "Output",ExpressionUUID->"6c9427ca-f9fe-4216-9413-59d34fdb1e71"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[10436, 246, 794, 13, 50, "Code",ExpressionUUID->"643ecbf3-3715-4b79-8df3-72c0101551c2"],
-Cell[11233, 261, 2222, 46, 128, "Output",ExpressionUUID->"4b354c6a-492f-4276-8c6f-ddd882e692cb"]
+Cell[7576, 211, 144, 2, 50, "Code",ExpressionUUID->"dcc94286-6138-4d3d-8c8b-dd796f13540a"],
+Cell[7723, 215, 1353, 29, 105, "Output",ExpressionUUID->"3b96acc6-fa21-4501-be85-178ca54fb9d6"]
+}, Open  ]]
+}, Open  ]]
 }, Open  ]]
 }
 ]

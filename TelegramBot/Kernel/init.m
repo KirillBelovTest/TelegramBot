@@ -1,3 +1,12 @@
+(* ::Package:: *)
+
 (* Wolfram Language Init File *)
 
-Get[ "TelegramBot`TelegramBot`"]
+
+Get[ "TelegramBot`API`"]
+
+
+Get[ "TelegramBot`TalkBot`"]
+
+
+Get[ "TelegramBot`PLI`"]

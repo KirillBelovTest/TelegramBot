@@ -1,0 +1,224 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8038,        216]
+NotebookOptionsPosition[      7117,        193]
+NotebookOutlinePosition[      7583,        211]
+CellTagsIndexPosition[      7540,        208]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$HistoryLength", " ", "=", " ", "1"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<`*\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], " "}], "\n", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<TelegramBot`\>\"", "]"}], ";"}]}], "Code",
+ CellLabel->"In[19]:=",ExpressionUUID->"693c674e-cd68-4799-bb23-84f97e81e381"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "token", " ", "=", " ", 
+    "\"\<1247031088:AAGW73yzggrm4Tr7bldGCCaIrrwISNsdDzg\>\""}], ";"}], 
+  " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"bot", " ", "=", " ", 
+    RowBox[{"TelegramBot", "[", "token", "]"}]}], ";"}], " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"setWebhook", "[", 
+    RowBox[{"bot", ",", " ", 
+     RowBox[{"First", " ", "@", " ", 
+      RowBox[{"deployWebhook", "[", 
+       RowBox[{"bot", ",", " ", 
+        RowBox[{"handlerEvaluate", "[", "bot", "]"}]}], "]"}]}]}], "]"}], 
+   ";"}], " "}]}], "Code",
+ CellLabel->"In[23]:=",ExpressionUUID->"e0cff0db-e03a-49dd-a13c-f803ac8c728d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+   "\:0421\:043e\:0437\:0434\:0430\:0434\:0438\:043c", " ", 
+    "\:0442\:0430\:0431\:043b\:0438\:0446\:0443", " ", "\:0441", " ", 
+    "\:0434\:0430\:043d\:043d\:044b\:043c\:0438"}], "*)"}], "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"data", " ", "=", " ", 
+     RowBox[{"{", "\n", " ", 
+      RowBox[{
+       RowBox[{"<|", 
+        RowBox[{
+         RowBox[{"\"\<name\>\"", " ", "->", " ", "\"\<Ivan\>\""}], ",", "  ", 
+         RowBox[{"\"\<age\>\"", " ", "->", " ", "24"}], ",", " ", 
+         RowBox[{"\"\<city\>\"", " ", "->", " ", "\"\<Saratov\>\""}]}], 
+        "|>"}], ",", " ", "\n", " ", 
+       RowBox[{"<|", 
+        RowBox[{
+         RowBox[{"\"\<name\>\"", " ", "->", " ", "\"\<Masha\>\""}], ",", " ", 
+         RowBox[{"\"\<age\>\"", " ", "->", " ", "21"}], ",", " ", 
+         RowBox[{"\"\<city\>\"", " ", "->", "  ", "\"\<Moscow\>\""}]}], 
+        "|>"}], ",", " ", "\n", " ", 
+       RowBox[{"<|", 
+        RowBox[{
+         RowBox[{"\"\<name\>\"", " ", "->", " ", "\"\<Oleg\>\""}], ",", "  ", 
+         RowBox[{"\"\<age\>\"", " ", "->", " ", "32"}], ",", " ", 
+         RowBox[{"\"\<city\>\"", " ", "->", "    ", "\"\<Tula\>\""}]}], 
+        "|>"}]}], "\n", "}"}]}], ";"}], " ", "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "\:0412\:044b\:0431\:0435\:0440\:0435\:043c", " ", 
+     "\:0442\:043e\:043b\:044c\:043a\:043e", " ", 
+     "\:0438\:043c\:0435\:043d\:0430", " ", "\:0438", " ", 
+     "\:0433\:043e\:0440\:043e\:0434\:0430"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"Query", "[", 
+     RowBox[{"All", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"\"\<name\>\"", ",", " ", "\"\<city\>\""}], "}"}]}], "]"}], 
+    " ", "@", " ", "data"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "\:0412\:044b\:0431\:0435\:0440\:0435\:043c", " ", "\:0442\:0435\:0445", 
+     " ", "\:043a\:0442\:043e", " ", "\:0441\:0442\:0430\:0440\:0448\:0435", 
+     " ", "22", " ", "\:043b\:0435\:0442"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"Query", "[", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"#age", " ", ">", " ", "22"}], "&"}], "]"}], "]"}], " ", "@", 
+    " ", "data"}], "\n", "\n", 
+   RowBox[{"(*", 
+    RowBox[{
+    "\:041f\:0440\:0435\:043e\:0431\:0440\:0430\:0437\:0443\:0435\:043c", " ",
+      "\:043a", " ", "\:0442\:0430\:0431\:043b\:0438\:0446\:0435", " ", 
+     "\:0441", " ", "\:0433\:043e\:0434\:0430\:043c\:0438", " ", 
+     "\:0432\:044b\:0445\:043e\:0434\:0430", " ", "\:043d\:0430", " ", 
+     "\:043f\:0435\:043d\:0441\:0438\:044e"}], "*)"}], "\n", 
+   RowBox[{
+    RowBox[{"Query", "[", 
+     RowBox[{"All", ",", " ", 
+      RowBox[{"<|", "\n", " ", 
+       RowBox[{
+        RowBox[{"\"\<name\>\"", " ", "->", " ", "\"\<name\>\""}], ",", " ", 
+        "\n", " ", 
+        RowBox[{"\"\<year\>\"", " ", "->", " ", 
+         RowBox[{"Function", "[", 
+          RowBox[{"2020", " ", "+", " ", 
+           RowBox[{"If", "[", 
+            RowBox[{
+             RowBox[{"#name", " ", "===", " ", "\"\<Masha\>\""}], ",", " ", 
+             "60", ",", " ", "65"}], "]"}], " ", "-", " ", "#age"}], 
+          "]"}]}]}], "\n", "|>"}]}], "]"}], " ", "@", " ", 
+    "data"}]}]}]], "Code",
+ CellLabel->"In[26]:=",ExpressionUUID->"37de8792-2f34-4af9-bd0e-079f61b3ae58"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Ivan\"\>"}], ",", 
+     RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"Saratov\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Masha\"\>"}], ",", 
+     RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"Moscow\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Oleg\"\>"}], ",", 
+     RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"Tula\"\>"}]}], 
+    "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellLabel->"Out[27]=",ExpressionUUID->"937d5486-80e8-4962-ae41-0ae30ec1edde"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Ivan\"\>"}], ",", 
+     RowBox[{"\<\"age\"\>", "\[Rule]", "24"}], ",", 
+     RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"Saratov\"\>"}]}], 
+    "\[RightAssociation]"}], ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Oleg\"\>"}], ",", 
+     RowBox[{"\<\"age\"\>", "\[Rule]", "32"}], ",", 
+     RowBox[{"\<\"city\"\>", "\[Rule]", "\<\"Tula\"\>"}]}], 
+    "\[RightAssociation]"}]}], "}"}]], "Output",
+ CellLabel->"Out[28]=",ExpressionUUID->"326fe3d6-037d-4196-8a84-61e75c39ea06"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Ivan\"\>"}], ",", 
+     RowBox[{"\<\"year\"\>", "\[Rule]", "2061"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Masha\"\>"}], ",", 
+     RowBox[{"\<\"year\"\>", "\[Rule]", "2059"}]}], "\[RightAssociation]"}], 
+   ",", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"name\"\>", "\[Rule]", "\<\"Oleg\"\>"}], ",", 
+     RowBox[{"\<\"year\"\>", "\[Rule]", "2053"}]}], "\[RightAssociation]"}]}],
+   "}"}]], "Output",
+ CellLabel->"Out[29]=",ExpressionUUID->"d3d304c4-6bee-4316-ab1e-aa7a5c8b8bce"]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+TaggingRules->{"TryRealOnly" -> False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e4d9c97f-d67c-4954-b914-1a0e5dd0efb3"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 446, 11, 105, "Code",ExpressionUUID->"693c674e-cd68-4799-bb23-84f97e81e381"],
+Cell[1007, 33, 660, 20, 87, "Code",ExpressionUUID->"e0cff0db-e03a-49dd-a13c-f803ac8c728d"],
+Cell[CellGroupData[{
+Cell[1692, 57, 3260, 76, 357, "Code",ExpressionUUID->"37de8792-2f34-4af9-bd0e-079f61b3ae58"],
+Cell[4955, 135, 759, 18, 32, "Output",ExpressionUUID->"937d5486-80e8-4962-ae41-0ae30ec1edde"],
+Cell[5717, 155, 655, 15, 32, "Output",ExpressionUUID->"326fe3d6-037d-4196-8a84-61e75c39ea06"],
+Cell[6375, 172, 726, 18, 32, "Output",ExpressionUUID->"d3d304c4-6bee-4316-ab1e-aa7a5c8b8bce"]
+}, Open  ]]
+}
+]
+*)
+
