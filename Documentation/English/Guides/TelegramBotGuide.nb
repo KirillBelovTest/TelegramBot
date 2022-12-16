@@ -1,0 +1,415 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     15042,        407]
+NotebookOptionsPosition[     10244,        306]
+NotebookOutlinePosition[     10778,        324]
+CellTagsIndexPosition[     10735,        321]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["TelegramBot Guide", "GuideTitle",
+ CellChangeTimes->{
+  3.8799299381629677`*^9, 3.879951336302595*^9, {3.8799514116714845`*^9, 
+   3.8799514336219454`*^9}, {3.880170662732217*^9, 3.880170665744506*^9}},
+ CellID->615058458,ExpressionUUID->"4f233eef-e286-4204-870f-88a6c2e8e9bc"],
+
+Cell["TelegramBot guide", "GuideAbstract",
+ CellChangeTimes->{{3.879929930320925*^9, 3.879929932207038*^9}, 
+   3.880170675183776*^9},
+ CellID->230450502,ExpressionUUID->"68426795-40e4-42f1-bf8b-2f90b9d475ab"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Types", "GuideFunctionsSection",
+ CellChangeTimes->{{3.8801707027462654`*^9, 3.880170705806753*^9}},
+ CellID->807016166,ExpressionUUID->"cf5e300a-963d-461c-9679-f1ad50eaecd0"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["TelegramBot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/TelegramBot"]], 
+  "InlineGuideFunction"],
+ " \[LongDash] telegram bot object"
+}], "GuideText",
+ CellChangeTimes->{{3.879929870349065*^9, 3.879929872240637*^9}, {
+  3.879951182307681*^9, 3.8799511864629765`*^9}, {3.8799513282244034`*^9, 
+  3.8799513282244034`*^9}},
+ CellID->401164241]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Methods", "GuideFunctionsSection",
+ CellChangeTimes->{{3.8801707027462654`*^9, 3.880170729911867*^9}},
+ CellID->538340001,ExpressionUUID->"0f0fb263-9d44-4150-b416-7472eb2e7ede"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["getUpdates",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getUpdates"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "34fc7e28-6a35-4112-a48d-e1c9d1664270"],
+ " \[LongDash] get updates"
+}], "GuideText",
+ CellChangeTimes->{{3.879929899956134*^9, 3.879929901843075*^9}, {
+  3.8799512005671635`*^9, 3.8799512044683495`*^9}, {3.879951332120322*^9, 
+  3.879951332120322*^9}},
+ CellID->23085171,ExpressionUUID->"99367b3a-f14a-4dfe-9f2f-931ff24f60ce"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["getMe",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getMe"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "31b42e61-d468-40e2-981c-5ee5c93a4a1e"],
+ " \[LongDash] get short bot info"
+}], "GuideText",
+ CellChangeTimes->{{3.8799299038337035`*^9, 3.87992990485141*^9}, {
+  3.879951209405915*^9, 3.8799512138244877`*^9}, {3.8799513338904133`*^9, 
+  3.8799513338904133`*^9}},
+ CellID->198006355,ExpressionUUID->"f9886568-48c0-43ac-b4e7-ea58b4d5759a"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["sendMessage",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/sendMessage"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "f9431ed2-eb7a-4c6d-9867-ea0d1053a16f"],
+ " \[LongDash] send message to the specific chat"
+}], "GuideText",
+ CellChangeTimes->{{3.8799298889620857`*^9, 3.8799298968376427`*^9}, {
+  3.8799511897640934`*^9, 3.8799511974039855`*^9}, {3.879951330347056*^9, 
+  3.879951330347056*^9}},
+ CellID->188615209,ExpressionUUID->"27388c3e-7912-4538-b397-e401d3228763"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["setWebhook",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/setWebhook"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "ac78a1df-cc7d-40c1-aa7c-24b6f23ce8c0"],
+ " \[LongDash] set webhook"
+}], "GuideText",
+ CellChangeTimes->{{3.8799299066815233`*^9, 3.879929910055871*^9}, {
+  3.8799512180604653`*^9, 3.879951220616209*^9}, {3.8799513405716543`*^9, 
+  3.8799513405716543`*^9}},
+ CellID->101638939,ExpressionUUID->"a55d462e-c795-45a7-a45b-5dcd7393ac62"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["deleteWebhook",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/deleteWebhook"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "a625b317-53dd-4613-ab3c-a345aae9d68f"],
+ " \[LongDash] delete webhook"
+}], "GuideText",
+ CellChangeTimes->{{3.879929911966796*^9, 3.879929915095544*^9}, {
+  3.879951222507965*^9, 3.879951228389991*^9}, {3.8799513425060387`*^9, 
+  3.8799513425060387`*^9}, {3.879952803835698*^9, 3.879952805053991*^9}},
+ CellID->467281658,ExpressionUUID->"17a45f3d-4758-4daa-8f07-141a3a6d1906"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["getWebhookInfo",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetWebhookInfo"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "f67e7c36-192f-43c6-bf3b-923b8420a10a"],
+ " \[LongDash] webhook info"
+}], "GuideText",
+ CellChangeTimes->{{3.880171065155119*^9, 3.8801710761578803`*^9}, {
+  3.880171139290552*^9, 3.880171139290552*^9}},
+ CellID->165236011,ExpressionUUID->"1014277e-579f-46d8-9b14-c84cd8da9ad4"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["getFile",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getFile"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "0d6339a6-d488-4b21-87b2-e0ac3ddff2e9"],
+ " \[LongDash] get file info"
+}], "GuideText",
+ CellChangeTimes->{{3.879929911966796*^9, 3.879929915095544*^9}, {
+  3.879951222507965*^9, 3.879951228389991*^9}, {3.8799513425060387`*^9, 
+  3.8799513425060387`*^9}, {3.879952803835698*^9, 3.879952822680792*^9}},
+ CellID->3248216,ExpressionUUID->"079676d9-a94a-46ac-acf6-2247f65117f8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["getUserProfilePhotos",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetUserProfilePhotos"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "a0687642-d21a-4a58-a351-58a381d0e745"],
+ " \[LongDash] get user icons by id"
+}], "GuideText",
+ CellChangeTimes->{{3.880171080193977*^9, 3.880171106901533*^9}, {
+  3.880171137105796*^9, 3.880171137105796*^9}},
+ CellID->155085991,ExpressionUUID->"7e4f50ef-93ef-4782-81a9-84441fb536f5"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Extension Functions", "GuideFunctionsSection",
+ CellChangeTimes->{{3.8801707027462654`*^9, 3.8801707544765205`*^9}},
+ CellID->154253467,ExpressionUUID->"e4385429-b212-4d5c-ba8c-8de5a38b1e92"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["ImportTelegramFile",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/ImportTelegramFile"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "a3d385f5-e6bd-4bdc-99c3-ae1265ea2bcf"],
+ " \[LongDash] import file from telegram"
+}], "GuideText",
+ CellChangeTimes->{{3.880170935921529*^9, 3.880170966418034*^9}},
+ CellID->7203541,ExpressionUUID->"ba460b8d-de5f-42ae-a254-2402857b74e8"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["HandleBotUpdates",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/HandleBotUpdates"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "5c0b798e-67f3-4895-b9de-3687a6cc0e82"],
+ " \[LongDash] handle all new updates using handler"
+}], "GuideText",
+ CellChangeTimes->{{3.8801709563119335`*^9, 3.880170985831603*^9}},
+ CellID->87988139,ExpressionUUID->"47f34ca4-ffdb-4b92-bca5-c07951f468ab"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["CreateLongPollBot",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/CreateLongPollBot"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "93128086-cb24-4b75-ab99-97aafffffb29"],
+ " \[LongDash] bot in session"
+}], "GuideText",
+ CellChangeTimes->{{3.8801709938186955`*^9, 3.8801710057308035`*^9}},
+ CellID->540727037,ExpressionUUID->"45a21a57-0eb6-462b-9045-dc2042c90c13"],
+
+Cell[TextData[{
+ Cell[BoxData[
+  ButtonBox["DeployWebhook",
+   BaseStyle->"Link",
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/DeployWebhook"]], 
+  "InlineGuideFunction",ExpressionUUID->
+  "bbc90c8e-4bd6-44f9-be34-62d18051e76f"],
+ " \[LongDash] deploy bot to the Wolfram Cloud"
+}], "GuideText",
+ CellChangeTimes->{{3.8801710118761125`*^9, 3.8801710305929084`*^9}},
+ CellID->248337660,ExpressionUUID->"a65d0f71-c3e5-4948-9a0a-262fbc6670bf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Tech Notes", "GuideTutorialsSection",
+ CellID->109785589,ExpressionUUID->"2ce1494d-0520-4063-8c6f-8afe2bd51f9d"],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->344814945,ExpressionUUID->"9432b9fd-00cd-4c44-ba9b-b3065f0a3e91"],
+
+Cell["XXXX", "GuideTutorial",
+ CellID->135444755,ExpressionUUID->"ee0513db-6add-4920-8182-c20cea653030"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "GuideMoreAboutSection",
+ CellChangeTimes->{{3.8430423939366693`*^9, 3.843042395176153*^9}},
+ CellID->595557613],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->187114755,ExpressionUUID->"68e7d801-eebb-48d5-9017-b5e47f1f4ed4"],
+
+Cell["XXXX", "GuideMoreAbout",
+ CellID->805142593]
+}, Open  ]],
+
+Cell["Related Links", "GuideRelatedLinksSection",
+ CellID->115784833],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->594025100],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["1.0", "HistoryData",
+  CellTags->"New"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete"]
+}], "History",
+ CellChangeTimes->{{3.879951361351905*^9, 3.879951361793718*^9}},
+ CellID->16923103],
+
+Cell[CellGroupData[{
+
+Cell["Categorization", "CategorizationSection",
+ CellID->419348165],
+
+Cell["Guide", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->309518368],
+
+Cell["KirillBelov/TelegramBot", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->55713706,ExpressionUUID->"bf56f2bc-0106-4919-ae1b-2e125f7231f7"],
+
+Cell["KirillBelov`TelegramBot`", "Categorization",
+ CellLabel->"Context",
+ CellID->92474916,ExpressionUUID->"94e4d3d5-e95b-4184-9aed-68b41bb03427"],
+
+Cell["KirillBelov/TelegramBot/guide/TelegramBotGuide", "Categorization",
+ CellChangeTimes->{{3.879951353921915*^9, 3.8799513554254155`*^9}},
+ CellLabel->"URI",
+ CellID->827728303,ExpressionUUID->"bda3b879-df49-4ca7-8bed-7aeadcaaa129"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->154020123],
+
+Cell["XXXX", "Keywords",
+ CellID->1014207425]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{Automatic, 330}, {49, Automatic}},
+TaggingRules-><|"Paclet" -> "KirillBelov/TelegramBot"|>,
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (August 22, 2022)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"f2a82cd7-d292-4376-ba87-286513650722"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 283, 4, 88, "GuideTitle",ExpressionUUID->"4f233eef-e286-4204-870f-88a6c2e8e9bc",
+ CellID->615058458],
+Cell[866, 28, 209, 3, 29, "GuideAbstract",ExpressionUUID->"68426795-40e4-42f1-bf8b-2f90b9d475ab",
+ CellID->230450502]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1112, 36, 181, 2, 72, "GuideFunctionsSection",ExpressionUUID->"cf5e300a-963d-461c-9679-f1ad50eaecd0",
+ CellID->807016166],
+Cell[1296, 40, 416, 11, 23, "GuideText",ExpressionUUID->"250a5bd7-1aef-40af-a887-0d18b38fe6e7",
+ CellID->401164241]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1749, 56, 183, 2, 72, "GuideFunctionsSection",ExpressionUUID->"0f0fb263-9d44-4150-b416-7472eb2e7ede",
+ CellID->538340001],
+Cell[1935, 60, 516, 12, 23, "GuideText",ExpressionUUID->"99367b3a-f14a-4dfe-9f2f-931ff24f60ce",
+ CellID->23085171],
+Cell[2454, 74, 517, 12, 23, "GuideText",ExpressionUUID->"f9886568-48c0-43ac-b4e7-ea58b4d5759a",
+ CellID->198006355],
+Cell[2974, 88, 545, 12, 23, "GuideText",ExpressionUUID->"27388c3e-7912-4538-b397-e401d3228763",
+ CellID->188615209],
+Cell[3522, 102, 521, 12, 23, "GuideText",ExpressionUUID->"a55d462e-c795-45a7-a45b-5dcd7393ac62",
+ CellID->101638939],
+Cell[4046, 116, 572, 12, 23, "GuideText",ExpressionUUID->"17a45f3d-4758-4daa-8f07-141a3a6d1906",
+ CellID->467281658],
+Cell[4621, 130, 475, 11, 23, "GuideText",ExpressionUUID->"1014277e-579f-46d8-9b14-c84cd8da9ad4",
+ CellID->165236011],
+Cell[5099, 143, 557, 12, 23, "GuideText",ExpressionUUID->"079676d9-a94a-46ac-acf6-2247f65117f8",
+ CellID->3248216],
+Cell[5659, 157, 493, 11, 23, "GuideText",ExpressionUUID->"7e4f50ef-93ef-4782-81a9-84441fb536f5",
+ CellID->155085991]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6189, 173, 197, 2, 72, "GuideFunctionsSection",ExpressionUUID->"e4385429-b212-4d5c-ba8c-8de5a38b1e92",
+ CellID->154253467],
+Cell[6389, 177, 443, 10, 23, "GuideText",ExpressionUUID->"ba460b8d-de5f-42ae-a254-2402857b74e8",
+ CellID->7203541],
+Cell[6835, 189, 453, 10, 23, "GuideText",ExpressionUUID->"47f34ca4-ffdb-4b92-bca5-c07951f468ab",
+ CellID->87988139],
+Cell[7291, 201, 436, 10, 23, "GuideText",ExpressionUUID->"45a21a57-0eb6-462b-9045-dc2042c90c13",
+ CellID->540727037],
+Cell[7730, 213, 445, 10, 23, "GuideText",ExpressionUUID->"a65d0f71-c3e5-4948-9a0a-262fbc6670bf",
+ CellID->248337660]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8212, 228, 118, 1, 74, "GuideTutorialsSection",ExpressionUUID->"2ce1494d-0520-4063-8c6f-8afe2bd51f9d",
+ CellID->109785589],
+Cell[8333, 231, 104, 1, 24, "GuideTutorial",ExpressionUUID->"9432b9fd-00cd-4c44-ba9b-b3065f0a3e91",
+ CellID->344814945],
+Cell[8440, 234, 104, 1, 24, "GuideTutorial",ExpressionUUID->"ee0513db-6add-4920-8182-c20cea653030",
+ CellID->135444755]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8581, 240, 135, 2, 74, "GuideMoreAboutSection",ExpressionUUID->"263fdcd8-583f-4225-b967-6ca91fcd4eb9",
+ CellID->595557613],
+Cell[8719, 244, 105, 1, 24, "GuideMoreAbout",ExpressionUUID->"68e7d801-eebb-48d5-9017-b5e47f1f4ed4",
+ CellID->187114755],
+Cell[8827, 247, 50, 1, 24, "GuideMoreAbout",ExpressionUUID->"41bd68e6-2c93-4579-8f15-24a6839b1250",
+ CellID->805142593]
+}, Open  ]],
+Cell[8892, 251, 69, 1, 74, "GuideRelatedLinksSection",ExpressionUUID->"e7ca65a0-f29c-45c1-bf50-ba72cb3c744a",
+ CellID->115784833],
+Cell[CellGroupData[{
+Cell[8986, 256, 55, 1, 72, "MetadataSection",ExpressionUUID->"8e42f626-46e8-4611-9a03-eaf1f5649c21",
+ CellID->594025100],
+Cell[9044, 259, 319, 12, 26, "History",ExpressionUUID->"a1b56ad3-b2d2-4edf-9644-cb3ce20a82bb",
+ CellID->16923103],
+Cell[CellGroupData[{
+Cell[9388, 275, 67, 1, 21, "CategorizationSection",ExpressionUUID->"6becf7e8-2cb6-463d-b39a-85647d220587",
+ CellID->419348165],
+Cell[9458, 278, 78, 2, 35, "Categorization",ExpressionUUID->"dc34d53a-6a33-4815-922b-afd67e45a7ac",
+ CellID->309518368],
+Cell[9539, 282, 150, 2, 35, "Categorization",ExpressionUUID->"bf56f2bc-0106-4919-ae1b-2e125f7231f7",
+ CellID->55713706],
+Cell[9692, 286, 147, 2, 35, "Categorization",ExpressionUUID->"94e4d3d5-e95b-4184-9aed-68b41bb03427",
+ CellID->92474916],
+Cell[9842, 290, 234, 3, 35, "Categorization",ExpressionUUID->"bda3b879-df49-4ca7-8bed-7aeadcaaa129",
+ CellID->827728303]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10113, 298, 55, 1, 31, "KeywordsSection",ExpressionUUID->"a5d1fc17-c529-420f-9b60-1e73754f4302",
+ CellID->154020123],
+Cell[10171, 301, 45, 1, 21, "Keywords",ExpressionUUID->"0ffc6b18-901a-49a3-8903-03725f581c6c",
+ CellID->1014207425]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

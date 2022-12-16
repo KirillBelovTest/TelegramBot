@@ -1,0 +1,547 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     17550,        539]
+NotebookOptionsPosition[     11302,        403]
+NotebookOutlinePosition[     12117,        429]
+CellTagsIndexPosition[     12038,        424]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["HandleBotUpdates", "ObjectName",
+ CellChangeTimes->{{3.8801650192242427`*^9, 3.880165021872615*^9}, {
+  3.880165872791579*^9, 3.880165873922323*^9}},
+ CellID->71630468],
+
+Cell[TextData[{
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{
+   ButtonBox["HandleBotUpdates",
+    BaseStyle->"Link",
+    ButtonData->"paclet:KirillBelov/TelegramBot/ref/HandleBotUpdates"], "[", 
+   StyleBox["bot", "TI"], "]"}]], "InlineFormula"],
+ "\[LineSeparator]handle updates using default ",
+ Cell[BoxData[
+  StyleBox["updateHandler", "TI"]], "InlineFormula"],
+ "\n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{
+   ButtonBox[
+    RowBox[{"bot", "@", "HandleBotUpdates"}],
+    BaseStyle->"Link",
+    ButtonData->"paclet:KirillBelovTelegramBot/ref/handleUpdates"], "[", 
+   "]"}]], "InlineFormula"],
+ "\[LineSeparator]another way to call this method \n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{
+   ButtonBox["HandleBotUpdates",
+    BaseStyle->"Link",
+    ButtonData->"paclet:KirillBelov/TelegramBot/ref/HandleBotUpdates"], "[", 
+   RowBox[{
+    StyleBox["bot", "TI"], ",", 
+    StyleBox["updateHandler", "TI"]}], "]"}]], "InlineFormula"],
+ "\[LineSeparator]handle updates using specific ",
+ Cell[BoxData[
+  StyleBox["updateHandler", "TI"]], "InlineFormula"],
+ " \n",
+ Cell["   ", "ModInfo"],
+ Cell[BoxData[
+  RowBox[{
+   ButtonBox[
+    RowBox[{"bot", "@", "HandleBotUpdates"}],
+    BaseStyle->"Link",
+    ButtonData->"paclet:KirillBelovTelegramBot/ref/handleUpdates"], "[", 
+   StyleBox["updateHandler", "TI"], "]"}]], "InlineFormula"],
+ "\[LineSeparator]another way to call this method"
+}], "Usage",
+ CellChangeTimes->{{3.8800093605125117`*^9, 3.8800093945741854`*^9}},
+ CellID->68964951],
+
+Cell["Handle all updates from the telegram using update handler", "Notes",
+ CellChangeTimes->{{3.8800094053416977`*^9, 3.880009418857855*^9}},
+ CellID->116487050]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Tech Notes",
+ Cell[BoxData[
+  TemplateBox[{"TechNotes", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell["Insert links to related tech notes.", "MoreInfoText"], BaseStyle -> 
+       "IFrameBox"]], "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "TechNotesSection",
+ CellID->141255652],
+
+Cell[TextData[{
+ ButtonBox["LongPolling",
+  BaseStyle->"Link",
+  ButtonData->"paclet:KirillBelov/TelegramBot/tutorial/LongPolling"],
+ " ",
+ ButtonBox["Webhooks",
+  BaseStyle->"Link",
+  ButtonData->"paclet:KirillBelov/TelegramBot/tutorial/Webhooks"]
+}], "Tutorials",
+ CellChangeTimes->{{3.8800094248517747`*^9, 3.8800094334943094`*^9}, {
+  3.8800094686950283`*^9, 3.8800094712025027`*^9}},
+ CellID->91522069]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Related Links",
+ Cell[BoxData[
+  TemplateBox[{"RelatedLinks", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell[
+       "Insert links to any related page, including web pages.", 
+        "MoreInfoText"], BaseStyle -> "IFrameBox"]], "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "RelatedLinksSection",
+ CellID->136586282],
+
+Cell["XXXX", "RelatedLinks",
+ CellID->432093637]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "See Also",
+ Cell[BoxData[
+  TemplateBox[{"SeeAlso", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell[
+       "Insert links to any related reference (function) pages. Type a space, \
+a period and then another space between function names. Then click the \
+palette's Inline Listing Toggle button.", "MoreInfoText"], BaseStyle -> 
+       "IFrameBox"]], "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "SeeAlsoSection",
+ CellID->2481679],
+
+Cell[TextData[{
+ ButtonBox["TelegramBot",
+  BaseStyle->"Link",
+  ButtonData->"paclet:KirillBelov/TelegramBot/ref/TelegramBot"],
+ " ",
+ ButtonBox["getUpdates",
+  BaseStyle->"Link",
+  ButtonData->"paclet:KirillBelov/TelegramBot/ref/getUpdates"],
+ " DeployWebhook "
+}], "SeeAlso",
+ CellChangeTimes->{{3.880009441102317*^9, 3.8800094651570077`*^9}, {
+  3.880166099756074*^9, 3.8801661103130894`*^9}},
+ CellID->315995198,ExpressionUUID->"279826fb-63e3-4d9d-a069-896c49aeda4e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Related Guides", "MoreAboutSection",
+ CellChangeTimes->{{3.843042374232973*^9, 3.843042375545676*^9}},
+ CellID->90066014],
+
+Cell[TextData[ButtonBox["Guide",
+ BaseStyle->"Link",
+ ButtonData->"paclet:KirillBelov/TelegramBot/guide/Guide"]], "MoreAbout",
+ CellChangeTimes->{{3.880009449362981*^9, 3.880009459333924*^9}},
+ CellID->183959072]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Examples Initialization",
+ Cell[BoxData[
+  TemplateBox[{"ExamplesInitialization", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell[
+       "Input that is to be evaluated before any examples are run, e.g. \
+Needs[\[Ellipsis]].", "MoreInfoText"], BaseStyle -> "IFrameBox"]], 
+     "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "ExamplesInitializationSection",
+ CellID->139364610],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<KirillBelov`TelegramBot`\>\"", 
+  "]"}]], "ExampleInitialization",
+ CellID->394067361]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     StyleBox[
+      RowBox[{"Basic", " ", "Examples"}], "PrimaryExamplesSection"], 
+     ButtonBox[
+      RowBox[{
+       RowBox[{"More", " ", "Examples"}], " ", "\[RightTriangle]"}],
+      BaseStyle->"ExtendedExamplesLink",
+      ButtonData:>"ExtendedExamples"]}
+   }],
+  $Line = 0; Null]], "PrimaryExamplesSection",
+ CellID->248603177],
+
+Cell["Print all messages from the telegram:", "ExampleText",
+ CellChangeTimes->{{3.880009485850924*^9, 3.880009499286371*^9}},
+ CellID->142113631],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"HandleBotUpdates", "[", 
+   RowBox[{
+    RowBox[{
+    "TelegramBot", "[", 
+     "\"\<1247031088:AAGW73yzggrm4Tr7bldGCCaIrrwISNsdDzg\>\"", "]"}], ",", 
+    " ", 
+    RowBox[{
+     RowBox[{"Print", "[", 
+      RowBox[{"#2", "[", 
+       RowBox[{"\"\<message\>\"", ",", " ", "\"\<text\>\""}], "]"}], "]"}], 
+     "&"}]}], "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.880009531078077*^9, 3.880009549732231*^9}, {
+  3.880009605129198*^9, 3.8800096058775043`*^9}, {3.8800096414240894`*^9, 
+  3.880009667958235*^9}, {3.8800096988233113`*^9, 3.8800097465681796`*^9}, {
+  3.8801650279635143`*^9, 3.880165031092415*^9}},
+ CellID->77841205,ExpressionUUID->"bc359494-11a5-4093-8b15-5baee705e3c9"],
+
+Cell[BoxData["\<\"Hi! I wrote this text for the documentation page about the \
+handleUpdates\"\>"], "Print",
+ CellChangeTimes->{
+  3.8800096752247467`*^9, {3.8800097225634604`*^9, 3.8800097527122097`*^9}, 
+   3.8800098029888077`*^9, 3.8800098340447817`*^9},
+ CellLabel->"During evaluation of In[18]:=",
+ CellID->373993947]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "More Examples",
+ Cell[BoxData[
+  TemplateBox[{"MoreExamples", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell["Extended examples in standardized sections.", "MoreInfoText"], 
+       BaseStyle -> "IFrameBox"]], "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "ExtendedExamplesSection",
+ CellTags->"ExtendedExamples",
+ CellID->164243951],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Scope", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->502416935],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Generalizations & Extensions", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->295983321],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[Cell["Options", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->872713878],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->665064823],
+
+Cell[BoxData[
+ InterpretationBox[Cell["XXXX", "ExampleSubsection"],
+  $Line = 0; Null]], "ExampleSubsection",
+ CellID->1680488]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Applications", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->182759],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->64526531],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Possible Issues", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->335334526],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Interactive Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->155446975],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Neat Examples", "ExampleSection"],
+  $Line = 0; Null]], "ExampleSection",
+ CellID->498447286]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Metadata", "MetadataSection",
+ CellID->229948799],
+
+Cell[TextData[{
+ "New in: ",
+ Cell["1.0", "HistoryData",
+  CellTags->"New",ExpressionUUID->"7f8b2736-a101-43c4-828a-cd3b09462f3f"],
+ " | Modified in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Modified",ExpressionUUID->"3d8cb43b-1857-4444-ad94-eb3e31a7f29b"],
+ " | Obsolete in: ",
+ Cell[" ", "HistoryData",
+  CellTags->"Obsolete",ExpressionUUID->"703885d8-e4b8-4966-b642-b17c0914de15"]
+}], "History",
+ CellChangeTimes->{{3.864923683926749*^9, 3.864923685610183*^9}, {
+  3.880166048546214*^9, 3.88016605705484*^9}},
+ CellID->536815580,ExpressionUUID->"aa9b59e7-8661-41ea-8778-a5c3d2ee452a"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "Categorization",
+ Cell[BoxData[
+  TemplateBox[{"Metadata", 
+    Cell[
+     BoxData[
+      FrameBox[
+       Cell[
+       "Metadata such as page URI, context, and type of documentation page.", 
+        "MoreInfoText"], BaseStyle -> "IFrameBox"]], "MoreInfoTextOuter"]},
+   "MoreInfoOpenerButtonTemplate"]]]
+}], "CategorizationSection",
+ CellID->32775851],
+
+Cell["Symbol", "Categorization",
+ CellLabel->"Entity Type",
+ CellID->155556761],
+
+Cell["KirillBelov/TelegramBot", "Categorization",
+ CellLabel->"Paclet Name",
+ CellID->245342098,ExpressionUUID->"98d0984b-7692-4396-9417-9170f9b1a175"],
+
+Cell["KirillBelov`TelegramBot`", "Categorization",
+ CellLabel->"Context",
+ CellID->362370695,ExpressionUUID->"931b717c-0978-4af9-a715-a1ec6f4e5130"],
+
+Cell["KirillBelov/TelegramBot/ref/HandleBotUpdates", "Categorization",
+ CellLabel->"URI",
+ CellID->969345537,ExpressionUUID->"88232424-109f-4a75-a25c-1a1f562874cf"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Keywords", "KeywordsSection",
+ CellID->116147539],
+
+Cell["XXXX", "Keywords",
+ CellID->8769135]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Syntax Templates", "TemplatesSection",
+ CellID->13894420],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Additional Function Template",
+ CellID->140014358],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Arguments Pattern",
+ CellID->434028087],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Local Variables",
+ CellID->321643355],
+
+Cell[BoxData[""], "Template",
+ CellLabel->"Color Equal Signs",
+ CellID->339667289]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{700, 770},
+WindowMargins->{{Automatic, 225}, {Automatic, 74}},
+TaggingRules-><|"Paclet" -> "KirillBelov/TelegramBot", "TryRealOnly" -> False|>,
+CellContext->"Global`",
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (August 22, 2022)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", 
+  CharacterEncoding -> "UTF-8"],
+ExpressionUUID->"e81d6786-290d-4b57-9675-074bddafeb72"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ExtendedExamples"->{
+  Cell[7292, 250, 374, 12, 58, "ExtendedExamplesSection",ExpressionUUID->"16eb75c6-490b-4fba-84cc-49da55e920c1",
+   CellTags->"ExtendedExamples",
+   CellID->164243951]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ExtendedExamples", 11845, 417}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 174, 3, 74, "ObjectName",ExpressionUUID->"1d053538-69b8-47da-a4c1-ad26a544209d",
+ CellID->71630468],
+Cell[757, 27, 1516, 45, 211, "Usage",ExpressionUUID->"4e5c7b87-c9a6-4254-afe7-366c0bca8bd6",
+ CellID->68964951],
+Cell[2276, 74, 162, 2, 27, "Notes",ExpressionUUID->"abbba44f-1ec9-48c1-80f0-7c72aa9fcc47",
+ CellID->116487050]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2475, 81, 322, 11, 46, "TechNotesSection",ExpressionUUID->"31e8caed-5a1e-4dd7-b32e-a377a1efe429",
+ CellID->141255652],
+Cell[2800, 94, 407, 11, 18, "Tutorials",ExpressionUUID->"3f49be6f-217e-4264-84ae-130e12f2816e",
+ CellID->91522069]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3244, 110, 359, 12, 33, "RelatedLinksSection",ExpressionUUID->"d6a7fae9-ec45-4cf2-af1c-709f2bd66cd8",
+ CellID->136586282],
+Cell[3606, 124, 48, 1, 18, "RelatedLinks",ExpressionUUID->"03fdef42-2f7b-4f77-a0a7-145809674a62",
+ CellID->432093637]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3691, 130, 471, 14, 33, "SeeAlsoSection",ExpressionUUID->"50622458-dd24-4ee2-8639-ffe4713c769a",
+ CellID->2481679],
+Cell[4165, 146, 471, 12, 18, "SeeAlso",ExpressionUUID->"279826fb-63e3-4d9d-a069-896c49aeda4e",
+ CellID->315995198]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4673, 163, 127, 2, 33, "MoreAboutSection",ExpressionUUID->"befcc525-4c34-4d5a-b89b-40a15b77c7d6",
+ CellID->90066014],
+Cell[4803, 167, 212, 4, 18, "MoreAbout",ExpressionUUID->"33895b30-76e7-4ffe-8c2a-59a9fc1f73fc",
+ CellID->183959072]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5052, 176, 417, 13, 70, "ExamplesInitializationSection",ExpressionUUID->"701f54c7-83b1-4999-87e7-e0617b01be97",
+ CellID->139364610],
+Cell[5472, 191, 128, 3, 47, "ExampleInitialization",ExpressionUUID->"ea74c967-9016-44d2-8b94-b0a3f421981b",
+ CellID->394067361]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5637, 199, 387, 12, 72, "PrimaryExamplesSection",ExpressionUUID->"2485c2f5-fa30-4a7f-ba3a-f86f4cb1233b",
+ CellID->248603177],
+Cell[6027, 213, 146, 2, 24, "ExampleText",ExpressionUUID->"d682d73c-e429-445e-9162-111a5d193800",
+ CellID->142113631],
+Cell[CellGroupData[{
+Cell[6198, 219, 720, 17, 63, "Input",ExpressionUUID->"bc359494-11a5-4093-8b15-5baee705e3c9",
+ CellID->77841205],
+Cell[6921, 238, 322, 6, 22, "Print",ExpressionUUID->"a6cebfa8-95d9-47f0-86eb-4c3e71376aff",
+ CellID->373993947]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7292, 250, 374, 12, 58, "ExtendedExamplesSection",ExpressionUUID->"16eb75c6-490b-4fba-84cc-49da55e920c1",
+ CellTags->"ExtendedExamples",
+ CellID->164243951],
+Cell[7669, 264, 124, 3, 35, "ExampleSection",ExpressionUUID->"e36c911b-e826-4c07-9838-7b42f0ca95b0",
+ CellID->502416935],
+Cell[7796, 269, 147, 3, 23, "ExampleSection",ExpressionUUID->"a85485f2-869e-430d-8d08-c254bfc37ec4",
+ CellID->295983321],
+Cell[CellGroupData[{
+Cell[7968, 276, 126, 3, 23, "ExampleSection",ExpressionUUID->"d3ab2fff-50a7-49dc-aabe-6b9fa353b1a2",
+ CellID->872713878],
+Cell[8097, 281, 129, 3, 26, "ExampleSubsection",ExpressionUUID->"4fee3dd0-892c-47fb-bfba-894275f0e52d",
+ CellID->665064823],
+Cell[8229, 286, 127, 3, 22, "ExampleSubsection",ExpressionUUID->"270de34e-504e-4abe-9578-38f0ac6268cf",
+ CellID->1680488]
+}, Open  ]],
+Cell[8371, 292, 128, 3, 35, "ExampleSection",ExpressionUUID->"9f141ed8-66aa-4842-80ff-878257793c06",
+ CellID->182759],
+Cell[8502, 297, 140, 3, 23, "ExampleSection",ExpressionUUID->"1f44b313-75d4-458e-b022-268a30c968ff",
+ CellID->64526531],
+Cell[8645, 302, 134, 3, 23, "ExampleSection",ExpressionUUID->"202e32d7-06c3-4c74-abf3-abccef849eeb",
+ CellID->335334526],
+Cell[8782, 307, 139, 3, 23, "ExampleSection",ExpressionUUID->"c0add632-a578-4142-800d-65136965a054",
+ CellID->155446975],
+Cell[8924, 312, 132, 3, 23, "ExampleSection",ExpressionUUID->"c44e71ac-a147-4186-a706-a394e69d0bb5",
+ CellID->498447286]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9093, 320, 55, 1, 72, "MetadataSection",ExpressionUUID->"fa98c39f-bd27-4c6d-ad73-6d3afbc81aa3",
+ CellID->229948799],
+Cell[9151, 323, 588, 13, 26, "History",ExpressionUUID->"aa9b59e7-8661-41ea-8778-a5c3d2ee452a",
+ CellID->536815580],
+Cell[CellGroupData[{
+Cell[9764, 340, 370, 12, 21, "CategorizationSection",ExpressionUUID->"7e16f384-e1a4-4ebc-923d-0d07de7cca7f",
+ CellID->32775851],
+Cell[10137, 354, 79, 2, 35, "Categorization",ExpressionUUID->"7b2da082-01b0-43be-87d3-bdcab75a67e7",
+ CellID->155556761],
+Cell[10219, 358, 151, 2, 35, "Categorization",ExpressionUUID->"98d0984b-7692-4396-9417-9170f9b1a175",
+ CellID->245342098],
+Cell[10373, 362, 148, 2, 35, "Categorization",ExpressionUUID->"931b717c-0978-4af9-a715-a1ec6f4e5130",
+ CellID->362370695],
+Cell[10524, 366, 164, 2, 35, "Categorization",ExpressionUUID->"88232424-109f-4a75-a25c-1a1f562874cf",
+ CellID->969345537]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10725, 373, 55, 1, 31, "KeywordsSection",ExpressionUUID->"f799ef0a-298e-4fc3-af54-e3c74854075b",
+ CellID->116147539],
+Cell[10783, 376, 42, 1, 70, "Keywords",ExpressionUUID->"48a81240-a66f-4f97-ad3c-9c308038bb14",
+ CellID->8769135]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[10862, 382, 63, 1, 21, "TemplatesSection",ExpressionUUID->"9a07f333-0aaf-403e-8d16-f2127e87367d",
+ CellID->13894420],
+Cell[10928, 385, 93, 2, 70, "Template",ExpressionUUID->"b826e291-17a5-40a5-99cf-84f6ff23e1d2",
+ CellID->140014358],
+Cell[11024, 389, 82, 2, 70, "Template",ExpressionUUID->"fadc1e14-cf25-46fd-98ca-961db7bc7d13",
+ CellID->434028087],
+Cell[11109, 393, 80, 2, 70, "Template",ExpressionUUID->"eb8c3ea1-1f64-471e-8b0a-d5eb942cd0eb",
+ CellID->321643355],
+Cell[11192, 397, 82, 2, 70, "Template",ExpressionUUID->"69b3e984-5f66-4ad3-b795-4c15f4849de1",
+ CellID->339667289]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
