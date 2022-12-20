@@ -4861,7 +4861,7 @@ Cell[BoxData[
    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}]], "Input", "Excluded",
  TaggingRules->{},
  InitializationCell->True,
- CellLabel->"In[1]:=",
+ CellLabel->"In[13]:=",
  CellID->996717066,ExpressionUUID->"bc62e7e4-7210-468a-970e-8d729fad53e8"],
 
 Cell[BoxData[
@@ -4870,7 +4870,7 @@ Cell[BoxData[
   ";"}]], "Input", "Excluded",
  TaggingRules->{},
  InitializationCell->True,
- CellLabel->"In[2]:=",
+ CellLabel->"In[14]:=",
  CellID->172764492,ExpressionUUID->"8c6b146a-f22f-4503-b151-46e48800f4e1"]
 }, Open  ]],
 
@@ -4890,7 +4890,7 @@ Cell[BoxData[
  TaggingRules->{},
  CellChangeTimes->{{3.880528614837212*^9, 3.880528616085088*^9}},
  CellTags->"DefaultContent",
- CellLabel->"In[3]:=",
+ CellLabel->"In[15]:=",
  CellID->593829399,ExpressionUUID->"39f92117-ed31-484d-bfc7-f38e317c3e7b"],
 
 Cell["Create the Bot:", "Text",
@@ -4905,7 +4905,7 @@ Cell[BoxData[
   "TelegramBot", "[", 
    "\"\<1247031088:AAGW73yzggrm4Tr7bldGCCaIrrwISNsdDzg\>\"", "]"}]}]], "Input",
  TaggingRules->{},
- CellLabel->"In[20]:=",
+ CellLabel->"In[21]:=",
  CellID->9247196,ExpressionUUID->"90b63135-283f-4448-ae70-c707707b9146"],
 
 Cell[BoxData[
@@ -6226,10 +6226,6 @@ vgrt/wGLquZv
                  "\"1247031088:AAGW73yzggrm4Tr7bldGCCaIrrwISNsdDzg\"", 
                   "SummaryItem"]}], "\[SpanFromLeft]"}, {
                RowBox[{
-                 TagBox["\"Evaluate: \"", "SummaryItemAnnotation"], 
-                 "\[InvisibleSpace]", 
-                 TagBox["Evaluate", "SummaryItem"]}], "\[SpanFromLeft]"}, {
-               RowBox[{
                  TagBox["\"History: \"", "SummaryItemAnnotation"], 
                  "\[InvisibleSpace]", 
                  TagBox[
@@ -6511,7 +6507,7 @@ vgrt/wGLquZv
                    "RingBuffer", {
                     "Data" -> {<|
                     "Time" -> DateObject[{
-                    2022, 12, 19, 15, 16, 19.0529986`9.032538272883995}, 
+                    2022, 12, 20, 17, 20, 39.7143528`9.351522372303487}, 
                     "Instant", "Gregorian", 4.], "Request" -> 
                     HTTPRequest[
                     "https://api.telegram.org/bot1247031088%\
@@ -6538,7 +6534,7 @@ vgrt/wGLquZv
                      105, 110, 101, 95, 113, 117, 101, 114, 105, 101, 115, 34,
                      58, 102, 97, 108, 115, 101, 125, 125}], <|
                     "Headers" -> {{"Server", "nginx/1.18.0"}, {
-                    "Date", "Mon, 19 Dec 2022 11:16:19 GMT"}, {
+                    "Date", "Tue, 20 Dec 2022 13:20:40 GMT"}, {
                     "Content-Type", "application/json"}, {
                     "Content-Length", "204"}, {"Connection", "keep-alive"}, {
                     "Strict-Transport-Security", 
@@ -6550,7 +6546,7 @@ vgrt/wGLquZv
                     "StatusCode" -> 200, "Cookies" -> {}|>, CharacterEncoding -> 
                     Automatic]|>, <|
                     "Time" -> DateObject[{
-                    2022, 12, 19, 15, 16, 19.1623876`9.035024557784164}, 
+                    2022, 12, 20, 17, 20, 39.8195136`9.352670833552372}, 
                     "Instant", "Gregorian", 4.], "Request" -> 
                     HTTPRequest[
                     "https://api.telegram.org/bot1247031088%\
@@ -6568,7 +6564,7 @@ P/n+Fv+nBNtTcGzDsgmUbC0TBbV0AgllcSJ/Q0Ouoo0v1KbZubVj6mb7iDU6
 J1gVroQtL32te461zK5hHrHW/QlWhWa1apofotO1wg==
                     "]], <|
                     "Headers" -> {{"Server", "nginx/1.18.0"}, {
-                    "Date", "Mon, 19 Dec 2022 11:16:19 GMT"}, {
+                    "Date", "Tue, 20 Dec 2022 13:20:41 GMT"}, {
                     "Content-Type", "application/json"}, {
                     "Content-Length", "571"}, {"Connection", "keep-alive"}, {
                     "Strict-Transport-Security", 
@@ -6580,7 +6576,7 @@ J1gVroQtL32te461zK5hHrHW/QlWhWa1apofotO1wg==
                     "StatusCode" -> 200, "Cookies" -> {}|>, CharacterEncoding -> 
                     Automatic]|>, <|
                     "Time" -> DateObject[{
-                    2022, 12, 19, 15, 16, 19.2700878`9.037458630766015}, 
+                    2022, 12, 20, 17, 20, 39.9283153`9.353855869130177}, 
                     "Instant", "Gregorian", 4.], "Request" -> 
                     HTTPRequest[
                     "https://api.telegram.org/bot1247031088%\
@@ -6608,7 +6604,7 @@ UsYi7pbaG9AxMPnTAAL5rzEbQ0VRSfs_0sBBH9eTAQADAgADYQADLAQ\"\n}"|>], "Response" ->
                      112, 104, 111, 116, 111, 115, 47, 102, 105, 108, 101, 95,
                      55, 46, 106, 112, 103, 34, 125, 125}], <|
                     "Headers" -> {{"Server", "nginx/1.18.0"}, {
-                    "Date", "Mon, 19 Dec 2022 11:16:19 GMT"}, {
+                    "Date", "Tue, 20 Dec 2022 13:20:41 GMT"}, {
                     "Content-Type", "application/json"}, {
                     "Content-Length", "201"}, {"Connection", "keep-alive"}, {
                     "Strict-Transport-Security", 
@@ -6652,10 +6648,9 @@ UsYi7pbaG9AxMPnTAAL5rzEbQ0VRSfs_0sBBH9eTAQADAgADYQADLAQ\"\n}"|>], "Response" ->
                   RowBox[{"{", 
                     
                     RowBox[{
-                    "\"Token\"", ",", "\"Evaluate\"", ",", "\"History\"", ",",
-                     "\"Logger\"", ",", "\"Properties\"", ",", "\"Name\"", 
-                    ",", "\"Icon\""}], "}"}], "SummaryItem"]}], 
-               "\[SpanFromLeft]"}}, 
+                    "\"Token\"", ",", "\"History\"", ",", "\"Logger\"", ",", 
+                    "\"Properties\"", ",", "\"Name\"", ",", "\"Icon\""}], 
+                    "}"}], "SummaryItem"]}], "\[SpanFromLeft]"}}, 
              GridBoxAlignment -> {
               "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
              False, GridBoxItemSize -> {
@@ -6672,16 +6667,16 @@ UsYi7pbaG9AxMPnTAAL5rzEbQ0VRSfs_0sBBH9eTAQADAgADYQADLAQ\"\n}"|>], "Response" ->
        Dynamic[Typeset`open$$], ImageSize -> Automatic]},
      "SummaryPanel"],
     DynamicModuleValues:>{}], "]"}],
-  KirillBelov`TelegramBot`TelegramBot[KirillBelov`TelegramBot`Private`Bot$21],
+  KirillBelov`TelegramBot`TelegramBot[KirillBelov`TelegramBot`Private`Bot$11],
   Editable->False,
   SelectWithContents->True,
   Selectable->False]], "Output",
  TaggingRules->{},
  CellChangeTimes->{3.8804295613984194`*^9, 3.8804307609226027`*^9, 
   3.880431279752043*^9, 3.8804337674229245`*^9, 3.8804367613984184`*^9, 
-  3.8804373794361734`*^9},
- CellLabel->"Out[20]=",
- CellID->467209024,ExpressionUUID->"3ff683d1-2d37-4785-a477-3155e0d43cc6"]
+  3.8804373794361734`*^9, 3.8805312403365684`*^9},
+ CellLabel->"Out[21]=",
+ CellID->128674090,ExpressionUUID->"2e99be88-d892-4f4d-ad0b-cfbd23fccc86"]
 }, Open  ]],
 
 Cell["Check that bot is available:", "Text",
@@ -15981,6 +15976,7 @@ Cell[BoxData[
                 15.336799999999998`}, {18.2222, 14.022799999999997`}, {
                 19.6062, 14.471799999999998`}, {19.0852, 16.0798}, {18.0792, 
                 17.4608}, {16.6992, 18.465799999999998`}}}], 
+               
                FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
                 3}}}, {{{8.1572, 6.71}, {7.3012, 5.534}, {8.6802, 
                 4.529999999999999}, {10.3052, 4.}, {12.0002, 4.}, {12.0002, 
@@ -16158,9 +16154,9 @@ Cell[BoxData[
                  RGBColor[0.898, 0.898, 0.898], 
                  Opacity[1.]}], 
                
-               FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}}}, 
-                {{{7.3008, 18.465799999999998`}, {5.9208, 17.4608}, {4.9148, 
-                16.0798}, {4.3938, 14.471799999999998`}, {5.7778, 
+               FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                0}}}, {{{7.3008, 18.465799999999998`}, {5.9208, 17.4608}, {
+                4.9148, 16.0798}, {4.3938, 14.471799999999998`}, {5.7778, 
                 14.022799999999997`}, {6.203799999999999, 
                 15.336799999999998`}, {7.0278, 16.4668}, {8.1568, 17.2898}, {
                 7.3008, 18.465799999999998`}}}]}, {
@@ -16245,9 +16241,9 @@ Cell[BoxData[
              "Content-Length,Content-Type,Date,Server,Connection"}}, 
           "StatusCode" -> 200, "Cookies" -> {}|>, CharacterEncoding -> 
          Automatic]|>, <|
-      "Time" -> DateObject[{
-         2022, 12, 19, 15, 16, 19.1623876`9.035024557784164}, "Instant", 
-         "Gregorian", 4.], "Request" -> 
+      "Time" -> 
+       DateObject[{2022, 12, 19, 15, 16, 19.1623876`9.035024557784164}, 
+         "Instant", "Gregorian", 4.], "Request" -> 
        HTTPRequest[
         "https://api.telegram.org/bot1247031088%\
 3AAAGW73yzggrm4Tr7bldGCCaIrrwISNsdDzg/getUserProfilePhotos", <|
@@ -16703,7 +16699,6 @@ MIT"}, "HyperlinkURL"]}, "RowDefault"]},
                EvaluationCell[], {TaggingRules, "RadioButtonValue"}]], {
              "Apache-2.0"}], "\" \"", 
             TemplateBox[{"\"Apache License 2.0\"", "\"\[ThinSpace]\"", 
-              
               TemplateBox[{
                "\"\[RightGuillemet]\"", 
                 "https://resources.wolframcloud.com/PacletRepository/licenses/\
@@ -18572,8 +18567,8 @@ Cell[TextData[{
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{958, 980},
-WindowMargins->{{-7, Automatic}, {Automatic, 0}},
+WindowSize->{958, 973},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
 DockedCells->{
   Cell[
    BoxData[
