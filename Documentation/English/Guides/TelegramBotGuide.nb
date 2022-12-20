@@ -58,11 +58,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["getMe",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetMe"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getMe"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"c40ac8e4-27e1-4161-a8df-4d4f38357a23",ExpressionUUID->
-  "cee88682-51bd-405b-955c-0584ea1f3227"],
+  "dc97d1af-bae4-4431-ad55-492726701771"],
  " \[LongDash] short information about the bot"
 }], "GuideText",
  CellID->349499864,ExpressionUUID->"8ce8f9a2-0459-4eb7-8358-3df41ea5d6a5"],
@@ -71,11 +71,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["getUpdates",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetUpdates"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getUpdates"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"c5c6736a-1ff4-4e4e-8fcf-2d9846cbae62",ExpressionUUID->
-  "38edb791-a65b-4dab-ac9f-d98ff7d17ef6"],
+  "b17094f9-185b-43d9-8c0e-10487598978f"],
  " \[LongDash] available updates"
 }], "GuideText",
  CellID->100498491,ExpressionUUID->"5cdc277a-fd8b-443c-b87a-8c534642b48a"],
@@ -84,11 +84,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["sendMessage",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/SendMessage"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/sendMessage"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "6e7272c3-a4ef-4fa0-b5a0-653c85d7f522"],
+  "4aa7ba6f-2d8f-448e-93a3-8e54411d192d"],
  " \[LongDash] send message"
 }], "GuideText",
  CellID->341329648,ExpressionUUID->"69d7952e-5379-4fcd-b39c-ec41d6240d12"],
@@ -97,11 +97,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["sendPhoto",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/SendPhoto"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/sendPhoto"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "ac3475dd-ba30-43eb-a886-8f64a53952c1"],
+  "52525bb1-e423-444a-900e-446b79eabac3"],
  " \[LongDash] send photo"
 }], "GuideText",
  CellID->168018379,ExpressionUUID->"e7df4bdc-5715-420f-be73-145a1400dd0c"],
@@ -110,11 +110,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["setWebhook",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/SetWebhook"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/setWebhook"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "2eab469c-b579-4999-a5ab-50359e354477"],
+  "eb6f04b6-d9ef-4f91-8022-175c90663545"],
  " \[LongDash] set webhook"
 }], "GuideText",
  CellID->703367311,ExpressionUUID->"c9c07272-99a1-40b6-9e30-dbd34c42a16c"],
@@ -123,11 +123,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["deleteWebhook",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/DeleteWebhook"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/deleteWebhook"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "aa629ed8-50dd-449a-a408-ae5b66c69d0f"],
+  "bd4beb4f-e341-4cdb-a958-aaea3823530c"],
  " \[LongDash] delete webhook"
 }], "GuideText",
  CellID->1699531,ExpressionUUID->"cf06dda4-0794-4a15-be88-4e9af451b9d7"],
@@ -136,11 +136,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["getWebhookInfo",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetWebhookInfo"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getWebhookInfo"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "01a629d9-bfac-483e-b7a1-f0292a160f51"],
+  "676e96d2-cc17-43a5-be80-335725141007"],
  " \[LongDash] get webhook info"
 }], "GuideText",
  CellID->100154142,ExpressionUUID->"9dd9c905-7693-486d-a82b-5dc88385cc5a"],
@@ -149,11 +149,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["getUserProfilePhotos",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetUserProfilePhotos"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getUserProfilePhotos"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "ff1f7c67-4bf9-4613-886c-56cdc083b627"],
+  "0c87e118-79c2-40f3-ba20-f638e981263a"],
  " \[LongDash] get user profile photos info"
 }], "GuideText",
  CellID->159177027,ExpressionUUID->"c531b861-f157-40b7-b773-d37c9a00d857"],
@@ -162,11 +162,11 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["getFile",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetFile"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getFile"]], 
   "InlineGuideFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"aa4abaf9-dc99-4f95-84c5-6844a785e447",ExpressionUUID->
-  "4cd797e0-5c2a-4042-b9f8-23527bb89839"],
+  "a997d46a-28e3-4075-a094-e9ce048538f7"],
  " \[LongDash] get file info"
 }], "GuideText",
  CellID->413131189,ExpressionUUID->"2dc710d9-a5c7-42a3-a306-90cb77dceaa8"]

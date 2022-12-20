@@ -129,27 +129,27 @@ Cell[TextData[{
    ButtonData->"paclet:KirillBelov/TelegramBot/ref/TelegramBot"]], 
   "InlineSeeAlsoFunction",
   TaggingRules->{"PageType" -> "Function"},ExpressionUUID->
-  "39df0b88-a9b2-4841-ba28-55146a4440fc"],
+  "23da84d4-d38c-4ffd-bb5d-be8bec0a7f06"],
  StyleBox[" \[FilledVerySmallSquare] ", "InlineSeparator"],
  Cell[BoxData[
   ButtonBox["getUpdates",
    BaseStyle->"Link",
-   ButtonData->"paclet:KirillBelov/TelegramBot/ref/GetUpdates"]], 
+   ButtonData->"paclet:KirillBelov/TelegramBot/ref/getUpdates"]], 
   "InlineSeeAlsoFunction",
   TaggingRules->{"PageType" -> "Function"},
   CellTags->"81c51550-65fc-4acb-98c3-f5e6c0976202",ExpressionUUID->
-  "7c961b76-372b-471f-bbdf-72c7b94d74c7"],
+  "63148a04-191e-4957-8bde-5f47ddfa9473"],
  Cell[BoxData[
   RowBox[{
   Cell[TextData[StyleBox[
    " \[FilledVerySmallSquare] ", "InlineSeparator"]],ExpressionUUID->
-    "1c3eaa7c-7dd0-4902-96fa-c01f60f4b38a"], 
+    "c45b6e4a-7b41-40ad-94ee-8969b427e20a"], 
    DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
     "2a9c26a6-1baa-4941-ab00-ccef42daa6c0", 
-     "b1bf3d6a-6c23-48e4-a22a-6e495a6cfb7e"], $CellContext`cellobj$$ = 
+     "755c19b1-9c7f-41c6-8049-96e7bcbeff03"], $CellContext`cellobj$$ = 
     CellObject[
-    "0cf39b18-dd8b-4c18-a969-1f4d4f8e9d86", 
-     "69bee65d-9ced-4312-a912-368a6d2706c3"]}, 
+    "390d60e3-3f89-488a-82a3-5f68604cc998", 
+     "5ae2f449-8af3-4f14-935d-0d2592171cf6"]}, 
     TemplateBox[{
       GraphicsBox[{{
          Thickness[0.06], 
@@ -172,7 +172,7 @@ Cell[TextData[{
     Initialization:>($CellContext`nbobj$$ = 
       EvaluationNotebook[]; $CellContext`cellobj$$ = EvaluationCell[])]}]], 
   "InlineListingAddButton",ExpressionUUID->
-  "0cf39b18-dd8b-4c18-a969-1f4d4f8e9d86"]
+  "390d60e3-3f89-488a-82a3-5f68604cc998"]
 }], "SeeAlso",
  CellChangeTimes->{{3.8805092093597155`*^9, 3.8805092446866865`*^9}},
  CellID->42521744,ExpressionUUID->"ca075e9c-f24d-4290-b471-8761d691feda"]

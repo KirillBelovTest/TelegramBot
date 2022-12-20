@@ -104,11 +104,12 @@ HandleBotUpdates[bot, bot["UpdateHandler"]]
 (*Create in Session Bot*)
 
 
-CreateBotSession[bot: botPattern[], updateHandler: _Symbol | _Function, timespec_List] := 
-Module[{task}, 
-	KirillBelov`TelegramBot`deleteWebhook[bot];
-	Hold[task = SessionSubmit[ScheduledTask[HandleBotUpdates[bot, updateHandler], timespec]]]
-]
+CreateBotSession[bot: botPattern[], updateHandler: _Symbol | _Function, timespec_List] := (
+	KirillBelov`TelegramBot`deleteWebhook[bot]; 
+	With[{task = SessionSubmit[ScheduledTask[HandleBotUpdates[bot, updateHandler], timespec]]}, 
+		task
+	]
+)
 
 
 CreateBotSession[bot: botPattern[], updateHandler: _Symbol | _Function] := 

@@ -207,10 +207,10 @@ Cell[TextData[{
     "449fea08-fcf1-4278-8adf-2c57c384ed5c"], 
    DynamicModuleBox[{$CellContext`nbobj$$ = NotebookObject[
     "9cd7c229-0aed-40f1-a5f9-3636b5541ce7", 
-     "d9f58ad9-2ac8-4530-a67f-3509b4a91804"], $CellContext`cellobj$$ = 
+     "e3a145f4-d00e-4696-8002-81bc2c304683"], $CellContext`cellobj$$ = 
     CellObject[
     "d17d92fc-0577-4c10-ab89-34d966e8f97b", 
-     "f1fbdbb0-6262-4540-be75-9872d4b1c009"]}, 
+     "d934e8d7-7a52-4882-a2f1-7aba9b1d60e5"]}, 
     TemplateBox[{
       GraphicsBox[{{
          Thickness[0.06], 
@@ -3942,7 +3942,7 @@ Cell["KirillBelov`TelegramBot`", "Categorization",
 Cell["KirillBelov/TelegramBot/ref/DeployBotWebhook", "Categorization",
  CellLabel->"URI",
  CellID->102501514,ExpressionUUID->"95df5f40-5d38-43a2-a997-069749e4b5eb"]
-}, Closed]],
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -3977,7 +3977,7 @@ Cell[BoxData[""], "Template",
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{571, Automatic}, {Automatic, 92}},
+WindowMargins->{{Automatic, 164}, {32, Automatic}},
 TaggingRules-><|"Paclet" -> "KirillBelov/TelegramBot"|>,
 CellContext->"Global`",
 FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (November 18, 2022)",
@@ -4112,9 +4112,9 @@ Cell[223628, 3937, 147, 2, 35, "Categorization",ExpressionUUID->"7c594748-c772-4
  CellID->98183561],
 Cell[223778, 3941, 164, 2, 35, "Categorization",ExpressionUUID->"95df5f40-5d38-43a2-a997-069749e4b5eb",
  CellID->102501514]
-}, Closed]],
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[223979, 3948, 109, 1, 21, "KeywordsSection",ExpressionUUID->"4d404a2d-9b93-49d7-a551-240213846337",
+Cell[223979, 3948, 109, 1, 31, "KeywordsSection",ExpressionUUID->"4d404a2d-9b93-49d7-a551-240213846337",
  CellID->35216387],
 Cell[224091, 3951, 98, 1, 70, "Keywords",ExpressionUUID->"fb354db4-ba56-4666-96d1-9778b2f95eff",
  CellID->88810021]
