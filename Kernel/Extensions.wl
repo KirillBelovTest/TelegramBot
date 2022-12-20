@@ -19,32 +19,35 @@ ClearAll[ImportTelegramFile]
 
 
 ImportTelegramFile::usage = 
-"ImportTelegramFile[bot, fileId] import file"
+"ImportTelegramFile[bot, fileId] bot imports from telegram file by fileId"
 
 
 ClearAll[HandleBotUpdates]
 
 
 HandleBotUpdates::usage = 
-"HandleBotUpdates[bot] handle updates using default updateHandler
-HandleBotUpdates[bot, updateHandler] handle updates using specific updateHandler"
+"HandleBotUpdates[bot] handle bot updates
+HandleBotUpdates[bot, updateHandler] handle bot updates using specific updateHandler"
 
 
-ClearAll[DeployWebhook]
+ClearAll[DeployBotWebhook]
 
 
-DeployWebhook::usage = 
-"DeployWebhook[bot] deploy webhook with default update handler and automatic generated webhook url using hash and bot token
-DeployWebhook[bot, webhook] deploy webhook with default update handler
-DeployWebhook[bot, updateHandler, webhook]  deploy webhook with specific update handler"
+DeployBotWebhook::usage = 
+"DeployBotWebhook[bot] deploy bot webhook
+DeployBotWebhook[bot, webhookName] deploy bot webhook with specific webhookName
+DeployBotWebhook[bot, updateHandler] deploy bot webhook with specific updateHandler
+DeployBotWebhook[bot, updateHandler, webhookName] deploy bot webhook with specific updateHandler and webhookName"
 
 
-ClearAll[CreateLongPollBot]
+ClearAll[CreateBotSession]
 
 
-CreateLongPollBot::usage = 
-"CreateLongPollBot[bot]
-CreateLongPollBot[]"
+CreateBotSession::usage = 
+"CreateBotSession[bot] session bot
+CreateBotSession[bot, timespec] session bot with specific timespec
+CreateBotSession[bot, updateHandler] session bot with specific updateHandler
+CreateBotSession[bot, updateHandler, timespec] session bot with specific updateHandler and timespec"
 
 
 (* ::Section:: *)
@@ -55,10 +58,22 @@ Begin["`Private`"]
 
 
 (* ::Section:: *)
+(*Patterns*)
+
+
+botPattern[] := 
+KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ]
+
+
+(* ::Section:: *)
+(*Implementation*)
+
+
+(* ::Subsection:: *)
 (*Import files*)
 
 
-ImportTelegramFile[bot: KirillBelov`TelegramBot`TelegramBot[_Symbol?AssociationQ], fileId_String] := 
+ImportTelegramFile[bot: botPattern[], fileId_String] := 
 Module[{filePath, url}, 
 	filePath = KirillBelov`TelegramBot`getFile[bot, fileId]["result", "file_path"]; 
 	url = StringTemplate["https://api.telegram.org/file/bot`1`/`2`"][bot["Token"], filePath]; 
@@ -66,11 +81,11 @@ Module[{filePath, url},
 ]
 
 
-(* ::Section:: *)
-(*Handle all updates*)
+(* ::Subsection:: *)
+(*Handle bot updates*)
 
 
-HandleBotUpdates[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ], updateHandler_] := 
+HandleBotUpdates[bot: botPattern[], updateHandler_] := 
 Module[{updates}, 
 	updates = KirillBelov`TelegramBot`getUpdates[bot]["result"]; 
 	If[updates != {}, 
@@ -80,82 +95,81 @@ Module[{updates},
 ]
 
 
-HandleBotUpdates[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ]] /; 
+HandleBotUpdates[bot: botPattern[]] /; 
 MatchQ[bot["UpdateHandler"], Except[Missing[_]]] := 
 HandleBotUpdates[bot, bot["UpdateHandler"]]
 
 
-(* ::Section:: *)
+(* ::Subsection:: *)
 (*Create in Session Bot*)
 
 
-CreateLongPollBot[bot_Telegram, updateHandler: _Symbol | _Function, timespec_List] := 
+CreateBotSession[bot: botPattern[], updateHandler: _Symbol | _Function, timespec_List] := 
 Module[{task}, 
 	KirillBelov`TelegramBot`deleteWebhook[bot];
-	task = SessionSubmit[HandleBotUpdates[bot, updateHandler], timespec]; 
-	bot["Task"] = task
+	Hold[task = SessionSubmit[ScheduledTask[HandleBotUpdates[bot, updateHandler], timespec]]]
 ]
 
 
-CreateLongPollBot[bot_Telegram, updateHandler: _Symbol | _Function] := 
+CreateBotSession[bot: botPattern[], updateHandler: _Symbol | _Function] := 
 Module[{timespec}, 
 	timespec = bot["Timespec"]; 
-	CreateLongPollBot[bot, updateHandler, timespec]
+	CreateBotSession[bot, updateHandler, timespec]
 ]
 
 
-CreateLongPollBot[bot_Telegram, timespec_List] := 
+CreateBotSession[bot: botPattern[], timespec_List] := 
 Module[{updateHandler}, 
 	updateHandler = bot["UpdateHandler"]; 
-	CreateLongPollBot[bot, updateHandler, timespec]
+	CreateBotSession[bot, updateHandler, timespec]
 ]
 
 
-CreateLongPollBot[bot_Telegram] := 
+CreateBotSession[bot: botPattern[]] := 
 Module[{updateHandler, timespec}, 
 	timespec = bot["Timespec"]; 
 	updateHandler = bot["UpdateHandler"]; 
-	CreateLongPollBot[bot, updateHandler, timespec]
+	CreateBotSession[bot, updateHandler, timespec]
 ]
 
 
-(* ::Section:: *)
-(*Deploy webhook*)
+(* ::Subsection:: *)
+(*Deploy bot webhook*)
 
 
-DeployWebhook[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ], 
-	updateHandler: _Symbol | _Function, webhook_String] := 
-Module[{apiFunction, webhookUrl}, 
+DeployBotWebhook[bot: botPattern[], 
+	updateHandler: _Symbol | _Function, webhookName_String] := 
+Module[{apiFunction, webhook}, 
 	apiFunction = APIFunction[{}, updateHandler[bot, ImportString[HTTPRequestData["Body"], "RawJSON"]]&]; 
-	webhookUrl = CloudDeploy[apiFunction, webhook, Permissions -> "Public"]; 
-	KirillBelov`TelegramBot`setWebhook[bot, webhookUrl]; 
-	bot["Webhook"] = webhookUrl
+	webhook = CloudDeploy[apiFunction, webhookName, Permissions -> "Public"]; 
+	KirillBelov`TelegramBot`setWebhook[bot, webhook]; 
+	bot["Webhook"] = webhook
 ]
 
 
-DeployWebhook[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ], 
+DeployBotWebhook[bot: botPattern[], 
 	updateHandler: _Symbol | _Function] := 
 Module[{
 	webhook = Hash[bot["Token"], "SHA", "HexString"]
 }, 
-	DeployWebhook[bot, updateHandler, webhook]
+	DeployBotWebhook[bot, updateHandler, webhook]
 ]
 
 
-DeployWebhook[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ], webhook_String] := 
+DeployBotWebhook[bot: botPattern[], webhookName_String] := 
 Module[{
 	updateHandler = bot["UpdateHandler"]
 }, 
-	DeployWebhook[bot, updateHandler, webhook]
+	DeployBotWebhook[bot, updateHandler, webhookName]
 ]
 
 
-DeployWebhook[bot: KirillBelov`TelegramBot`TelegramBot[assoc_Symbol?AssociationQ]] := 
+DeployBotWebhook[bot: botPattern[]] := 
 Module[{
 	updateHandler = bot["UpdateHandler"], 
 	webhook = Hash[bot["Token"], "SHA", "HexString"]
 }, 
-	DeployWebhook[bot, updateHandler, webhook]
+	DeployBotWebhook[bot, updateHandler, webhook]
 ]
 
 

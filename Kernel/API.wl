@@ -16,46 +16,86 @@ BeginPackage["KirillBelov`TelegramBot`"]
 
 
 getMe::usage = 
-"getMe[bot]
-bot@getMe[]"
+"getMe[bot] base info about the bot
+bot@getMe[] another way to call this method"
+
+
+logOut::usage = 
+"logOut[bot] use this method to log out from the cloud Bot API server before launching the bot locally
+bot@logOut[] another way to call this method"
+
+
+close::usage = 
+"close[bot] use this method to close the bot instance before moving it from one local server to another
+bot@close[] another way to call this method"
 
 
 getUpdates::usage = 
-"getUpdates[bot]
-bot@getUpdates[]"
+"getUpdates[bot] get currents updates of the bot
+bot@getUpdates[] another way to call this method"
 
 
 setWebhook::usage = 
-"setWebhook[bot, url]
-bot@setWebhook[url]"
+"setWebhook[bot, url] all updates senging to url in the body of the post method
+bot@setWebhook[url] another way to call this method"
 
 
 deleteWebhook::usage = 
-"deleteWebhook[bot]
-bot@deleteWebhook[]"
+"deleteWebhook[bot] delete current webhook
+bot@deleteWebhook[] another way to call this method"
 
 
 getWebhookInfo::usage = 
 "getWebhookInfo[bot]
-bot@getWebhookInfo[]";
+bot@getWebhookInfo[] another way to call this method";
 
 
 sendMessage::usage = 
-"sendMessage[bot, chatId, text]
-bot@sendMessage[chatId, text]"
+"sendMessage[bot, chatId, text] send text messages
+bot@sendMessage[chatId, text] another way to call this method"
+
+
+forwardMessage::usage = 
+"forwardMessage[bot, chatId, fromChatId, messageId] use this method to forward messages of any kind
+bot@forwardMessage[chatId, fromChatId, messageId] another way to call this method"
+
+
+sendPhoto::usage = 
+"sendPhoto[bot, chatId, photo] send photos
+bot@sendPhoto[chatId, photo] another way to call this method"
+
+
+sendAudio::usage = 
+"sendAudio[bot, chatId, audio] send audio files
+bot@sendAudio[chatId, audio] another way to call this method"
+
+
+sendDocument::usage = 
+"sendDocument[bot, chatId, document] send general files
+bot@sendDocument[chatId, document] another way to call this method"
+
+
+sendVideo::usage = 
+"sendVideo[bot, chatId, video] send video files
+bot@sendVideo[chatId, video] another way to call this method"
+
+
+sendAnimation::usage = 
+"sendAnimation[bot, chatId, animation] send animation files
+bot@sendAnimation[chatId, animation] another way to call this method"
 
 
 getUserProfilePhotos::usage = 
 "getUserProfilePhotos[bot, userId]
-bot@getUserProfilePhotos[bot, userId]"
+bot@getUserProfilePhotos[bot, userId] another way to call this method"
 
 
 getFile::usage = 
 "getFile[bot, fileId]
-bot@getFile[fileId]"
+bot@getFile[fileId] another way to call this method"
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*Private context*)
 
 
@@ -63,6 +103,14 @@ Begin["`Private`"]
 
 
 (* ::Section:: *)
+(*Patterns*)
+
+
+botPattern[] := 
+KirillBelov`TelegramBot`TelegramBot[_Symbol?AssociationQ]
+
+
+(* ::Section::Closed:: *)
 (*Internal*)
 
 
@@ -94,16 +142,15 @@ Options[exec] = {
 }
 
 
-exec[TelegramBot[assoc_Symbol?AssociationQ], {method_String, params_Association}, OptionsPattern[]] := 
+exec[bot: botPattern[], {method_String, params_Association}, OptionsPattern[]] := 
 Module[{token, evaluate, history, logger, 
 	endpoint, encoder, deserializer, form, 
 	requestParameters, url, requestBody, contentType, request, httpMethod, 
 	response, responseBody, result}, 
 	
-	token = assoc["Token"]; 
-	evaluate = assoc["Evaluate"]; 
-	history = assoc["History"]; 
-	logger = assoc["Logger"]; 
+	token = bot["Token"]; 
+	history = bot["History"]; 
+	logger = bot["Logger"]; 
 	endpoint = OptionValue["Endpoint"]; 
 	encoder = OptionValue["Encoder"];
 	deserializer = OptionValue["Deserializer"]; 
@@ -138,7 +185,7 @@ Module[{token, evaluate, history, logger,
 		"Body" -> requestBody
 	|>]; 
 	
-	response = evaluate[URLRead[request]];
+	response = URLRead[request];
 	responseBody = response["Body"];
 	
 	result = deserializer[responseBody]; 
@@ -168,10 +215,6 @@ exec[
 ]
 
 
-
-
-
-
 (* ::Section:: *)
 (*Implementation*)
 
@@ -187,8 +230,38 @@ SyntaxInformation[getMe] = {
 
 
 TelegramBot /: 
-getMe[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
+getMe[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
 exec[bot, {"getMe"}, opts]
+
+
+(* ::Subsection:: *)
+(*logOut*)
+
+
+SyntaxInformation[logOut] = {
+	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec}]
+}
+
+
+TelegramBot /: 
+logOut[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+exec[bot, {"logOut"}, opts]
+
+
+(* ::Subsection:: *)
+(*close*)
+
+
+SyntaxInformation[close] = {
+	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec}]
+}
+
+
+TelegramBot /: 
+close[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+exec[bot, {"close"}, opts]
 
 
 (* ::Subsection:: *)
@@ -210,7 +283,7 @@ SyntaxInformation[getUpdates] = {
 
 
 TelegramBot /: 
-getUpdates[bot_TelegramBot, opts: OptionsPattern[{exec, getUpdates}]] := 
+getUpdates[bot: botPattern[], opts: OptionsPattern[{exec, getUpdates}]] := 
 exec[bot, {"getUpdates", opts}, opts]
 
 
@@ -220,8 +293,11 @@ exec[bot, {"getUpdates", opts}, opts]
 
 Options[setWebhook] = {
 	"certificate" -> Automatic, 
+	"ipAddress" -> Automatic, 
 	"maxConnections" -> Automatic, 
-	"allowedUpdates" -> Automatic
+	"allowedUpdates" -> Automatic, 
+	"dropPendingUpdates" -> Automatic, 
+	"secretToken" -> Automatic
 }
 
 
@@ -232,7 +308,7 @@ SyntaxInformation[setWebhook] = {
 
 
 TelegramBot /: 
-setWebhook[bot_TelegramBot, url_String, opts: OptionsPattern[{exec, setWebhook}]] := 
+setWebhook[bot: botPattern[], url_String, opts: OptionsPattern[{exec, setWebhook}]] := 
 exec[bot, {"setWebhook", "url" -> url, opts}, opts]
 
 
@@ -240,15 +316,20 @@ exec[bot, {"setWebhook", "url" -> url, opts}, opts]
 (*deleteWebhook*)
 
 
+Options[deleteWebhook] = {
+	"dropPendingUpdates" -> Automatic
+}
+
+
 SyntaxInformation[deleteWebhook] = {
 	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+	"OptionNames" -> optionNames[{exec, deleteWebhook}]
 }
 
 
 TelegramBot /: 
-deleteWebhook[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
-exec[bot, {"deleteWebhook"}, opts]
+deleteWebhook[bot: botPattern[], opts: OptionsPattern[{exec, deleteWebhook}]] := 
+exec[bot, {"deleteWebhook", opts}, opts]
 
 
 (* ::Subsection:: *)
@@ -262,7 +343,7 @@ SyntaxInformation[getWebhookInfo] = {
 
 
 TelegramBot /: 
-getWebhookInfo[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
+getWebhookInfo[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
 exec[bot, {"getWebhookInfo"}, opts]
 
 
@@ -271,24 +352,51 @@ exec[bot, {"getWebhookInfo"}, opts]
 
 
 Options[sendMessage] = {
+	"messageThreadId" -> Automatic, 
 	"parseMode" -> Automatic, 
+	"entities" -> Automatic, 
 	"disableWebPagePreview" -> Automatic, 
 	"disableNotification" -> Automatic, 
-	"replyToMessage_id" -> Automatic,
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
 	"replyMarkup" -> Automatic
 }
 
 
-SyntaxInformation[sendMessage] = 
-	{
-		"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-		"OptionNames" -> optionNames[{exec, sendMessage}]
-	}
+SyntaxInformation[sendMessage] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendMessage}]
+}
 
 
 TelegramBot /: 
-sendMessage[bot_TelegramBot, chatId: _String | _Integer, text_String, opts: OptionsPattern[{exec, sendMessage}]] := 
+sendMessage[bot: botPattern[], chatId: _String | _Integer, text_String, 
+	opts: OptionsPattern[{exec, sendMessage}]] := 
 exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*forwardMessage*)
+
+
+Options[forwardMessage] = {
+	"messageThreadId" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic
+}
+
+
+SyntaxInformation[sendMessage] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, forwardMessage}]
+}
+
+
+TelegramBot /: 
+forwardMessage[bot: botPattern[], chatId: _String | _Integer, fromChatId: _String | _Integer, 
+	messageId_Integer, opts: OptionsPattern[{exec, forwardMessage}]] := 
+exec[bot, {"forwardMessage", "chatId" -> chatId, "fromChatId" -> fromChatId, "messageId" -> messageId, opts}, opts]
 
 
 (* ::Subsection:: *)
@@ -308,7 +416,7 @@ SyntaxInformation[sendMessage] = {
 
 
 TelegramBot /: 
-getUserProfilePhotos[bot_TelegramBot, userId: _String | _Integer, 
+getUserProfilePhotos[bot: botPattern[], userId: _String | _Integer, 
 	opts: OptionsPattern[{exec, getUserProfilePhotos}]] := 
 exec[bot, {"getUserProfilePhotos", "userId" -> userId, opts}, opts]
 
@@ -324,18 +432,18 @@ SyntaxInformation[getFile] = {
 
 
 TelegramBot /: 
-getFile[bot_TelegramBot, fileId_String, opts: OptionsPattern[{exec}]] := 
+getFile[bot: botPattern[], fileId_String, opts: OptionsPattern[{exec}]] := 
 exec[bot, {"getFile", "fileId" -> fileId, opts}, opts]
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*End private*)
 
 
 End[]
 
 
-(* ::Section::Closed:: *)
+(* ::Section:: *)
 (*End package*)
 
 

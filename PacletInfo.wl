@@ -9,7 +9,7 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/KirillBelovTest/TelegramBot",
     "License" -> "MIT",
     "PublisherID" -> "KirillBelov",
-    "Version" -> "1.0.4",
+    "Version" -> "1.0.7",
     "WolframVersion" -> "13+",
     "Dependencies" -> {},
     "Extensions" -> {
@@ -32,18 +32,8 @@ PacletObject[
           }
         },
         "Symbols" -> {
-          "KirillBelov`TelegramBot`CreateLongPollBot",
-          "KirillBelov`TelegramBot`deleteWebhook",
-          "KirillBelov`TelegramBot`DeployWebhook",
-          "KirillBelov`TelegramBot`getFile",
-          "KirillBelov`TelegramBot`getMe",
-          "KirillBelov`TelegramBot`getUpdates",
-          "KirillBelov`TelegramBot`getUserProfilePhotos",
-          "KirillBelov`TelegramBot`getWebhookInfo",
           "KirillBelov`TelegramBot`HandleBotUpdates",
           "KirillBelov`TelegramBot`ImportTelegramFile",
-          "KirillBelov`TelegramBot`sendMessage",
-          "KirillBelov`TelegramBot`setWebhook",
           "KirillBelov`TelegramBot`TelegramBot"
         }
       },

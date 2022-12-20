@@ -35,7 +35,6 @@ TelegramBot::mssngprop =
 
 
 Options[TelegramBot] = {
-	"Evaluate" :> Evaluate, 
 	"History" :> CreateDataStructure["RingBuffer", 1024], 
 	"Logger" :> Function[{history, request, response}, 
 		history["PushBack", <|"Time" -> Now, "Request" -> request, "Response" -> response|>]]
@@ -46,24 +45,26 @@ SetAttributes[TelegramBot, HoldFirst]
 
 
 TelegramBot[token_?StringQ, OptionsPattern[]] := 
-With[{assoc = Unique["KirillBelov`TelegramBot`Bots`Bot$"]}, 
+With[{assoc = Unique["KirillBelov`TelegramBot`Private`Bot$"]}, 
 	Module[{bot, info, fileId, name, userPhotos, photo}, 
 		assoc = <|
 			"Token" -> token, 
-			"Evaluate" -> OptionValue["Evaluate"], 
 			"History" -> OptionValue["History"], 
-			"Logger" -> OptionValue["Logger"]
+			"Logger" -> OptionValue["Logger"], 
+			"Properties" -> {"Token", "History", "Logger", "Properties"}
 		|>; 
+		
 		bot = TelegramBot[assoc]; 
+		
 		info = KirillBelov`TelegramBot`getMe[bot]; 
 		name = info["result", "username"]; 
-		assoc["Name"] = name; 
+		bot["Name"] = name; 
 		
 		userPhotos = KirillBelov`TelegramBot`getUserProfilePhotos[bot, info["result", "id"]][["result", "photos"]]; 
 		fileId = userPhotos[[1, 1, "file_id"]]; 
 		photo = KirillBelov`TelegramBot`ImportTelegramFile[bot, fileId];
-		assoc["Icon"] = photo; 
-
+		bot["Icon"] = photo; 
+		
 		Return[bot] 
 	]
 ]
@@ -80,23 +81,30 @@ Not[KeyExistsQ[assoc, prop]] :=
 
 
 TelegramBot /: 
-Set[TelegramBot[assoc_Symbol?AssociationQ][prop_], value_] := 
-assoc[prop] = value
+Set[TelegramBot[assoc_Symbol?AssociationQ][prop_], value_] := (
+	assoc["Properties"] = DeleteDuplicates[Append[assoc["Properties"], prop]]; 
+	assoc[prop] = value
+)
 
 
-(bot_TelegramBot)[method_[args___]] := 
+(bot_TelegramBot)[method_Symbol[args___]] := 
 method[bot, args]
 
 
 TelegramBot /: 
-Set[name_Symbol, bot: TelegramBot[assoc_Symbol?AssociationQ]] := (
+Set[name_Symbol, bot: TelegramBot[assoc_Symbol?AssociationQ]] := Module[{nameString}, 
 	ClearAll[name]; 
+	nameString = ToString[name]; 
 	Block[{TelegramBot}, 
 		SetAttributes[TelegramBot, HoldFirst]; name = bot]; 
-	name /: Set[name[keys__], value_] := 
-		With[{$name = name}, $name[keys] = value]; 
+	name /: Set[name[keys__], value_] := With[{$name = name}, 
+		$name[keys] = value; 
+		ResourceFunction["AddCodeCompletion"][nameString][bot["Properties"]]; 
+		value
+	];  
+	ResourceFunction["AddCodeCompletion"][nameString][bot["Properties"]]; 
 	name
-)
+]
 
 
 TelegramBot /: MakeBoxes[bot_TelegramBot, form: StandardForm | TraditionalForm] := 
