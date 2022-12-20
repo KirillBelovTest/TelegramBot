@@ -142,7 +142,7 @@ DeployBotWebhook[bot: botPattern[],
 Module[{apiFunction, webhook}, 
 	apiFunction = APIFunction[{}, updateHandler[bot, ImportString[HTTPRequestData["Body"], "RawJSON"]]&]; 
 	webhook = CloudDeploy[apiFunction, webhookName, Permissions -> "Public"]; 
-	KirillBelov`TelegramBot`setWebhook[bot, webhook]; 
+	KirillBelov`TelegramBot`setWebhook[bot, webhook[[1]]]; 
 	bot["Webhook"] = webhook
 ]
 
