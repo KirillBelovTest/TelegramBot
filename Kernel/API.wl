@@ -163,9 +163,9 @@ key -> <|
 
 encode[key_String, animation_Manipulate] := 
 key -> <|
-	"Content" -> ExportString[animation, "GIF"], 
+	"Content" -> ExportString[animation, "MP4"], 
 	"Name" -> key, 
-	"MIMEType" -> "image/gif"
+	"MIMEType" -> "video/mp4"
 |>
 
 
