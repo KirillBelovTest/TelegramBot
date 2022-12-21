@@ -426,7 +426,7 @@ Options[forwardMessage] = {
 }
 
 
-SyntaxInformation[sendMessage] = {
+SyntaxInformation[forwardMessage] = {
 	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
 	"OptionNames" -> optionNames[{exec, forwardMessage}]
 }
@@ -634,7 +634,7 @@ Options[getUserProfilePhotos] = {
 }
 
 
-SyntaxInformation[sendMessage] = {
+SyntaxInformation[getUserProfilePhotos] = {
 	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
 	"OptionNames" -> optionNames[{exec, getUserProfilePhotos}]
 }

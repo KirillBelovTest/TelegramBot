@@ -9,7 +9,7 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/KirillBelovTest/TelegramBot",
     "License" -> "MIT",
     "PublisherID" -> "KirillBelov",
-    "Version" -> "1.0.13",
+    "Version" -> "1.0.14",
     "WolframVersion" -> "13+",
     "Dependencies" -> {},
     "Extensions" -> {
