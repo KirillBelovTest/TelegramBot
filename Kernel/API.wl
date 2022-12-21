@@ -110,7 +110,11 @@ botPattern[] :=
 KirillBelov`TelegramBot`TelegramBot[_Symbol?AssociationQ]
 
 
-(* ::Section::Closed:: *)
+imagePattern[] := 
+_Image | _Graphics | _Graphics3D
+
+
+(* ::Section:: *)
 (*Internal*)
 
 
@@ -122,12 +126,47 @@ deserialize[body_String] :=
 ImportString[body, "RawJSON"]
 
 
+encode[key_String, value_] := key -> encode[value]
+
+
 encode[str_String] := 
 str
 
 
 encode[url_URL] := 
 url[[1]]
+
+
+encode[key_String, photo: imagePattern[]] := 
+key -> <|
+	"Content" -> ExportString[photo, "PNG"], 
+	"Name" -> key, 
+	"MIMEType" -> "image/png"
+|>
+
+
+encode[key_String, audio_Audio] := 
+key -> <|
+	"Content" -> ExportString[audio, "MP3"], 
+	"Name" -> key, 
+	"MIMEType" -> "audio/mpeg"
+|>
+
+
+encode[key_String, video_Video] := 
+key -> <|
+	"Content" -> ExportString[video, "MP4"], 
+	"Name" -> key, 
+	"MIMEType" -> "video/mp4"
+|>
+
+
+encode[key_String, animation_Manipulate] := 
+key -> <|
+	"Content" -> ExportString[animation, "GIF"], 
+	"Name" -> key, 
+	"MIMEType" -> "image/gif"
+|>
 
 
 encode[expr_] := 
@@ -156,7 +195,7 @@ Module[{token, evaluate, history, logger,
 	deserializer = OptionValue["Deserializer"]; 
 	form = OptionValue["Form"]; 
 	
-	requestParameters = Map[encoder] @ DeleteCases[params, Automatic]; 
+	requestParameters = KeyValueMap[encoder] @ DeleteCases[params, Automatic]; 
 	
 	url = Switch[form, 
 		"Query", URLBuild[{endpoint, "bot" <> token, method}, requestParameters], 
@@ -397,6 +436,192 @@ TelegramBot /:
 forwardMessage[bot: botPattern[], chatId: _String | _Integer, fromChatId: _String | _Integer, 
 	messageId_Integer, opts: OptionsPattern[{exec, forwardMessage}]] := 
 exec[bot, {"forwardMessage", "chatId" -> chatId, "fromChatId" -> fromChatId, "messageId" -> messageId, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*sendPhoto*)
+
+
+Options[sendPhoto] = {
+	"messageThreadId" -> Automatic, 
+	"caption" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"captionEntities" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendPhoto] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendPhoto}]
+}
+
+
+sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo: imagePattern[], 
+	opts: OptionsPattern[{exec, sendPhoto}]] := 
+exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts, "Form" -> "FormData"]
+
+
+sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo: _String | _URL, 
+	opts: OptionsPattern[{exec, sendPhoto}]] := 
+exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts]
+
+
+sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo_, 
+	opts: OptionsPattern[{exec, sendPhoto}]] := 
+sendPhoto[bot, chatId, Rasterize[photo], opts]
+
+
+(* ::Subsection:: *)
+(*sendAudio*)
+
+
+Options[sendAudio] = {
+	"messageThreadId" -> Automatic, 
+	"caption" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"captionEntities" -> Automatic, 
+	"duration" -> Automatic, 
+	"performer" -> Automatic, 
+	"title" -> Automatic, 
+	"thumb" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendAudio] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendAudio}]
+}
+
+
+sendAudio[bot: botPattern[], chatId: _String | _Integer, audio_Audio, 
+	opts: OptionsPattern[{exec, sendAudio}]] := 
+exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts, "Form" -> "FormData"]
+
+
+sendAudio[bot: botPattern[], chatId: _String | _Integer, audio: _String | _URL, 
+	opts: OptionsPattern[{exec, sendAudio}]] := 
+exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*sendDocument*)
+
+
+Options[sendDocument] = {
+	"messageThreadId" -> Automatic, 
+	"thumb" -> Automatic, 
+	"caption" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"captionEntities" -> Automatic, 
+	"title" -> Automatic, 
+	"disableContentTypeDetection" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendDocument] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendDocument}]
+}
+
+
+sendDocument[bot: botPattern[], chatId: _String | _Integer, document_File, 
+	opts: OptionsPattern[{exec, sendDocument}]] := 
+exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts, "Form" -> "FormData"]
+
+
+sendDocument[bot: botPattern[], chatId: _String | _Integer, document: _String | _URL, 
+	opts: OptionsPattern[{exec, sendDocument}]] := 
+exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*sendVideo*)
+
+
+Options[sendVideo] = {
+	"messageThreadId" -> Automatic, 
+	"duration" -> Automatic, 
+	"width" -> Automatic, 
+	"height" -> Automatic, 
+	"thumb" -> Automatic, 
+	"caption" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"captionEntities" -> Automatic, 
+	"supports_Streaming" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendVideo] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendVideo}]
+}
+
+
+sendVideo[bot: botPattern[], chatId: _String | _Integer, video_Video, 
+	opts: OptionsPattern[{exec, sendVideo}]] := 
+exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts, "Form" -> "FormData"]
+
+
+sendVideo[bot: botPattern[], chatId: _String | _Integer, video: _String | _URL, 
+	opts: OptionsPattern[{exec, sendVideo}]] := 
+exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*sendAnimation*)
+
+
+Options[sendAnimation] = {
+	"messageThreadId" -> Automatic, 
+	"duration" -> Automatic, 
+	"width" -> Automatic, 
+	"height" -> Automatic, 
+	"thumb" -> Automatic, 
+	"caption" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"captionEntities" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyToMessageId" -> Automatic, 
+	"allowSendingWithoutReply" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendAnimation] = {
+	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendAnimation}]
+}
+
+
+sendAnimation[bot: botPattern[], chatId: _String | _Integer, animation_Manipulate, 
+	opts: OptionsPattern[{exec, sendVideo}]] := 
+exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts, "Form" -> "FormData"]
+
+
+sendAnimation[bot: botPattern[], chatId: _String | _Integer, animation: _String | _URL, 
+	opts: OptionsPattern[{exec, sendAnimation}]] := 
+exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts]
 
 
 (* ::Subsection:: *)
