@@ -8,10 +8,12 @@
 (*Begin package*)
 
 
-BeginPackage["KirillBelov`TelegramBot`"]
+BeginPackage["KirillBelov`TelegramBot`API`", {
+	"KirillBelov`TelegramBot`Type`"
+}]
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Endpoints*)
 
 
@@ -52,69 +54,72 @@ bot@getWebhookInfo[] another way to call this method";
 
 sendMessage::usage = 
 "sendMessage[bot, chatId, text] send text messages
-bot@sendMessage[chatId, text] another way to call this method"
+bot@sendMessage[chatId, text] another way to call this method."
 
 
 forwardMessage::usage = 
 "forwardMessage[bot, chatId, fromChatId, messageId] use this method to forward messages of any kind
-bot@forwardMessage[chatId, fromChatId, messageId] another way to call this method"
+bot@forwardMessage[chatId, fromChatId, messageId] another way to call this method."
 
 
 sendPhoto::usage = 
 "sendPhoto[bot, chatId, photo] send photos
-bot@sendPhoto[chatId, photo] another way to call this method"
+bot@sendPhoto[chatId, photo] another way to call this method."
 
 
 sendAudio::usage = 
 "sendAudio[bot, chatId, audio] send audio files
-bot@sendAudio[chatId, audio] another way to call this method"
+bot@sendAudio[chatId, audio] another way to call this method."
 
 
 sendDocument::usage = 
 "sendDocument[bot, chatId, document] send general files
-bot@sendDocument[chatId, document] another way to call this method"
+bot@sendDocument[chatId, document] another way to call this method."
 
 
 sendVideo::usage = 
 "sendVideo[bot, chatId, video] send video files
-bot@sendVideo[chatId, video] another way to call this method"
+bot@sendVideo[chatId, video] another way to call this method."
 
 
 sendAnimation::usage = 
 "sendAnimation[bot, chatId, animation] send animation files
-bot@sendAnimation[chatId, animation] another way to call this method"
+bot@sendAnimation[chatId, animation] another way to call this method."
 
 
 getUserProfilePhotos::usage = 
 "getUserProfilePhotos[bot, userId]
-bot@getUserProfilePhotos[bot, userId] another way to call this method"
+bot@getUserProfilePhotos[bot, userId] another way to call this method."
 
 
-getFile::usage = 
-"getFile[bot, fileId]
-bot@getFile[fileId] another way to call this method"
+answerCallbackQuery::usage = 
+"answerCallbackQuery[bot, callbackQueryId] answer to callback."; 
 
 
-(* ::Section:: *)
+editMessageText::usage = 
+"editMessageText[bot, chatId, messageId, text] edit message."; 
+
+
+editMessageReplyMarkup::usage = 
+"editMessageReplyMarkup[bot, chatId, messageId] edit message reply markup.";
+
+
+(* ::Section::Closed:: *)
 (*Private context*)
 
 
 Begin["`Private`"]
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Patterns*)
-
-
-botPattern[] := 
-KirillBelov`TelegramBot`TelegramBot[_Symbol?AssociationQ]
 
 
 imagePattern[] := 
 _Image | _Graphics | _Graphics3D
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Internal*)
 
 
@@ -181,7 +186,7 @@ Options[exec] = {
 }
 
 
-exec[bot: botPattern[], {method_String, params_Association}, OptionsPattern[]] := 
+exec[bot_TelegramBot, {method_String, params_Association}, OptionsPattern[]] := 
 Module[{token, evaluate, history, logger, 
 	endpoint, encoder, deserializer, form, 
 	requestParameters, url, requestBody, contentType, request, httpMethod, 
@@ -254,7 +259,7 @@ exec[
 ]
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*Implementation*)
 
 
@@ -268,8 +273,7 @@ SyntaxInformation[getMe] = {
 }
 
 
-TelegramBot /: 
-getMe[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+TelegramBot /: getMe[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
 exec[bot, {"getMe"}, opts]
 
 
@@ -284,7 +288,7 @@ SyntaxInformation[logOut] = {
 
 
 TelegramBot /: 
-logOut[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+logOut[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
 exec[bot, {"logOut"}, opts]
 
 
@@ -299,7 +303,7 @@ SyntaxInformation[close] = {
 
 
 TelegramBot /: 
-close[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+close[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
 exec[bot, {"close"}, opts]
 
 
@@ -322,7 +326,7 @@ SyntaxInformation[getUpdates] = {
 
 
 TelegramBot /: 
-getUpdates[bot: botPattern[], opts: OptionsPattern[{exec, getUpdates}]] := 
+getUpdates[bot_TelegramBot, opts: OptionsPattern[{exec, getUpdates}]] := 
 exec[bot, {"getUpdates", opts}, opts]
 
 
@@ -347,7 +351,7 @@ SyntaxInformation[setWebhook] = {
 
 
 TelegramBot /: 
-setWebhook[bot: botPattern[], url_String, opts: OptionsPattern[{exec, setWebhook}]] := 
+setWebhook[bot_TelegramBot, url_String, opts: OptionsPattern[{exec, setWebhook}]] := 
 exec[bot, {"setWebhook", "url" -> url, opts}, opts]
 
 
@@ -366,8 +370,7 @@ SyntaxInformation[deleteWebhook] = {
 }
 
 
-TelegramBot /: 
-deleteWebhook[bot: botPattern[], opts: OptionsPattern[{exec, deleteWebhook}]] := 
+TelegramBot /: deleteWebhook[bot_TelegramBot, opts: OptionsPattern[{exec, deleteWebhook}]] := 
 exec[bot, {"deleteWebhook", opts}, opts]
 
 
@@ -381,8 +384,7 @@ SyntaxInformation[getWebhookInfo] = {
 }
 
 
-TelegramBot /: 
-getWebhookInfo[bot: botPattern[], opts: OptionsPattern[{exec}]] := 
+TelegramBot /: getWebhookInfo[bot_TelegramBot, opts: OptionsPattern[{exec}]] := 
 exec[bot, {"getWebhookInfo"}, opts]
 
 
@@ -409,10 +411,55 @@ SyntaxInformation[sendMessage] = {
 }
 
 
-TelegramBot /: 
-sendMessage[bot: botPattern[], chatId: _String | _Integer, text_String, 
+TelegramBot /: sendMessage[bot_TelegramBot, chatId: _String | _Integer, text_String, 
 	opts: OptionsPattern[{exec, sendMessage}]] := 
 exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*editMessageText*)
+
+
+Options[editMessageText] = {
+	"inlineMessageId" -> Automatic, 
+	"parseMode" -> Automatic, 
+	"entities" -> Automatic, 
+	"disableWebPagePreview" -> Automatic, 
+	"replyMarkup" -> Automatic
+}
+
+
+SyntaxInformation[sendMessage] = {
+	"ArgumentsPattern" -> {_, _, _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, editMessageText}]
+}; 
+
+
+TelegramBot /: editMessageText[bot_TelegramBot, chatId: _String | _Integer, messageId: _String | _Integer, 
+	text_String, opts: OptionsPattern[{exec, sendMessage}]] := 
+exec[bot, {"editMessageText", 
+	"chatId" -> chatId, "messageId" -> messageId, "text" -> text, opts
+}, opts]; 
+
+
+(* ::Subsection:: *)
+(*editMessageReplyMarkup*)
+
+
+Options[editMessageReplyMarkup] = {
+	"inlineMessageId" -> Automatic, 
+	"replyMarkup" -> Automatic
+}; 
+
+
+SyntaxInformation[editMessageReplyMarkup] = {
+	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, editMessageReplyMarkup}]
+}; 
+
+
+TelegramBot /: editMessageReplyMarkup[bot_TelegramBot, chatId: _String | _Integer, messageId: _String | _Integer, opts: OptionsPattern[{exec, editMessageReplyMarkup}]] := 
+exec[bot, {"editMessageReplyMarkup", "chatId" -> chatId, "messageId" -> messageId, opts}, opts]; 
 
 
 (* ::Subsection:: *)
@@ -432,8 +479,7 @@ SyntaxInformation[forwardMessage] = {
 }
 
 
-TelegramBot /: 
-forwardMessage[bot: botPattern[], chatId: _String | _Integer, fromChatId: _String | _Integer, 
+TelegramBot /: forwardMessage[bot_TelegramBot, chatId: _String | _Integer, fromChatId: _String | _Integer, 
 	messageId_Integer, opts: OptionsPattern[{exec, forwardMessage}]] := 
 exec[bot, {"forwardMessage", "chatId" -> chatId, "fromChatId" -> fromChatId, "messageId" -> messageId, opts}, opts]
 
@@ -461,17 +507,17 @@ SyntaxInformation[sendPhoto] = {
 }
 
 
-sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo: imagePattern[], 
+TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo: imagePattern[], 
 	opts: OptionsPattern[{exec, sendPhoto}]] := 
 exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts, "Form" -> "FormData"]
 
 
-sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo: _String | _URL, 
+TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo: _String | _URL, 
 	opts: OptionsPattern[{exec, sendPhoto}]] := 
 exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts]
 
 
-sendPhoto[bot: botPattern[], chatId: _String | _Integer, photo_, 
+TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo_, 
 	opts: OptionsPattern[{exec, sendPhoto}]] := 
 sendPhoto[bot, chatId, Rasterize[photo], opts]
 
@@ -503,12 +549,12 @@ SyntaxInformation[sendAudio] = {
 }
 
 
-sendAudio[bot: botPattern[], chatId: _String | _Integer, audio_Audio, 
+TelegramBot /: sendAudio[bot_TelegramBot, chatId: _String | _Integer, audio_Audio, 
 	opts: OptionsPattern[{exec, sendAudio}]] := 
 exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts, "Form" -> "FormData"]
 
 
-sendAudio[bot: botPattern[], chatId: _String | _Integer, audio: _String | _URL, 
+TelegramBot /: sendAudio[bot_TelegramBot, chatId: _String | _Integer, audio: _String | _URL, 
 	opts: OptionsPattern[{exec, sendAudio}]] := 
 exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts]
 
@@ -539,12 +585,12 @@ SyntaxInformation[sendDocument] = {
 }
 
 
-sendDocument[bot: botPattern[], chatId: _String | _Integer, document_File, 
+TelegramBot /: sendDocument[bot_TelegramBot, chatId: _String | _Integer, document_File, 
 	opts: OptionsPattern[{exec, sendDocument}]] := 
 exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts, "Form" -> "FormData"]
 
 
-sendDocument[bot: botPattern[], chatId: _String | _Integer, document: _String | _URL, 
+TelegramBot /: sendDocument[bot_TelegramBot, chatId: _String | _Integer, document: _String | _URL, 
 	opts: OptionsPattern[{exec, sendDocument}]] := 
 exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts]
 
@@ -577,12 +623,12 @@ SyntaxInformation[sendVideo] = {
 }
 
 
-sendVideo[bot: botPattern[], chatId: _String | _Integer, video_Video, 
+TelegramBot /: sendVideo[bot_TelegramBot, chatId: _String | _Integer, video_Video, 
 	opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts, "Form" -> "FormData"]
 
 
-sendVideo[bot: botPattern[], chatId: _String | _Integer, video: _String | _URL, 
+TelegramBot /: sendVideo[bot_TelegramBot, chatId: _String | _Integer, video: _String | _URL, 
 	opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts]
 
@@ -614,12 +660,12 @@ SyntaxInformation[sendAnimation] = {
 }
 
 
-sendAnimation[bot: botPattern[], chatId: _String | _Integer, animation_Manipulate, 
+TelegramBot /: sendAnimation[bot_TelegramBot, chatId: _String | _Integer, animation_Manipulate, 
 	opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts, "Form" -> "FormData"]
 
 
-sendAnimation[bot: botPattern[], chatId: _String | _Integer, animation: _String | _URL, 
+TelegramBot /: sendAnimation[bot_TelegramBot, chatId: _String | _Integer, animation: _String | _URL, 
 	opts: OptionsPattern[{exec, sendAnimation}]] := 
 exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts]
 
@@ -640,36 +686,43 @@ SyntaxInformation[getUserProfilePhotos] = {
 }
 
 
-TelegramBot /: 
-getUserProfilePhotos[bot: botPattern[], userId: _String | _Integer, 
+TelegramBot /: getUserProfilePhotos[bot_TelegramBot, userId: _String | _Integer, 
 	opts: OptionsPattern[{exec, getUserProfilePhotos}]] := 
 exec[bot, {"getUserProfilePhotos", "userId" -> userId, opts}, opts]
 
 
 (* ::Subsection:: *)
-(*getFile*)
+(*answerCallbackQuery*)
 
 
-SyntaxInformation[getFile] = {
-	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+Options[answerCallbackQuery] = {
+	"text" -> Automatic, 
+	"showAlert" -> Automatic, 
+	"url" -> Automatic, 
+	"cacheTime" -> Automatic
 }
 
 
-TelegramBot /: 
-getFile[bot: botPattern[], fileId_String, opts: OptionsPattern[{exec}]] := 
-exec[bot, {"getFile", "fileId" -> fileId, opts}, opts]
+SyntaxInformation[answerCallbackQuery] = {
+	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, answerCallbackQuery}]
+}
 
 
-(* ::Section:: *)
+TelegramBot /: answerCallbackQuery[bot_TelegramBot, callbackQueryId: _String | _Integer, 
+	opts: OptionsPattern[{exec, answerCallbackQuery}]] := 
+exec[bot, {"answerCallbackQuery", "callbackQueryId" -> callbackQueryId, opts}, opts]
+
+
+(* ::Section::Closed:: *)
 (*End private*)
 
 
-End[]
+End[]; 
 
 
-(* ::Section:: *)
+(* ::Section::Closed:: *)
 (*End package*)
 
 
-EndPackage[]
+EndPackage[]; 

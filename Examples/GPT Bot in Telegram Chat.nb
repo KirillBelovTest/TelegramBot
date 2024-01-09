@@ -1,0 +1,483 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     21103,        475]
+NotebookOptionsPosition[     18666,        429]
+NotebookOutlinePosition[     19066,        445]
+CellTagsIndexPosition[     19023,        442]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+In this very short article I want to show how anyone can create their own \
+Telegram bot, which will be an intermediary for communication between humans \
+and the GPT3.5 model (at the moment). Yes, I, like everyone else, was patient \
+for a long time, but finally succumbed to this madness too, though I didn\
+\[CloseCurlyQuote]t want to at first. At present, there are a lot of \
+different tools and ready-made programs which use OpenAI\[CloseCurlyQuote]s \
+GPT model one way or another. What is the fundamental difference between what \
+I want to demonstrate to the community today? And the difference is that \
+firstly, I want to show how to make your own bot, which will be personally \
+yours. Secondly, all you need to do is to create two simple functions and do \
+the initialization. And third, by adding this bot to a group chat you will be \
+able to communicate with it all over the place. And this is not the same as \
+one-to-one communication. When other users see a question from one of the \
+participants, they voluntarily and involuntarily come up with new thoughts \
+and ideas about how to complement the question of the previous user. And the \
+one who asked the first question, seeing what imagination his friends in the \
+chat have shown, just the same can be even more interesting to develop his \
+original idea. In such a collaboration with GPT, a few people can find much \
+more interesting and useful applications for the neural network than if \
+everyone was doing it alone. Well, let\[CloseCurlyQuote]s do it!\
+\>", "Text",
+ CellChangeTimes->{{3.8903792320432405`*^9, 3.8903792419310455`*^9}, {
+  3.890379273035019*^9, 3.8903796937289696`*^9}, {3.8903798744920454`*^9, 
+  3.8903798810783005`*^9}},ExpressionUUID->"8afdd08a-cb56-430b-a4b4-\
+580896e53b1d"],
+
+Cell[CellGroupData[{
+
+Cell["Installation", "Section",
+ CellChangeTimes->{{3.8903791165949802`*^9, 
+  3.8903791185080442`*^9}},ExpressionUUID->"a3f848a6-943f-43d0-82c6-\
+1c8ce7fcc0ac"],
+
+Cell[TextData[{
+ "If ",
+ ButtonBox["TelegramBot",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://resources.wolframcloud.com/PacletRepository/resources/\
+KirillBelov/TelegramBot/"], None},
+  ButtonNote->
+   "https://resources.wolframcloud.com/PacletRepository/resources/KirillBelov/\
+TelegramBot/"],
+ " \:0438 ",
+ ButtonBox["OpenAILink",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://resources.wolframcloud.com/PacletRepository/resources/\
+ChristopherWolfram/OpenAILink/"], None},
+  ButtonNote->
+   "https://resources.wolframcloud.com/PacletRepository/resources/\
+ChristopherWolfram/OpenAILink/"],
+ " packages are not already installed, you can install them like this:"
+}], "Text",
+ CellChangeTimes->{{3.8903798943412523`*^9, 3.8903799275359316`*^9}, {
+  3.8903799915140767`*^9, 
+  3.890380063474795*^9}},ExpressionUUID->"78bb3636-1c6f-4bb0-b041-\
+0f4bbf776768"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "PacletInstall", "[", "\"\<CristopherWolfram/OpenAILink\>\"", "]"}], ";"}],
+   " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PacletInstall", "[", "\"\<KirillBelov/Objects\>\"", "]"}], ";"}], 
+  " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"PacletInstall", "[", "\"\<KirillBelov/TelegramBot\>\"", "]"}], 
+   ";"}], " "}]}], "Input",
+ CellChangeTimes->{{3.8903790196299257`*^9, 3.8903790611056204`*^9}, {
+  3.8904041189526215`*^9, 
+  3.8904041226423693`*^9}},ExpressionUUID->"78c18841-2664-4d85-a780-\
+113011175ba2"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Needs", "Section",
+ CellChangeTimes->{{3.890379123665687*^9, 
+  3.890379126960561*^9}},ExpressionUUID->"4ff729fd-74e4-4fbe-a041-\
+fe9647e43495"],
+
+Cell["After installation, you must load into the current session:", "Text",
+ CellChangeTimes->{{3.8903800774895954`*^9, 
+  3.890380110362653*^9}},ExpressionUUID->"03d32d6c-d096-478f-b986-\
+b6936358713c"],
+
+Cell[BoxData[{
+ RowBox[{"<<", "KirillBelov`TelegramBot`"}], "\[IndentingNewLine]", 
+ RowBox[{"<<", "ChristopherWolfram`OpenAILink`"}]}], "Input",
+ CellChangeTimes->{
+  3.8901067307145367`*^9, 3.8901072247034073`*^9, {3.8903790666402683`*^9, 
+   3.8903791086510887`*^9}, {3.8904041140099297`*^9, 
+   3.8904041146716537`*^9}},ExpressionUUID->"4d007c7d-d522-4d59-993b-\
+4257fdb56f81"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["GPT3.5 Simple Interface", "Section",
+ CellChangeTimes->{{3.8903791378520346`*^9, 
+  3.890379183043239*^9}},ExpressionUUID->"3b62d6a4-d57f-45ee-b6bf-\
+aed4e5d4ae2a"],
+
+Cell["\<\
+Next step. You need to create a wrapper over the functions from the \
+OpenAILink package, such that it can save previous requests and responses in \
+the history. This function should take a chat ID and text as input and return \
+only text:\
+\>", "Text",
+ CellChangeTimes->{{3.8903801365093565`*^9, 3.890380232802956*^9}, 
+   3.890380354186715*^9},ExpressionUUID->"e517a963-e3dd-4fe0-81e6-\
+5aeedb951bf6"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"chatGPT", "[", 
+   RowBox[{"chatId_", ",", " ", "text_String"}], "]"}], " ", ":=", " ", "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "userMessage", ",", " ", "assistantMessage", ",", " ", "chat", ",", " ", 
+      RowBox[{"errorText", " ", "=", " ", "\"\<\>\""}]}], "}"}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Not", "[", 
+        RowBox[{"KeyExistsQ", "[", 
+         RowBox[{"$chats", ",", " ", "chatId"}], "]"}], "]"}], ",", " ", 
+       RowBox[{
+        RowBox[{"$chats", "[", "chatId", "]"}], " ", "=", " ", 
+        RowBox[{"{", "}"}]}]}], "]"}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"chat", " ", "=", " ", 
+      RowBox[{"$chats", "[", "chatId", "]"}]}], ";", " ", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"userMessage", " ", "=", " ", 
+      RowBox[{"OpenAIChatMessageObject", "[", 
+       RowBox[{"\"\<user\>\"", ",", " ", "text"}], "]"}]}], ";", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"chat", ",", " ", "userMessage"}], "]"}], ";", " ", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"assistantMessage", " ", "=", " ", 
+      RowBox[{"Check", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"OpenAIChatComplete", "[", "chat", "]"}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"chat", " ", "=", " ", 
+          RowBox[{"{", "userMessage", "}"}]}], ";", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"errorText", " ", "=", " ", "\"\<[HISTORY REMOVED]\\n\>\""}],
+          ";", " ", "\[IndentingNewLine]", 
+         RowBox[{"OpenAIChatComplete", "[", "chat", "]"}]}], ",", " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+        "OpenAIChatComplete", "::", "openAIResponseFailureMessage"}]}], 
+       "\[IndentingNewLine]", "]"}]}], ";", " ", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"chat", ",", " ", "assistantMessage"}], "]"}], ";", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"$chats", "[", "chatId", "]"}], " ", "=", " ", "chat"}], ";", 
+     " ", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"(*", "Return", "*)"}], "\[IndentingNewLine]", 
+     RowBox[{"errorText", " ", "<>", " ", 
+      RowBox[{"assistantMessage", "[", 
+       RowBox[{"[", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", "\"\<Text\>\""}], "]"}], "]"}]}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8901069983202734`*^9, 3.8901069983212795`*^9}, {
+   3.8901071108934345`*^9, 3.890107140337438*^9}, {3.890107178494559*^9, 
+   3.890107201926849*^9}, {3.890107284240858*^9, 3.890107383277952*^9}, {
+   3.8901098167588935`*^9, 3.8901098401301546`*^9}, {3.890110306207922*^9, 
+   3.890110312848287*^9}, {3.890110449874604*^9, 3.890110452791808*^9}, {
+   3.8901106897189827`*^9, 3.890110835156184*^9}, {3.8901108824923897`*^9, 
+   3.890110957834572*^9}, {3.890111797643128*^9, 3.8901118693167577`*^9}, {
+   3.890116234946765*^9, 3.890116240834485*^9}, {3.8901165165243883`*^9, 
+   3.8901167517776794`*^9}, {3.8901168312543774`*^9, 3.89011684870673*^9}, {
+   3.8901169287793903`*^9, 3.8901169953612843`*^9}, {3.8901205191596155`*^9, 
+   3.8901205368630695`*^9}, {3.8901217261993933`*^9, 3.890121735083847*^9}, {
+   3.890121929638172*^9, 3.8901220195558224`*^9}, 3.890122174192395*^9, {
+   3.890122266131381*^9, 3.890122289221178*^9}, {3.8901224607195635`*^9, 
+   3.890122489720359*^9}, 3.890122527164341*^9, {3.8901227114656973`*^9, 
+   3.8901227374033146`*^9}, {3.8901228535322676`*^9, 3.890122853681371*^9}, 
+   3.890123255047364*^9, {3.8901236065523477`*^9, 3.890123609230272*^9}, {
+   3.89012369454677*^9, 3.8901237438548717`*^9}, {3.890123886387437*^9, 
+   3.890123891380869*^9}, {3.8901268346503716`*^9, 3.890126848603327*^9}, {
+   3.890127286803158*^9, 3.8901273249828386`*^9}, {3.890235006212674*^9, 
+   3.890235031427425*^9}, {3.890235065135002*^9, 3.890235108925865*^9}, {
+   3.890235220307371*^9, 3.8902352205398674`*^9}, {3.8903592745528717`*^9, 
+   3.890359368111385*^9}, {3.890359435039219*^9, 3.8903594471056476`*^9}, {
+   3.8903594787200904`*^9, 3.8903595000164084`*^9}, {3.8903659012240324`*^9, 
+   3.8903659058911314`*^9}, {3.890378964493246*^9, 3.890379007767994*^9}, {
+   3.890380386146571*^9, 3.890380419379279*^9}, {3.890380807587307*^9, 
+   3.890380808674654*^9}, {3.890404041086864*^9, 
+   3.8904041095143566`*^9}},ExpressionUUID->"20c2dfa1-fea5-4df9-894a-\
+bf874a1d4226"],
+
+Cell["\<\
+An important point. The fact is that when the total number of tokens in the \
+GPT3.5 model request exceeds 4096, an error occurs. If this error occurs - it \
+means that it is necessary to clear the chat history. Here in the line with \
+the Check function does exactly that. The moment when the chat is full - then \
+all is deleted and is only the last message to which the model should respond.\
+\>", "Text",
+ CellChangeTimes->{{3.890380238755346*^9, 
+  3.8903803599818172`*^9}},ExpressionUUID->"cefcc924-ae19-4607-b27c-\
+71659a240203"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["TelegramBot Update Handler ", "Section",
+ CellChangeTimes->{{3.890379196324692*^9, 3.8903792023940887`*^9}, {
+  3.8903803672838697`*^9, 
+  3.8903803731502714`*^9}},ExpressionUUID->"5fa7b03e-035d-4dc9-9f56-\
+227ceeb703a4"],
+
+Cell["\<\
+And this part is related to interaction with Telegram Bots API. We need to \
+create a function that takes as input the bot itself (more precisely, its \
+internal representation in the Wolfram language) and an association that \
+contains data about the message that was sent to the chat and that the bot \
+\[OpenCurlyDoubleQuote]reads\[CloseCurlyDoubleQuote]:\
+\>", "Text",
+ CellChangeTimes->{{3.890380430931213*^9, 
+  3.8903805233230886`*^9}},ExpressionUUID->"a252e859-d896-444d-b002-\
+42e0b340d6a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"handler", "[", 
+   RowBox[{"bot_TelegramBot", ",", " ", "update_Association"}], "]"}], " ", ":=",
+   " ", "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "user", ",", " ", "chatId", ",", " ", "text", ",", " ", "result"}], 
+     "}"}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"chatId", " ", "=", " ", 
+      RowBox[{"update", "[", 
+       RowBox[{
+       "\"\<message\>\"", ",", " ", "\"\<chat\>\"", ",", " ", "\"\<id\>\""}], 
+       "]"}]}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"text", " ", "=", " ", 
+      RowBox[{"update", "[", 
+       RowBox[{"\"\<message\>\"", ",", " ", "\"\<text\>\""}], "]"}]}], ";", 
+     " ", "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", "update", "]"}], ";", " ", "\[IndentingNewLine]", 
+     RowBox[{"result", " ", "=", " ", 
+      RowBox[{"chatGPT", "[", 
+       RowBox[{"chatId", ",", " ", "text"}], "]"}]}], ";", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{"sendMessage", "[", 
+       RowBox[{"bot", ",", " ", "chatId", ",", " ", "result"}], "]"}], "]"}], 
+     ";"}]}], " ", "\n", "]"}]}]], "Input",
+ CellChangeTimes->{{3.8901094953462706`*^9, 3.89010952411856*^9}, {
+   3.890109558710868*^9, 3.890109627380108*^9}, {3.8901110228490987`*^9, 
+   3.89011105455746*^9}, {3.8901114307545824`*^9, 3.890111435327936*^9}, {
+   3.890119922696047*^9, 3.890119944490445*^9}, {3.890120541860653*^9, 
+   3.8901205492614775`*^9}, {3.890120603597005*^9, 3.890120701709785*^9}, {
+   3.89012078969524*^9, 3.890120847391676*^9}, {3.890121036782202*^9, 
+   3.8901210518847575`*^9}, {3.890122931545869*^9, 3.890122944622121*^9}, {
+   3.8901229891664133`*^9, 3.8901229902813964`*^9}, {3.8901239307393727`*^9, 
+   3.890123945717606*^9}, {3.890125304487521*^9, 3.890125337440753*^9}, {
+   3.8902348456244164`*^9, 3.8902348647114334`*^9}, 3.8902365904701357`*^9, {
+   3.8903600662149954`*^9, 3.8903601188465443`*^9}, 3.8903612924421597`*^9, 
+   3.8903659213693924`*^9, {3.8903805372980685`*^9, 3.8903805499742565`*^9}, {
+   3.890404028830676*^9, 
+   3.8904040362085085`*^9}},ExpressionUUID->"eca1e0e2-ba1e-4433-809b-\
+6dfec8d8fbf9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Run", "Section",
+ CellChangeTimes->{{3.8903792060681486`*^9, 
+  3.8903792074912863`*^9}},ExpressionUUID->"ea30f193-6948-4199-9c8e-\
+7254947a11de"],
+
+Cell["\<\
+And the last step. Here you need to set your own token values, which are used \
+to access the OpenAI API and for the token that is used to interact with \
+Telegram. In addition, a temporary chat storage is created. The very last \
+line launches the bot every 5 seconds for the next 7 days:\
+\>", "Text",
+ CellChangeTimes->{{3.890380557905414*^9, 3.890380697252477*^9}, {
+   3.89038072769312*^9, 3.8903807412187457`*^9}, 
+   3.8903807725501833`*^9},ExpressionUUID->"4568a5b2-35ec-44e5-b226-\
+9b7d7deaf079"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"$chats", " ", "=", " ", 
+    RowBox[{"<|", "|>"}]}], ";"}], " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+   "$OpenAIKey", " ", "=", " ", 
+    "\"\<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\>\""}], ";"}], 
+  " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"wlgptbot", " ", "=", " ", 
+    RowBox[{
+    "TelegramBot", "[", 
+     "\"\<6155042972:AAHqO05rHGCc4yHxOjYtDUp6pPtqsZL-qgU\>\"", "]"}]}], ";"}],
+   " "}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"task", " ", "=", " ", 
+    RowBox[{"CreateBotSession", "[", 
+     RowBox[{"wlgptbot", ",", " ", "handler", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"5", ",", " ", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"60", " ", "/", " ", "5"}], ")"}], " ", "*", " ", "60", " ",
+          "*", " ", "60", " ", "*", " ", "24", " ", "*", " ", "7"}]}], 
+       "}"}]}], "]"}]}], ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"While", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"task", "[", "\"\<TaskStatus\>\"", "]"}], " ", "===", " ", 
+      "\"\<Running\>\""}], ",", " ", 
+     RowBox[{"Pause", "[", "0.1", "]"}]}], "]"}], ";"}], " "}]}], "Input",
+ CellChangeTimes->{{3.890109529878809*^9, 3.8901095342044477`*^9}, {
+   3.8901096305940957`*^9, 3.890109660187461*^9}, {3.8901096920743003`*^9, 
+   3.8901096946988716`*^9}, {3.890111061619095*^9, 3.8901110617112665`*^9}, 
+   3.8901204241444197`*^9, {3.890121862192941*^9, 3.8901218622613688`*^9}, {
+   3.8901225457615557`*^9, 3.890122545843562*^9}, {3.8901238046477275`*^9, 
+   3.8901238089116673`*^9}, {3.890125342477552*^9, 3.890125345444423*^9}, 
+   3.8903597732840447`*^9, {3.890378937949683*^9, 3.89037893864182*^9}, {
+   3.8903790920418077`*^9, 3.8903790925271587`*^9}, {3.8903806208050766`*^9, 
+   3.89038063631251*^9}, {3.8903806701147385`*^9, 3.8903807152649913`*^9}, 
+   3.890386267739266*^9, {3.8904562026028643`*^9, 3.8904562473806753`*^9}, {
+   3.8904564340467544`*^9, 3.8904564474407253`*^9}, {3.890456538452634*^9, 
+   3.8904565429022913`*^9}},ExpressionUUID->"d71a7e41-fb5e-439b-bb93-\
+02f14c4fb28e"],
+
+Cell["\<\
+Done! If you want to add your bot in the general chat, then do not forget to \
+give him permission in the settings to read public chats, as well as better \
+make him the administrator of this chat.\
+\>", "Text",
+ CellChangeTimes->{{3.89038075855359*^9, 3.8903807670260477`*^9}, {
+  3.8903809966385255`*^9, 
+  3.890381046002243*^9}},ExpressionUUID->"39101ef8-8a12-419b-84dd-\
+f120903c70a0"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Conclusion", "Section",
+ CellChangeTimes->{{3.8903807503965836`*^9, 
+  3.8903807533358517`*^9}},ExpressionUUID->"7b56f4c2-ae44-4e55-bb7f-\
+d1bc1896c744"],
+
+Cell["\<\
+Thank you all for your attention! I hope the reader will find something \
+useful. I want to add that when I wrote this code, I was pleased once again \
+with how cool, clear and compact it is to write programs in Wolfram Language. \
+Basically there are three lines with settings and two with actual functions \
+that implement the simple business logic of the application. On the other \
+hand I was saddened as always by the fact that unfortunately Wolfram language \
+is not as popular as it really deserves...\
+\>", "Text",
+ CellChangeTimes->{{3.89038081925747*^9, 3.8903809801792727`*^9}, 
+   3.890381328730877*^9},ExpressionUUID->"1b7781c5-1b9d-420c-a655-\
+f1b295a4ca77"],
+
+Cell[TextData[{
+ "By the way, everyone can try how it works either in the group chat at the \
+link ",
+ ButtonBox["https://t.me/WolframMathematicaRU",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://t.me/WolframMathematicaRU"], None},
+  ButtonNote->"https://t.me/WolframMathematicaRU"],
+ " or you can write to this bot from this chat in private (but then \
+unfortunately, I will not find out how interested in this at all and will \
+lose all the charm of the collaboration of users). Do not be confused by the \
+fact that previous users communicated in Russian. I\[CloseCurlyQuote]m the \
+administrator of this chat room and you can write there in any language and \
+on almost any topic (except insults and such, of course)."
+}], "Text",
+ CellChangeTimes->{{3.890380986263778*^9, 3.8903809898733454`*^9}, {
+  3.890381052704088*^9, 3.890381072439707*^9}, {3.8903811585814576`*^9, 
+  3.8903813164415255`*^9}, {3.8903817889492736`*^9, 
+  3.8903817889513493`*^9}},ExpressionUUID->"c04acdc6-44e6-441d-beb1-\
+cf4656639fad"]
+}, Open  ]]
+},
+WindowSize->{958, 980},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"d63458a3-c05e-49f3-a48b-88f67d9eb8ab"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 1787, 25, 265, "Text",ExpressionUUID->"8afdd08a-cb56-430b-a4b4-580896e53b1d"],
+Cell[CellGroupData[{
+Cell[2370, 49, 161, 3, 67, "Section",ExpressionUUID->"a3f848a6-943f-43d0-82c6-1c8ce7fcc0ac"],
+Cell[2534, 54, 886, 24, 35, "Text",ExpressionUUID->"78bb3636-1c6f-4bb0-b041-0f4bbf776768"],
+Cell[3423, 80, 584, 17, 68, "Input",ExpressionUUID->"78c18841-2664-4d85-a780-113011175ba2"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4044, 102, 150, 3, 67, "Section",ExpressionUUID->"4ff729fd-74e4-4fbe-a041-fe9647e43495"],
+Cell[4197, 107, 203, 3, 35, "Text",ExpressionUUID->"03d32d6c-d096-478f-b986-b6936358713c"],
+Cell[4403, 112, 381, 7, 49, "Input",ExpressionUUID->"4d007c7d-d522-4d59-993b-4257fdb56f81"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4821, 124, 170, 3, 67, "Section",ExpressionUUID->"3b62d6a4-d57f-45ee-b6bf-aed4e5d4ae2a"],
+Cell[4994, 129, 414, 8, 58, "Text",ExpressionUUID->"e517a963-e3dd-4fe0-81e6-5aeedb951bf6"],
+Cell[5411, 139, 4599, 87, 429, "Input",ExpressionUUID->"20c2dfa1-fea5-4df9-894a-bf874a1d4226"],
+Cell[10013, 228, 546, 9, 81, "Text",ExpressionUUID->"cefcc924-ae19-4607-b27c-71659a240203"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10596, 242, 227, 4, 67, "Section",ExpressionUUID->"5fa7b03e-035d-4dc9-9f56-227ceeb703a4"],
+Cell[10826, 248, 510, 9, 81, "Text",ExpressionUUID->"a252e859-d896-444d-b002-42e0b340d6a1"],
+Cell[11339, 259, 2180, 44, 163, "Input",ExpressionUUID->"eca1e0e2-ba1e-4433-809b-6dfec8d8fbf9"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13556, 308, 152, 3, 67, "Section",ExpressionUUID->"ea30f193-6948-4199-9c8e-7254947a11de"],
+Cell[13711, 313, 515, 9, 81, "Text",ExpressionUUID->"4568a5b2-35ec-44e5-b226-9b7d7deaf079"],
+Cell[14229, 324, 2108, 50, 106, "Input",ExpressionUUID->"d71a7e41-fb5e-439b-bb93-02f14c4fb28e"],
+Cell[16340, 376, 399, 8, 58, "Text",ExpressionUUID->"39101ef8-8a12-419b-84dd-f120903c70a0"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16776, 389, 159, 3, 67, "Section",ExpressionUUID->"7b56f4c2-ae44-4e55-bb7f-d1bc1896c744"],
+Cell[16938, 394, 682, 11, 104, "Text",ExpressionUUID->"1b7781c5-1b9d-420c-a655-f1b295a4ca77"],
+Cell[17623, 407, 1027, 19, 104, "Text",ExpressionUUID->"c04acdc6-44e6-441d-beb1-cf4656639fad"]
+}, Open  ]]
+}
+]
+*)
+

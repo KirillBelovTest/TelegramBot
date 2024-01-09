@@ -9,22 +9,26 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/KirillBelovTest/TelegramBot",
     "License" -> "MIT",
     "PublisherID" -> "KirillBelov",
-    "Version" -> "1.0.14",
+    "Version" -> "1.0.16",
     "WolframVersion" -> "13+",
     "Dependencies" -> {},
+    "PrimaryContext" -> "KirillBelov`TelegramBot`",
     "Extensions" -> {
       {
         "Kernel",
         "Root" -> "Kernel",
         "Context" -> {
-          {"KirillBelov`TelegramBot`", "Init.wl"},
+          {
+			"KirillBelov`TelegramBot`", 
+            "TelegramBot.wl"
+          },
           {
             "KirillBelov`TelegramBot`API`",
             "API.wl"
           },
           {
-            "KirillBelov`TelegramBot`Types`",
-            "Types.wl"
+            "KirillBelov`TelegramBot`Type`",
+            "Type.wl"
           },
           {
             "KirillBelov`TelegramBot`Extensions`",
