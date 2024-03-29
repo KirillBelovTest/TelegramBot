@@ -104,6 +104,10 @@ editMessageReplyMarkup::usage =
 "editMessageReplyMarkup[bot, chatId, messageId] edit message reply markup.";
 
 
+sendMediaGroup::usage = 
+"sendMediaGroup[bot, chatId, mediaList] send several media elements."; 
+
+
 (* ::Section::Closed:: *)
 (*Private context*)
 
@@ -406,7 +410,7 @@ Options[sendMessage] = {
 
 
 SyntaxInformation[sendMessage] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
 	"OptionNames" -> optionNames[{exec, sendMessage}]
 }
 
@@ -414,6 +418,34 @@ SyntaxInformation[sendMessage] = {
 TelegramBot /: sendMessage[bot_TelegramBot, chatId: _String | _Integer, text_String, 
 	opts: OptionsPattern[{exec, sendMessage}]] := 
 exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*sendMediaGroup*)
+
+
+Options[sendMediaGroup] = {
+	"messageThreadId" -> Automatic, 
+	"disableNotification" -> Automatic, 
+	"protectContent" -> Automatic, 
+	"replyParameters" -> Automatic
+}
+
+
+SyntaxInformation[sendMediaGroup] = {
+	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, sendMediaGroup}]
+}
+
+
+TelegramBot /: sendMediaGroup[bot_TelegramBot, chatId: _String | _Integer, media_List, 
+	opts: OptionsPattern[{exec, sendMediaGroup}]] := 
+exec[bot, {"sendMediaGroup", "chatId" -> chatId, "media" -> 
+	Map[Function[<|
+		"type" -> "photo", 
+		"media" -> #
+	|>], media]
+, opts}, opts]
 
 
 (* ::Subsection:: *)
