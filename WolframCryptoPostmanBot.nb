@@ -1,0 +1,2074 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     99458,       2066]
+NotebookOptionsPosition[     93710,       1969]
+NotebookOutlinePosition[     94051,       1984]
+CellTagsIndexPosition[     94008,       1981]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Preparation", "Section",
+ CellChangeTimes->{{3.7919919439800577`*^9, 
+  3.79199194653407*^9}},ExpressionUUID->"5c537172-4551-4721-8790-\
+241666590120"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"$HistoryLength", " ", "=", " ", "0"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<TelegramBot`\>\"", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"Get", "[", "\"\<ExchangeLink`\>\"", "]"}], ";"}]}], "Code",
+ CellChangeTimes->{{3.7919919505020885`*^9, 3.7919919768532124`*^9}, {
+  3.791995290578562*^9, 3.791995299817602*^9}, {3.791997027517211*^9, 
+  3.7919970305692606`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"42cea520-3b9f-49cb-87cb-55f05bf10723"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBot", " ", "=", " ", 
+   RowBox[{
+   "TelegramBot", "[", 
+    "\"\<928129398:AAEFceRYdIMheLCN5aZwIFr1QgMlbHsZT1Q\>\"", "]"}]}], 
+  ";"}]], "Code",
+ CellChangeTimes->{{3.791991988256266*^9, 3.7919920115983753`*^9}, 
+   3.7919920451258*^9},
+ CellLabel->"In[5]:=",ExpressionUUID->"1060ec43-aaf1-4830-b8e9-bfe7637297d6"],
+
+Cell["documentation", "Text",
+ CellChangeTimes->{{3.7920790935112553`*^9, 
+  3.792079100871284*^9}},ExpressionUUID->"9bc1c2b8-aa52-456b-b9b7-\
+32cefa2dd7b1"],
+
+Cell[BoxData[""], "Code",
+ CellLabel->"In[6]:=",ExpressionUUID->"3ea7d817-04a1-447e-a9fa-e6f18621606f"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Check Bot", "Section",
+ CellChangeTimes->{{3.7919920602576036`*^9, 
+  3.791992063675619*^9}},ExpressionUUID->"59145208-a037-4940-85d8-\
+741066456587"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getMe", "[", "WolframCryptoPostmanBot", "]"}]], "Code",
+ CellChangeTimes->{{3.791992071904662*^9, 3.7919920936737733`*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"db7a0475-f2f8-462c-9773-b7c726d27bbf"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
+   RowBox[{"\<\"result\"\>", "\[Rule]", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"id\"\>", "\[Rule]", "928129398"}], ",", 
+      RowBox[{"\<\"is_bot\"\>", "\[Rule]", "True"}], ",", 
+      RowBox[{"\<\"first_name\"\>", 
+       "\[Rule]", "\<\"WolframCryptoPostmanBot\"\>"}], ",", 
+      RowBox[{"\<\"username\"\>", 
+       "\[Rule]", "\<\"WolframCryptoPostmanBot\"\>"}], ",", 
+      RowBox[{"\<\"can_join_groups\"\>", "\[Rule]", "True"}], ",", 
+      RowBox[{"\<\"can_read_all_group_messages\"\>", "\[Rule]", "False"}], 
+      ",", 
+      RowBox[{"\<\"supports_inline_queries\"\>", "\[Rule]", "True"}]}], 
+     "\[RightAssociation]"}]}]}], "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.7919921010007963`*^9, 3.7919950018740883`*^9, 
+  3.7919969074026394`*^9, 3.7919970493873034`*^9, 3.791998597428562*^9, 
+  3.7919987499605083`*^9, 3.791999245604334*^9, 3.792068990909174*^9, 
+  3.79208125901362*^9, 3.7920813655290613`*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"d3efc607-5217-4d77-bf51-a34dbaa33663"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}]], "Code",
+ CellChangeTimes->{{3.791992110086839*^9, 3.7919921179168735`*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"8a57f2f3-35d0-4418-9121-6c912839f4df"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
+   RowBox[{"\<\"result\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785618"}], ",", 
+        RowBox[{"\<\"edited_message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "119"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080037"}], ",", 
+           RowBox[{"\<\"edit_date\"\>", "\[Rule]", "1583080044"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785619"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "120"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080050"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how ere you?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785620"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "121"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080056"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"whats up\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785621"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "122"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080070"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"whats up?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785622"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "123"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080150"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785623"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "124"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583082896"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785624"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "125"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583086575"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"/help\"\>"}], ",", 
+           RowBox[{"\<\"entities\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\[LeftAssociation]", 
+              RowBox[{
+               RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
+               RowBox[{"\<\"length\"\>", "\[Rule]", "5"}], ",", 
+               RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bot_command\"\>"}]}], 
+              "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}],
+        "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785625"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "126"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583092518"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"/help\"\>"}], ",", 
+           RowBox[{"\<\"entities\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\[LeftAssociation]", 
+              RowBox[{
+               RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
+               RowBox[{"\<\"length\"\>", "\[Rule]", "5"}], ",", 
+               RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bot_command\"\>"}]}], 
+              "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}],
+        "\[RightAssociation]"}]}], "}"}]}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.791992119604884*^9, 3.791992151075031*^9, 3.7919926364888973`*^9, 
+   3.7919950032270947`*^9, 3.791996907474642*^9, 3.79199705501933*^9, {
+   3.791997099437583*^9, 3.791997104911562*^9}, 3.7919986130536346`*^9, {
+   3.791999247322357*^9, 3.7919992665411625`*^9}, 3.79206899106533*^9, 
+   3.792081259203578*^9, 3.792081365777059*^9},
+ CellLabel->"Out[8]=",ExpressionUUID->"eae63ae5-ec4c-428d-bcbe-b57d2e71fc60"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Helper functions", "Section",
+ CellChangeTimes->{{3.7919922781376677`*^9, 
+  3.7919922832456923`*^9}},ExpressionUUID->"7e5f9690-e679-4f83-a5c0-\
+0f6de90d14ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateQ", "[", "update_", "]"}], " ", ":=", " ", 
+  RowBox[{"MatchQ", "[", 
+   RowBox[{"update", ",", " ", "\n", "\t", 
+    RowBox[{"<|", 
+     RowBox[{
+      RowBox[{"\"\<update_id\>\"", " ", "->", " ", "_Integer"}], ",", " ", 
+      RowBox[{
+       RowBox[{
+       "\"\<edited_message\>\"", " ", "|", " ", "\"\<message\>\"", " ", "|", 
+        " ", "\"\<callback_query\>\""}], " ", "->", " ", 
+       RowBox[{"<|", "__", "|>"}]}]}], "|>"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.791992288885727*^9, 3.791992321332935*^9}, {
+   3.791992453238631*^9, 3.7919925631361403`*^9}, {3.791992676560083*^9, 
+   3.7919926875761375`*^9}, {3.7919927352764*^9, 3.791992742459426*^9}, {
+   3.791997169635934*^9, 3.791997185302948*^9}, 3.7919973834707394`*^9, {
+   3.792081462543518*^9, 3.792081474334585*^9}},
+ CellLabel->"In[34]:=",ExpressionUUID->"c79d0021-25fa-48a3-a560-60b2e881ff7e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"updateQ", "[", 
+  RowBox[{
+   RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"\"\<result\>\"", ",", " ", "1"}], "]"}], "]"}], "]"}]], "Code",
+ CellChangeTimes->{{3.7919926965581813`*^9, 3.7919927125002556`*^9}, {
+  3.79199275878447*^9, 3.7919927764945927`*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"eb2d1993-8f10-403c-91e6-0eb7a646e1d9"],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{
+  3.7919927131672587`*^9, {3.791992752241509*^9, 3.791992776993558*^9}, 
+   3.7919950101211267`*^9, 3.791996907570657*^9, 3.7919973926838207`*^9, 
+   3.791999286135004*^9, 3.7920689911747036`*^9, 3.792081259296609*^9, 
+   3.79208136590106*^9},
+ CellLabel->"Out[10]=",ExpressionUUID->"7a213086-68b8-4bc6-8041-160dcfd8fa37"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"botCommandQ", "[", "update_", "]"}], " ", ":=", " ", 
+  RowBox[{"And", "[", 
+   RowBox[{
+    RowBox[{"updateQ", "[", "update", "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"KeyExistsQ", "[", 
+     RowBox[{"update", ",", " ", "\"\<message\>\""}], "]"}], ",", " ", "\n", 
+    "\t", 
+    RowBox[{
+     RowBox[{"update", "[", 
+      RowBox[{"[", 
+       RowBox[{
+       "\"\<message\>\"", ",", " ", "\"\<entities\>\"", ",", " ", "1", ",", 
+        " ", "\"\<type\>\""}], "]"}], "]"}], " ", "===", " ", 
+     "\"\<bot_command\>\""}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.7919928187857533`*^9, 3.7919928725620565`*^9}, {
+  3.7919929677994523`*^9, 3.7919929848305345`*^9}, {3.7919974096758523`*^9, 
+  3.791997426576968*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"fd882dc0-d290-493b-9d68-b0410202f650"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"botCommandQ", "[", 
+  RowBox[{
+   RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"\"\<result\>\"", ",", " ", "1"}], "]"}], "]"}], "]"}]], "Code",
+ CellChangeTimes->{{3.79199300071465*^9, 3.7919930087146463`*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"f8d4214c-1807-41ee-9c4f-8527ece6c338"],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.7919930110986576`*^9, 3.7919950123301373`*^9, 
+  3.7919969076546497`*^9, 3.7919974423520384`*^9, 3.7919992894787683`*^9, 
+  3.7920689912528377`*^9, 3.792081259386612*^9, 3.792081365974063*^9},
+ CellLabel->"Out[12]=",ExpressionUUID->"cb60c49c-d964-4ff1-b27a-a69f1ac7a6d9"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"callBackQueryQ", "[", "update_", "]"}], " ", ":=", " ", 
+  RowBox[{"And", "[", 
+   RowBox[{
+    RowBox[{"updateQ", "[", "update", "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"KeyExistsQ", "[", 
+     RowBox[{"update", ",", " ", "\"\<callback_query\>\""}], "]"}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.791996970454977*^9, 3.7919969774459705`*^9}, {
+  3.7919974677181187`*^9, 3.791997501896278*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"5eb8df92-9792-49ee-9026-7538badc0b5b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"callBackQueryQ", "[", 
+  RowBox[{
+   RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{"\"\<result\>\"", ",", " ", 
+     RowBox[{"-", "1"}]}], "]"}], "]"}], "]"}]], "Code",
+ CellChangeTimes->{{3.7919992934631977`*^9, 3.791999308432*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"e9f8e020-0926-4b20-88d1-13445d0af283"],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.791999308916359*^9, 3.7920689913309546`*^9, 
+  3.7920812594756136`*^9, 3.7920813660700636`*^9},
+ CellLabel->"Out[14]=",ExpressionUUID->"1e5b09f8-71a6-409b-adcf-2ef59aaf896c"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"messageQ", "[", "update_", "]"}], " ", ":=", " ", 
+  RowBox[{"And", "[", 
+   RowBox[{
+    RowBox[{"updateQ", "[", "update", "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"KeyExistsQ", "[", 
+     RowBox[{"update", ",", " ", "\"\<message\>\""}], "]"}], ",", " ", "\n", 
+    "\t", 
+    RowBox[{"Not", "[", 
+     RowBox[{"KeyExistsQ", "[", 
+      RowBox[{
+       RowBox[{"update", "[", 
+        RowBox[{"[", "\"\<message\>\"", "]"}], "]"}], ",", " ", 
+       "\"\<entities\>\""}], "]"}], "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.7920615424613743`*^9, 3.792061657452907*^9}, {
+  3.7920815482459*^9, 3.792081564819026*^9}},
+ CellLabel->"In[35]:=",ExpressionUUID->"5a2fa68f-fbc8-4da6-a6a3-ca6060889fe8"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}]], "Code",
+ CellChangeTimes->{
+  3.79199329234798*^9, {3.791997509770312*^9, 3.7919975262864056`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"f4c8b3a2-9ff7-414e-a243-271b4c1a022d"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"ok\"\>", "\[Rule]", "True"}], ",", 
+   RowBox[{"\<\"result\"\>", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785618"}], ",", 
+        RowBox[{"\<\"edited_message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "119"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080037"}], ",", 
+           RowBox[{"\<\"edit_date\"\>", "\[Rule]", "1583080044"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785619"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "120"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080050"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how ere you?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785620"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "121"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080056"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"whats up\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785621"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "122"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080070"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"whats up?\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785622"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "123"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583080150"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785623"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "124"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583082896"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"how are you\"\>"}]}], 
+          "\[RightAssociation]"}]}]}], "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785624"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "125"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583086575"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"/help\"\>"}], ",", 
+           RowBox[{"\<\"entities\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\[LeftAssociation]", 
+              RowBox[{
+               RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
+               RowBox[{"\<\"length\"\>", "\[Rule]", "5"}], ",", 
+               RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bot_command\"\>"}]}], 
+              "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}],
+        "\[RightAssociation]"}], ",", 
+      RowBox[{"\[LeftAssociation]", 
+       RowBox[{
+        RowBox[{"\<\"update_id\"\>", "\[Rule]", "920785625"}], ",", 
+        RowBox[{"\<\"message\"\>", "\[Rule]", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"message_id\"\>", "\[Rule]", "126"}], ",", 
+           RowBox[{"\<\"from\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"is_bot\"\>", "\[Rule]", "False"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"language_code\"\>", "\[Rule]", "\<\"ru\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"chat\"\>", "\[Rule]", 
+            RowBox[{"\[LeftAssociation]", 
+             RowBox[{
+              RowBox[{"\<\"id\"\>", "\[Rule]", "490138492"}], ",", 
+              RowBox[{"\<\"first_name\"\>", "\[Rule]", "\<\"Kirill\"\>"}], 
+              ",", 
+              RowBox[{"\<\"last_name\"\>", "\[Rule]", "\<\"Belov\"\>"}], ",", 
+              
+              RowBox[{"\<\"username\"\>", 
+               "\[Rule]", "\<\"KirillBelovTest\"\>"}], ",", 
+              RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"private\"\>"}]}], 
+             "\[RightAssociation]"}]}], ",", 
+           RowBox[{"\<\"date\"\>", "\[Rule]", "1583092518"}], ",", 
+           RowBox[{"\<\"text\"\>", "\[Rule]", "\<\"/help\"\>"}], ",", 
+           RowBox[{"\<\"entities\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"\[LeftAssociation]", 
+              RowBox[{
+               RowBox[{"\<\"offset\"\>", "\[Rule]", "0"}], ",", 
+               RowBox[{"\<\"length\"\>", "\[Rule]", "5"}], ",", 
+               RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"bot_command\"\>"}]}], 
+              "\[RightAssociation]"}], "}"}]}]}], "\[RightAssociation]"}]}]}],
+        "\[RightAssociation]"}]}], "}"}]}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.791993293022992*^9, 3.79199501472215*^9, 3.791996907719659*^9, {
+   3.791997510921317*^9, 3.791997528004395*^9}, 3.791999313853881*^9, 
+   3.7920689914090805`*^9, 3.792081259568615*^9, 3.79208129505875*^9, 
+   3.7920813661480646`*^9},
+ CellLabel->"Out[16]=",ExpressionUUID->"613431a3-b142-4ea9-a647-2f03e47333fd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BinancePrice", "[", "\"\<BTCUSDT\>\"", "]"}]], "Code",
+ CellChangeTimes->{{3.791995317606683*^9, 3.791995349808901*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"490a1927-ba60-4296-91fd-a82065c512bc"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"symbol\"\>", "\[Rule]", "\<\"BTCUSDT\"\>"}], ",", 
+   RowBox[{"\<\"price\"\>", "\[Rule]", "\<\"8556.91000000\"\>"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{{3.7919953398198347`*^9, 3.791995354655865*^9}, 
+   3.791996908291645*^9, 3.7920689918466187`*^9, 3.7920812600095844`*^9, 
+   3.792081366599066*^9},
+ CellLabel->"Out[17]=",ExpressionUUID->"ca780339-377e-4540-954c-c06c3eb231c0"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Bot commands implementation", "Section",
+ CellChangeTimes->{{3.7919921764662056`*^9, 
+  3.7919921920052233`*^9}},ExpressionUUID->"73e3a9d4-6c60-4902-9bfe-\
+c09c9c8a00e7"],
+
+Cell["\<\
+help - show the bot info and commands
+price - current price of the crypto currency pair
+exchange - select available exchange
+chart - candlestick chart for selected pair\
+\>", "Text",
+ CellChangeTimes->{
+  3.7919922277724314`*^9},ExpressionUUID->"a67e0f59-e7b4-4f44-80d2-\
+2203cf3bd7af"],
+
+Cell["/help", "Text",
+ CellChangeTimes->{{3.791992199322258*^9, 
+  3.791992234485462*^9}},ExpressionUUID->"29a4964d-a9f5-4169-bfc6-\
+a25302ee36da"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"\"\</help\>\"", ",", " ", 
+    RowBox[{"update_", "?", "botCommandQ"}]}], "]"}], " ", ":=", " ", "\n", 
+  "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", "\"\<id\>\""}], 
+      "]"}], "]"}], ",", " ", "\n", 
+    "\"\<This bot provides information about crypto currencies\nAvailable \
+commands: \n\t/help\n\t/price\n\t/chart\n\t/exchange\n\nCreated by Wolfram \
+Language\>\""}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.791992221351408*^9, 3.791992239575493*^9}, {
+  3.791993157721347*^9, 3.791993195559526*^9}, {3.791993248780773*^9, 
+  3.791993256621812*^9}, {3.791993322035206*^9, 3.7919934281606035`*^9}, {
+  3.7919934717389426`*^9, 3.791993635053727*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"f54de89c-8971-4aa6-8d97-1808ab0c2247"],
+
+Cell["/price", "Text",
+ CellChangeTimes->{{3.7919951913139777`*^9, 
+  3.7919951926060266`*^9}},ExpressionUUID->"e9ac4adb-02c1-4236-b3f1-\
+78a16803df81"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"\"\</price\>\"", ",", " ", 
+    RowBox[{"update_", "?", "botCommandQ"}]}], "]"}], " ", ":=", " ", "\n", 
+  "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", "\"\<id\>\""}], 
+      "]"}], "]"}], ",", " ", "\n", "\t", 
+    "\"\<Please select a currency pair for the getting price\>\"", ",", " ", 
+    RowBox[{"\"\<reply_markup\>\"", " ", "->", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<inline_keyboard\>\"", " ", "->", " ", 
+       RowBox[{"{", "\n", "\t\t", 
+        RowBox[{"{", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<text\>\"", " ", "->", " ", "\"\<BTCUSDT\>\""}], ",", 
+            " ", 
+            RowBox[{
+            "\"\<callback_data\>\"", " ", "->", " ", 
+             "\"\</price BTCUSDT\>\""}]}], "}"}], ",", " ", "\n", "\t\t\t", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<text\>\"", " ", "->", " ", "\"\<ETHUSDT\>\""}], ",", 
+            " ", 
+            RowBox[{
+            "\"\<callback_data\>\"", " ", "->", " ", 
+             "\"\</price ETHUSDT\>\""}]}], "}"}]}], "\n", "\t\t", "}"}], "\n",
+         "\t", "}"}]}], "}"}]}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.791992221351408*^9, 3.791992239575493*^9}, {
+  3.791993157721347*^9, 3.791993195559526*^9}, {3.791993248780773*^9, 
+  3.791993256621812*^9}, {3.791993322035206*^9, 3.7919934281606035`*^9}, {
+  3.7919934717389426`*^9, 3.791993635053727*^9}, {3.791995437125243*^9, 
+  3.791995527381658*^9}, {3.79199560343001*^9, 3.7919956177110786`*^9}, {
+  3.7919958862155275`*^9, 3.791995959885874*^9}, {3.791995998193054*^9, 
+  3.7919960662483864`*^9}, {3.79199611442364*^9, 3.79199611862862*^9}, {
+  3.7919961706462812`*^9, 3.791996220515127*^9}, {3.791996683772603*^9, 
+  3.7919966853906136`*^9}, {3.7919967592869864`*^9, 3.7919967623899574`*^9}, {
+  3.791999347401003*^9, 3.7919993524947724`*^9}, {3.7919994031043367`*^9, 
+  3.7919994331513853`*^9}, {3.7919995675582933`*^9, 3.7919995729644775`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"5b1534c5-255a-4b54-8636-d6c2144126a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+    RowBox[{"pricePair_String", ",", " ", 
+     RowBox[{"update_", "?", "callBackQueryQ"}]}], "]"}], " ", "/;", " ", 
+   "\n", 
+   RowBox[{"StringMatchQ", "[", 
+    RowBox[{"pricePair", ",", " ", 
+     RowBox[{"\"\</price \>\"", " ", "~~", " ", "__"}]}], "]"}]}], " ", ":=", 
+  " ", "\n", "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<callback_query\>\"", ",", " ", "\"\<from\>\"", ",", " ", 
+       "\"\<id\>\""}], "]"}], "]"}], ",", " ", "\n", "\t", 
+    RowBox[{
+     RowBox[{"StringTemplate", "[", "\"\<`symbol` price `price`\>\"", "]"}], 
+     "[", 
+     RowBox[{"BinancePrice", "[", 
+      RowBox[{
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"pricePair", ",", " ", "\"\< \>\""}], "]"}], "[", 
+       RowBox[{"[", 
+        RowBox[{"-", "1"}], "]"}], "]"}], "]"}], "]"}]}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.791992221351408*^9, 3.791992239575493*^9}, {
+  3.791993157721347*^9, 3.791993195559526*^9}, {3.791993248780773*^9, 
+  3.791993256621812*^9}, {3.791993322035206*^9, 3.7919934281606035`*^9}, {
+  3.7919934717389426`*^9, 3.791993635053727*^9}, {3.791995437125243*^9, 
+  3.791995527381658*^9}, {3.79199560343001*^9, 3.7919956177110786`*^9}, {
+  3.7919958862155275`*^9, 3.791995959885874*^9}, {3.791995998193054*^9, 
+  3.7919960662483864`*^9}, {3.79199611442364*^9, 3.79199611862862*^9}, {
+  3.7919961706462812`*^9, 3.791996220515127*^9}, {3.791996683772603*^9, 
+  3.7919966853906136`*^9}, {3.7919967592869864`*^9, 3.7919967623899574`*^9}, {
+  3.791999347401003*^9, 3.7919993524947724`*^9}, {3.7919994031043367`*^9, 
+  3.7919994331513853`*^9}, {3.7919994714327803`*^9, 3.7919995387924843`*^9}, {
+  3.7919997477934217`*^9, 3.791999903950409*^9}, {3.7919999930914807`*^9, 
+  3.7919999978727617`*^9}},
+ CellLabel->"In[20]:=",ExpressionUUID->"f3707500-9a23-4b52-ba4a-546e7e3a3612"],
+
+Cell["/chart", "Text",
+ CellChangeTimes->{{3.7919951913139777`*^9, 3.7919951926060266`*^9}, {
+  3.792000468187315*^9, 
+  3.792000469671666*^9}},ExpressionUUID->"e96675c5-2b08-4826-be86-\
+0c2879d572be"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"\"\</chart\>\"", ",", " ", 
+    RowBox[{"update_", "?", "botCommandQ"}]}], "]"}], " ", ":=", " ", "\n", 
+  "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", "\"\<id\>\""}], 
+      "]"}], "]"}], ",", " ", "\n", "\t", 
+    "\"\<Please select a currency pair for the getting chart\>\"", ",", " ", 
+    RowBox[{"\"\<reply_markup\>\"", " ", "->", " ", 
+     RowBox[{"{", 
+      RowBox[{"\"\<inline_keyboard\>\"", " ", "->", " ", 
+       RowBox[{"{", "\n", "\t\t", 
+        RowBox[{"{", "\n", "\t\t\t", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<text\>\"", " ", "->", " ", "\"\<BTCUSDT\>\""}], ",", 
+            " ", 
+            RowBox[{
+            "\"\<callback_data\>\"", " ", "->", " ", 
+             "\"\</chart BTCUSDT\>\""}]}], "}"}], ",", " ", "\n", "\t\t\t", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"\"\<text\>\"", " ", "->", " ", "\"\<ETHUSDT\>\""}], ",", 
+            " ", 
+            RowBox[{
+            "\"\<callback_data\>\"", " ", "->", " ", 
+             "\"\</chart ETHUSDT\>\""}]}], "}"}]}], "\n", "\t\t", "}"}], "\n",
+         "\t", "}"}]}], "}"}]}]}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.791992221351408*^9, 3.791992239575493*^9}, {
+  3.791993157721347*^9, 3.791993195559526*^9}, {3.791993248780773*^9, 
+  3.791993256621812*^9}, {3.791993322035206*^9, 3.7919934281606035`*^9}, {
+  3.7919934717389426`*^9, 3.791993635053727*^9}, {3.791995437125243*^9, 
+  3.791995527381658*^9}, {3.79199560343001*^9, 3.7919956177110786`*^9}, {
+  3.7919958862155275`*^9, 3.791995959885874*^9}, {3.791995998193054*^9, 
+  3.7919960662483864`*^9}, {3.79199611442364*^9, 3.79199611862862*^9}, {
+  3.7919961706462812`*^9, 3.791996220515127*^9}, {3.791996683772603*^9, 
+  3.7919966853906136`*^9}, {3.7919967592869864`*^9, 3.7919967623899574`*^9}, {
+  3.791999347401003*^9, 3.7919993524947724`*^9}, {3.7919994031043367`*^9, 
+  3.7919994331513853`*^9}, {3.7919995675582933`*^9, 3.7919995729644775`*^9}, {
+  3.7920004806405277`*^9, 3.792000514500027*^9}},
+ CellLabel->"In[21]:=",ExpressionUUID->"1640a168-5c3e-448b-a35c-963f68bd3ecb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+    RowBox[{"pricePair_String", ",", " ", 
+     RowBox[{"update_", "?", "callBackQueryQ"}]}], "]"}], " ", "/;", " ", 
+   "\n", 
+   RowBox[{"StringMatchQ", "[", 
+    RowBox[{"pricePair", ",", " ", 
+     RowBox[{"\"\</chart \>\"", " ", "~~", " ", "__"}]}], "]"}]}], " ", ":=", 
+  " ", "\n", "\t", 
+  RowBox[{"sendPhoto", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<callback_query\>\"", ",", " ", "\"\<from\>\"", ",", " ", 
+       "\"\<id\>\""}], "]"}], "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"CandlestickChart", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Query", "[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"1", " ", "/*", " ", 
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{"#", "/", "1000.0"}], "&"}], ")"}], " ", "/*", " ", 
+            "FromUnixTime"}], ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", " ", "3", ",", " ", "4", ",", " ", "5"}], 
+            "}"}]}], "}"}]}], "]"}], "[", "\n", "\t", 
+       RowBox[{"ToExpression", " ", "//@", " ", 
+        RowBox[{"BinanceKlines", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"StringSplit", "[", 
+            RowBox[{"pricePair", ",", " ", "\"\< \>\""}], "]"}], "[", 
+           RowBox[{"[", 
+            RowBox[{"-", "1"}], "]"}], "]"}], ",", " ", "\"\<15m\>\"", ",", 
+          " ", 
+          RowBox[{"\"\<limit\>\"", " ", "->", " ", "48"}]}], "]"}]}], "]"}], 
+      ",", " ", "\n", "\t\t", 
+      RowBox[{"Frame", " ", "->", " ", "True"}], ",", " ", 
+      RowBox[{"PlotLabel", " ", "->", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"StringSplit", "[", 
+           RowBox[{"pricePair", ",", " ", "\"\< \>\""}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"-", "1"}], "]"}], "]"}], ",", " ", "Bold"}], "]"}]}]}], 
+     "\n", "\t", "]"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQA2IQvcdu9eZlDm8cC7I+bQXRbqLbNZYD6cXPC3VBtMQf
+CRMQ/eipsCmIzlBwtAXRq5RbvUB09tLv/iBaaUdiCoj+x7jEdQWQ7jZ7EwCi
+lxzKjQLRGgfNYkD0rKfHakG0SOSfNhDdoHusG0Sf+OQ+BUSX9vnOAtErZK+A
+6bB1IQtB9JvqCctBtNbOiocg+kX9GjD9T+/lKxDdUeXzGkSzXM3RWwWkda/y
+64PoXWHJpiBa7YaKJYgOu/nWFkRzxES6gehtyZUJIPpA5r9iEJ35VqkeRK96
+uxtMT2pIPwiipzZMANNScxvkVwPpG3MuKYDoB2G2+iD677UTYFoifrIniH4T
+/8cXRAMAL/62wQ==
+  "],
+ CellLabel->"In[22]:=",ExpressionUUID->"6c729242-a2d0-402c-92b5-54186191e56a"],
+
+Cell["hi", "Text",
+ CellChangeTimes->{{3.7920028002405014`*^9, 
+  3.7920028006000366`*^9}},ExpressionUUID->"1613768d-36d1-433d-8700-\
+9130dbb059e5"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+    RowBox[{"hi_String", ",", " ", 
+     RowBox[{"update_", "?", "updateQ"}]}], "]"}], " ", "/;", " ", "\n", 
+   RowBox[{"StringMatchQ", "[", 
+    RowBox[{
+     RowBox[{"StringTrim", "[", "hi", "]"}], ",", " ", "\"\<hi\>\"", ",", " ", 
+     RowBox[{"IgnoreCase", " ", "->", " ", "True"}]}], "]"}]}], " ", ":=", 
+  " ", "\n", "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", "\"\<id\>\""}], 
+      "]"}], "]"}], ",", " ", "\n", "\t", 
+    RowBox[{"\"\<Hello, \>\"", " ", "<>", " ", 
+     RowBox[{"update", "[", 
+      RowBox[{"[", 
+       RowBox[{
+       "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", 
+        "\"\<username\>\""}], "]"}], "]"}], " ", "<>", " ", "\"\<!\>\""}]}], 
+   "\n", "]"}]}]], "Code",
+ CellChangeTimes->{
+  3.792002819208577*^9, {3.792002855154368*^9, 3.7920029650999317`*^9}, {
+   3.7920031181101027`*^9, 3.7920031319541664`*^9}},
+ CellLabel->"In[23]:=",ExpressionUUID->"8a47d7d0-7e20-469d-a928-cddf6955db6b"],
+
+Cell["how are you", "Text",
+ CellChangeTimes->{{3.792061774562811*^9, 
+  3.7920617770002685`*^9}},ExpressionUUID->"68c88fa0-d22f-44e0-9319-\
+f0eb71c26187"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+    RowBox[{"howAreYou_String", ",", " ", 
+     RowBox[{"update_", "?", "updateQ"}]}], "]"}], " ", "/;", " ", "\n", 
+   RowBox[{"StringMatchQ", "[", 
+    RowBox[{
+     RowBox[{"StringTrim", "[", "howAreYou", "]"}], ",", " ", 
+     RowBox[{"{", "\n", "\t\t", 
+      RowBox[{
+       RowBox[{"\"\<how are you\>\"", " ", "~~", " ", "__"}], ",", " ", "\n", 
+       "\t\t", 
+       RowBox[{"\"\<what's up\>\"", " ", "~~", " ", "__"}], ",", " ", "\n", 
+       "\t\t", 
+       RowBox[{"\"\<whats up\>\"", " ", "~~", " ", "__"}], ",", " ", "\n", 
+       "\t\t", 
+       RowBox[{"\"\<what's new\>\"", " ", "~~", " ", "__"}]}], "\n", "\t", 
+      "}"}], ",", " ", 
+     RowBox[{"IgnoreCase", " ", "->", " ", "True"}]}], "]"}]}], " ", ":=", 
+  " ", "\n", "\t", 
+  RowBox[{"sendMessage", "[", 
+   RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{
+      "\"\<message\>\"", ",", " ", "\"\<from\>\"", ",", " ", "\"\<id\>\""}], 
+      "]"}], "]"}], ",", " ", "\n", "\t", 
+    "\"\<I am fine! I ready to work every second!\>\""}], "\n", 
+   "]"}]}]], "Code",
+ CellChangeTimes->{{3.792061789344061*^9, 3.7920619515323625`*^9}, {
+  3.7920620182983365`*^9, 3.7920620517828074`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"d1f90027-0d15-4798-9b9b-78b37cd3a303"],
+
+Cell["common update", "Text",
+ CellChangeTimes->{{3.791995413115144*^9, 
+  3.791995416808149*^9}},ExpressionUUID->"f36a1ca4-d688-48d4-8a40-\
+28cf252ad40d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"update_", "?", "botCommandQ"}], "]"}], " ", ":=", " ", "\n", 
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{"\"\<message\>\"", ",", " ", "\"\<text\>\""}], "]"}], "]"}], 
+    ",", " ", "update"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7919945882378073`*^9, 3.7919946580951395`*^9}, {
+  3.7919950635353775`*^9, 3.79199506632539*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"df89d5d1-c88b-4b9f-aba2-73ac1c8139fd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"update_", "?", "callBackQueryQ"}], "]"}], " ", ":=", " ", "\n", 
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{"\"\<callback_query\>\"", ",", " ", "\"\<data\>\""}], "]"}], 
+     "]"}], ",", " ", "update"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7919945882378073`*^9, 3.7919946580951395`*^9}, {
+  3.7919950635353775`*^9, 3.79199506632539*^9}, {3.791999589792719*^9, 
+  3.791999590652111*^9}, {3.791999717184009*^9, 3.7919997272309055`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"a03f8dc6-50f5-45eb-8fd3-aca293645260"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{"update_", "?", "messageQ"}], "]"}], " ", ":=", " ", "\n", 
+  RowBox[{"WolframCryptoPostmanBotCommand", "[", 
+   RowBox[{
+    RowBox[{"update", "[", 
+     RowBox[{"[", 
+      RowBox[{"\"\<message\>\"", ",", " ", "\"\<text\>\""}], "]"}], "]"}], 
+    ",", " ", "update"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.7920617150624886`*^9, 3.792061730671974*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"d95272e1-9f99-4226-8149-c855c9ad1e56"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Loop", "Section",
+ CellChangeTimes->{{3.7919936502847967`*^9, 
+  3.7919936509338818`*^9}},ExpressionUUID->"f3e1f792-04ef-4529-a55d-\
+ae2b436cd91e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WolframCryptoPostmanBotState", " ", "=", " ", 
+  RowBox[{"<|", "|>"}]}]], "Code",
+ CellChangeTimes->{{3.791995548179761*^9, 3.7919955605348268`*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"cb8872fb-e4d9-4131-bd76-cfcc5765421b"],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.791995560965829*^9, 3.7919969084556456`*^9, 
+  3.7919999310130224`*^9, 3.7920689921590834`*^9, 3.7920812601986265`*^9, 
+  3.7920813667850647`*^9},
+ CellLabel->"Out[28]=",ExpressionUUID->"e49b0340-d7a5-4e25-90ed-4b6e3b1bb861"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"WolframCryptoPostmanBotProcessUpdates", "[", "]"}], " ", ":=", " ",
+   "\n", "\t", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", "\n", "\t\t", 
+     RowBox[{"updates", " ", "=", " ", 
+      RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}]}], "\n", 
+     "\t", "}"}], ",", " ", "\n", "\t\t", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"updates", "[", "\"\<ok\>\"", "]"}], " ", "&&", " ", 
+       RowBox[{"MatchQ", "[", 
+        RowBox[{
+         RowBox[{"updates", "[", "\"\<result\>\"", "]"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"__", "?", "updateQ"}], "}"}]}], "]"}]}], ",", " ", "\n", 
+      "\t\t\t", 
+      RowBox[{
+       RowBox[{"Print", "[", "updates", "]"}], ";", "\n", "\t\t\t", 
+       RowBox[{"Print", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{"WolframCryptoPostmanBotCommand", ",", " ", 
+          RowBox[{"updates", "[", "\"\<result\>\"", "]"}]}], "]"}], "]"}], 
+       ";", " ", "\n", "\t\t\t", 
+       RowBox[{"getUpdates", "[", 
+        RowBox[{"WolframCryptoPostmanBot", ",", " ", 
+         RowBox[{"\"\<offset\>\"", " ", "->", " ", 
+          RowBox[{
+           RowBox[{"updates", "[", 
+            RowBox[{"[", 
+             RowBox[{"\"\<result\>\"", ",", " ", 
+              RowBox[{"-", "1"}], ",", " ", "\"\<update_id\>\""}], "]"}], 
+            "]"}], " ", "+", " ", "1"}]}]}], "]"}]}]}], "\n", "\t\t", "]"}]}],
+    "\n", "\t", "]"}]}]], "Code",
+ CellChangeTimes->{{3.791993705189029*^9, 3.791993714632073*^9}, {
+  3.7919938144715443`*^9, 3.79199382099168*^9}, {3.7919940711843896`*^9, 
+  3.791994242213192*^9}, {3.7919942836275463`*^9, 3.791994371857812*^9}, {
+  3.791994420452024*^9, 3.7919944516571684`*^9}, {3.791994840593287*^9, 
+  3.791994841745303*^9}, {3.791996786133071*^9, 3.791996809085232*^9}, {
+  3.7920001954829907`*^9, 3.792000200764259*^9}},
+ CellLabel->"In[29]:=",ExpressionUUID->"7bae627a-88ce-4ed3-854b-e32c857aa776"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"WolframCryptoPostmanBotTask", " ", "=", " ", 
+  RowBox[{"SessionSubmit", "[", "\n", 
+   RowBox[{"ScheduledTask", "[", 
+    RowBox[{
+     RowBox[{"WolframCryptoPostmanBotProcessUpdates", "[", "]"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", 
+       RowBox[{
+       "60", " ", "*", " ", "60", " ", "*", " ", "24", " ", "*", " ", "7"}]}],
+       "}"}]}], "]"}], "]"}]}]], "Code",
+ CellChangeTimes->{{3.791993664865881*^9, 3.791993676425894*^9}, {
+  3.791994490507345*^9, 3.7919945179154816`*^9}, {3.791994549889621*^9, 
+  3.7919945603326683`*^9}, {3.791995105671578*^9, 3.791995109217623*^9}},
+ CellLabel->"In[30]:=",ExpressionUUID->"f4a3e8b4-11f5-44f3-b07b-0ce89388ad75"],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{RowBox[{
+      StyleBox[
+       TagBox["TaskObject", "SummaryHead"], "NonInterpretableSummary"], 
+      StyleBox["[", "NonInterpretableSummary"], 
+      DynamicModuleBox[{
+       Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
+       TemplateBox[{
+         PaneSelectorBox[{False -> GridBox[{{
+               PaneBox[
+                ButtonBox[
+                 DynamicBox[
+                  FEPrivate`FrontEndResource[
+                  "FEBitmaps", "SquarePlusIconMedium"]], 
+                 ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                 None, Evaluator -> Automatic, Method -> "Preemptive"], 
+                Alignment -> {Center, Center}, ImageSize -> 
+                Dynamic[{
+                  Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                   AbsoluteCurrentValue[Magnification]}]], 
+               GraphicsBox[{
+                 Thickness[0.041666666666666664`], {
+                  FaceForm[{
+                    RGBColor[0.537, 0.537, 0.537], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   15.5}, {9.501, 15.5}, {9.501, 16.5}, {6.5, 16.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   5.5}, {9.501, 5.5}, {9.501, 6.5}, {6.5, 6.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   13.5}, {9.501, 13.5}, {9.501, 14.5}, {6.5, 14.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   11.5}, {9.501, 11.5}, {9.501, 12.5}, {6.5, 12.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   9.5}, {9.501, 9.5}, {9.501, 10.5}, {6.5, 10.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   7.5}, {9.501, 7.5}, {9.501, 8.5}, {6.5, 8.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.392, 0.392, 0.392], 
+                    Opacity[1.]}], 
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 
+                   0}, {0, 1, 0}, {0, 1, 0}}}, {{{15.5, 6.5}, {8.5, 6.5}, {
+                   8.5, 15.5}, {15.5, 15.5}}, {{16.5, 16.5}, {7.5, 16.5}, {
+                   7.5, 5.5}, {16.5, 5.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[1., 1., 1.], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{15.5,
+                    15.5}, {8.5, 15.5}, {8.5, 6.5}, {15.5, 6.5}}}]}, {
+                  RGBColor[0.392, 0.392, 0.392], 
+                  Thickness[0.020833333333333332`], 
+                  Opacity[1.], 
+                  CapForm["Round"], 
+                  JoinForm["Round"], 
+                  
+                  JoinedCurveBox[{{{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 
+                    2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1,
+                     0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}}}, {{{10., 10.221699999999998`}, {10.768, 
+                    10.484699999999998`}}, {{12.457, 10.2557}, {12., 
+                    10.874699999999999`}}, {{11.543, 10.2557}, {12., 
+                    10.874699999999999`}}, {{12., 10.874699999999999`}, {
+                    11.261, 11.123699999999998`}}, {{12., 
+                    10.874699999999999`}, {12.739, 11.123699999999998`}}, {{
+                    12., 10.874699999999999`}, {12., 11.660699999999999`}}, {{
+                    12.439, 12.222699999999998`}, {12., 
+                    11.660699999999999`}}, {{12.739, 11.123699999999998`}, {
+                    13.149000000000001`, 11.705699999999998`}}, {{12.762, 
+                    11.932699999999999`}, {13.236, 12.572699999999998`}}, {{
+                    13.421, 10.8707}, {12.739, 11.123699999999998`}}, {{14., 
+                    10.221699999999998`}, {13.232, 10.484699999999998`}}, {{
+                    13.149000000000001`, 10.035699999999999`}, {12.457, 
+                    10.2557}}, {{12.437999999999999`, 9.519699999999998}, {
+                    12.457, 10.2557}}, {{12., 8.768699999999999}, {12., 
+                    9.5887}}, {{11.561, 9.520699999999998}, {11.543, 
+                    10.2557}}, {{10.851, 10.035699999999999`}, {11.543, 
+                    10.2557}}, {{11.261, 11.123699999999998`}, {10.579, 
+                    10.8707}}, {{10.851, 11.706699999999998`}, {11.261, 
+                    11.123699999999998`}}, {{10.765, 12.573699999999999`}, {
+                    11.238, 11.932699999999999`}}, {{11.562, 
+                    12.222699999999998`}, {12., 11.660699999999999`}}, {{12., 
+                    10.874699999999999`}, {12., 10.874699999999999`}}, {{
+                    11.261, 11.123699999999998`}, {10.768, 
+                    10.484699999999998`}, {11.543, 10.2557}, {12., 9.5887}, {
+                    12.457, 10.2557}, {13.232, 10.484699999999998`}, {12.739, 
+                    11.123699999999998`}, {12.762, 11.932699999999999`}, {12.,
+                     11.660699999999999`}, {11.238, 11.932699999999999`}, {
+                    11.261, 11.123699999999998`}}, CompressedData["
+1:eJxTTMoPSmViYGAQBWIQDQEqDg+4J69sKlRxmHNEYUORhqqDguPH5DN7VR1g
+8lVLdZxluNUdDp5a6Lpts6rDDC2JqVcy1R08HlaJrGtXddDLW8y4R1XTwXLL
+ibJ98uoOuUAua5EGVL+GQ8elew+4P2s6hDxeOvvIAw24vNu2z3+vVGg5LLhm
+8t4CqN/BNG6Xp4+WA8g5gUDzIfp1HN7w7jOYyaXukGJ937/3uhaa+3Tg7ofp
+B5rm6i6kAjcf6PrXj8KUHI55m3c6Au2PL/OXE+NShrsP5LzJnYoOa2SiUqyB
+7ofYp+ywy5OHSRvoP5h+mP9h5qOHHwA2dXV1
+                    "]}, 
+                   CurveClosed -> {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 1, 1, 1}]}, {
+                  FaceForm[{
+                    RGBColor[0.902, 0.902, 0.902], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                   0}, {1, 3, 3}, {1, 3, 3}}}, {{{21.959, 14.8984}, {20.057, 
+                   14.281400000000001`}, {20.351, 13.3764}, {20.5, 12.4404}, {
+                   20.5, 11.5004}, {20.5, 10.5594}, {20.351, 
+                   9.624400000000001}, {20.057, 8.7184}, {21.959, 
+                   8.101400000000002}, {22.317999999999998`, 
+                   9.206400000000002}, {22.5, 10.3494}, {22.5, 11.5004}, {
+                   22.5, 12.650400000000001`}, {22.317999999999998`, 
+                   13.7944}, {21.959, 14.8984}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.9490000000000001, 0.9490000000000001, 
+                    0.9490000000000001], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{11.5, 22.5}, {11.5, 20.5}, {13.404, 20.5}, {
+                   15.231, 19.903}, {16.783, 18.773}, {17.961, 20.391}, {
+                   16.064, 21.771}, {13.83, 22.5}, {11.5, 22.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.929, 0.929, 0.929], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}, {1, 3, 3}}}, {{{17.9609, 20.3906}, {17.9609, 
+                   20.3906}, {16.782899999999998`, 18.7736}, {
+                   18.337899999999998`, 17.6416}, {19.4699, 16.0876}, {
+                   20.0569, 14.2816}, {21.9589, 14.898599999999998`}, {
+                   21.2409, 17.1096}, {19.857899999999997`, 
+                   19.008599999999998`}, {17.9609, 20.3906}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.722, 0.722, 0.722], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{6.2168, 4.2266}, {5.0388, 2.6096000000000004`}, {
+                   6.9358, 1.2296000000000005`}, {9.1698, 
+                   0.49960000000000004`}, {11.4998, 0.49960000000000004`}, {
+                   11.4998, 2.4996000000000005`}, {9.5958, 
+                   2.4996000000000005`}, {7.768800000000001, 
+                   3.0966000000000005`}, {6.2168, 4.2266}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.7799999999999999, 0.7799999999999999, 
+                    0.7799999999999999], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{16.783199999999997`, 4.2266}, {
+                   15.231199999999998`, 3.0966000000000005`}, {
+                   13.404199999999998`, 2.4996000000000005`}, {
+                   11.500199999999996`, 2.4996000000000005`}, {
+                   11.500199999999996`, 0.49960000000000004`}, {
+                   13.830199999999998`, 0.49960000000000004`}, {
+                   16.064199999999996`, 1.2296000000000005`}, {
+                   17.961199999999998`, 2.6096000000000004`}, {
+                   16.783199999999997`, 4.2266}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.8510000000000001, 0.8510000000000001, 
+                    0.8510000000000001], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{20.0566, 8.718699999999998}, {19.4696, 
+                   6.911699999999998}, {18.3376, 5.358699999999999}, {16.7836,
+                    4.226699999999998}, {17.9606, 2.6096999999999984`}, {
+                   19.8586, 3.9906999999999986`}, {21.2416, 
+                   5.890699999999999}, {21.9586, 8.101699999999997}, {20.0566,
+                    8.718699999999998}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.6749999999999999, 0.6749999999999999, 
+                    0.6749999999999999], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{2.9434, 8.718699999999998}, {1.0414, 
+                   8.101699999999997}, {1.7584, 5.890699999999999}, {3.1414, 
+                   3.9906999999999986`}, {5.0394, 2.6096999999999984`}, {
+                   6.2164, 4.226699999999998}, {4.6624, 5.358699999999999}, {
+                   3.5304, 6.911699999999998}, {2.9434, 
+                   8.718699999999998}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.537, 0.537, 0.537], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{6.2168, 18.7734}, {5.0388, 20.3904}, {6.9358, 
+                   21.7704}, {9.1698, 22.5004}, {11.4998, 22.5004}, {11.4998, 
+                   20.5004}, {9.5958, 20.5004}, {7.768800000000001, 
+                   19.903399999999998`}, {6.2168, 18.7734}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.584, 0.584, 0.584], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{5.0391, 20.3906}, {3.1421, 19.008599999999998`}, {
+                   1.7591, 17.1096}, {1.0411000000000006`, 
+                   14.898599999999998`}, {2.9431000000000007`, 14.2816}, {
+                   3.5301000000000005`, 16.0876}, {4.662100000000001, 
+                   17.6416}, {6.2171, 18.7736}, {5.0391, 20.3906}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.631, 0.631, 0.631], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}, {1, 3, 3}, {0, 1, 0}}}, {{{1.041, 14.8984}, {
+                   0.6819999999999999, 13.7944}, {0.4999999999999999, 
+                   12.650400000000001`}, {0.4999999999999999, 11.5004}, {
+                   0.4999999999999999, 10.3494}, {0.6819999999999999, 
+                   9.206400000000002}, {1.041, 8.101400000000002}, {
+                   2.9429999999999996`, 8.7184}, {2.649, 9.624400000000001}, {
+                   2.5, 10.5594}, {2.5, 11.5004}, {2.5, 12.4404}, {2.649, 
+                   13.3764}, {2.9429999999999996`, 14.281400000000001`}, {
+                   1.041, 14.8984}}}]}}, AspectRatio -> Automatic, 
+                ImageSize -> {24., 24.}, PlotRange -> {{0., 24.}, {0., 24.}}], 
+               GridBox[{{
+                  RowBox[{
+                    TagBox["\"Task UUID: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"cf280677-e99b-4262-bdbb-199de696a2d7\"", 
+                    "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Task environment: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["\"Session\"", "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Task type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"Scheduled\"", "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox[
+                    "\"Evaluation expression: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    
+                    RowBox[{
+                    "WolframCryptoPostmanBotProcessUpdates", "[", "]"}], 
+                    Short], "SummaryItem"]}]}}, 
+                GridBoxAlignment -> {
+                 "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                False, GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                GridBoxSpacings -> {
+                 "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                BaseStyle -> {
+                 ShowStringCharacters -> False, NumberMarks -> False, 
+                  PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+             GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+             GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             BaselinePosition -> {1, 1}], True -> GridBox[{{
+               PaneBox[
+                ButtonBox[
+                 DynamicBox[
+                  FEPrivate`FrontEndResource[
+                  "FEBitmaps", "SquareMinusIconMedium"]], 
+                 ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                 None, Evaluator -> Automatic, Method -> "Preemptive"], 
+                Alignment -> {Center, Center}, ImageSize -> 
+                Dynamic[{
+                  Automatic, 3.5 CurrentValue["FontCapHeight"]/
+                   AbsoluteCurrentValue[Magnification]}]], 
+               GraphicsBox[{
+                 Thickness[0.041666666666666664`], {
+                  FaceForm[{
+                    RGBColor[0.537, 0.537, 0.537], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   15.5}, {9.501, 15.5}, {9.501, 16.5}, {6.5, 16.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   5.5}, {9.501, 5.5}, {9.501, 6.5}, {6.5, 6.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   13.5}, {9.501, 13.5}, {9.501, 14.5}, {6.5, 14.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   11.5}, {9.501, 11.5}, {9.501, 12.5}, {6.5, 12.5}}}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   9.5}, {9.501, 9.5}, {9.501, 10.5}, {6.5, 10.5}}}], 
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{6.5, 
+                   7.5}, {9.501, 7.5}, {9.501, 8.5}, {6.5, 8.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.392, 0.392, 0.392], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}, {{0, 2, 
+                   0}, {0, 1, 0}, {0, 1, 0}}}, {{{15.5, 6.5}, {8.5, 6.5}, {
+                   8.5, 15.5}, {15.5, 15.5}}, {{16.5, 16.5}, {7.5, 16.5}, {
+                   7.5, 5.5}, {16.5, 5.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[1., 1., 1.], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}}}, {{{15.5,
+                    15.5}, {8.5, 15.5}, {8.5, 6.5}, {15.5, 6.5}}}]}, {
+                  RGBColor[0.392, 0.392, 0.392], 
+                  Thickness[0.020833333333333332`], 
+                  Opacity[1.], 
+                  CapForm["Round"], 
+                  JoinForm["Round"], 
+                  
+                  JoinedCurveBox[{{{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 
+                    2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 0}}, {{0, 2, 
+                    0}}, {{0, 2, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1,
+                     0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}}, {{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}, {0, 1, 0}}}, {{{10., 10.221699999999998`}, {10.768, 
+                    10.484699999999998`}}, {{12.457, 10.2557}, {12., 
+                    10.874699999999999`}}, {{11.543, 10.2557}, {12., 
+                    10.874699999999999`}}, {{12., 10.874699999999999`}, {
+                    11.261, 11.123699999999998`}}, {{12., 
+                    10.874699999999999`}, {12.739, 11.123699999999998`}}, {{
+                    12., 10.874699999999999`}, {12., 11.660699999999999`}}, {{
+                    12.439, 12.222699999999998`}, {12., 
+                    11.660699999999999`}}, {{12.739, 11.123699999999998`}, {
+                    13.149000000000001`, 11.705699999999998`}}, {{12.762, 
+                    11.932699999999999`}, {13.236, 12.572699999999998`}}, {{
+                    13.421, 10.8707}, {12.739, 11.123699999999998`}}, {{14., 
+                    10.221699999999998`}, {13.232, 10.484699999999998`}}, {{
+                    13.149000000000001`, 10.035699999999999`}, {12.457, 
+                    10.2557}}, {{12.437999999999999`, 9.519699999999998}, {
+                    12.457, 10.2557}}, {{12., 8.768699999999999}, {12., 
+                    9.5887}}, {{11.561, 9.520699999999998}, {11.543, 
+                    10.2557}}, {{10.851, 10.035699999999999`}, {11.543, 
+                    10.2557}}, {{11.261, 11.123699999999998`}, {10.579, 
+                    10.8707}}, {{10.851, 11.706699999999998`}, {11.261, 
+                    11.123699999999998`}}, {{10.765, 12.573699999999999`}, {
+                    11.238, 11.932699999999999`}}, {{11.562, 
+                    12.222699999999998`}, {12., 11.660699999999999`}}, {{12., 
+                    10.874699999999999`}, {12., 10.874699999999999`}}, {{
+                    11.261, 11.123699999999998`}, {10.768, 
+                    10.484699999999998`}, {11.543, 10.2557}, {12., 9.5887}, {
+                    12.457, 10.2557}, {13.232, 10.484699999999998`}, {12.739, 
+                    11.123699999999998`}, {12.762, 11.932699999999999`}, {12.,
+                     11.660699999999999`}, {11.238, 11.932699999999999`}, {
+                    11.261, 11.123699999999998`}}, CompressedData["
+1:eJxTTMoPSmViYGAQBWIQDQEqDg+4J69sKlRxmHNEYUORhqqDguPH5DN7VR1g
+8lVLdZxluNUdDp5a6Lpts6rDDC2JqVcy1R08HlaJrGtXddDLW8y4R1XTwXLL
+ibJ98uoOuUAua5EGVL+GQ8elew+4P2s6hDxeOvvIAw24vNu2z3+vVGg5LLhm
+8t4CqN/BNG6Xp4+WA8g5gUDzIfp1HN7w7jOYyaXukGJ937/3uhaa+3Tg7ofp
+B5rm6i6kAjcf6PrXj8KUHI55m3c6Au2PL/OXE+NShrsP5LzJnYoOa2SiUqyB
+7ofYp+ywy5OHSRvoP5h+mP9h5qOHHwA2dXV1
+                    "]}, 
+                   CurveClosed -> {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 1, 1, 1}]}, {
+                  FaceForm[{
+                    RGBColor[0.902, 0.902, 0.902], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                   0}, {1, 3, 3}, {1, 3, 3}}}, {{{21.959, 14.8984}, {20.057, 
+                   14.281400000000001`}, {20.351, 13.3764}, {20.5, 12.4404}, {
+                   20.5, 11.5004}, {20.5, 10.5594}, {20.351, 
+                   9.624400000000001}, {20.057, 8.7184}, {21.959, 
+                   8.101400000000002}, {22.317999999999998`, 
+                   9.206400000000002}, {22.5, 10.3494}, {22.5, 11.5004}, {
+                   22.5, 12.650400000000001`}, {22.317999999999998`, 
+                   13.7944}, {21.959, 14.8984}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.9490000000000001, 0.9490000000000001, 
+                    0.9490000000000001], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{11.5, 22.5}, {11.5, 20.5}, {13.404, 20.5}, {
+                   15.231, 19.903}, {16.783, 18.773}, {17.961, 20.391}, {
+                   16.064, 21.771}, {13.83, 22.5}, {11.5, 22.5}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.929, 0.929, 0.929], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}, {1, 3, 3}}}, {{{17.9609, 20.3906}, {17.9609, 
+                   20.3906}, {16.782899999999998`, 18.7736}, {
+                   18.337899999999998`, 17.6416}, {19.4699, 16.0876}, {
+                   20.0569, 14.2816}, {21.9589, 14.898599999999998`}, {
+                   21.2409, 17.1096}, {19.857899999999997`, 
+                   19.008599999999998`}, {17.9609, 20.3906}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.722, 0.722, 0.722], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{6.2168, 4.2266}, {5.0388, 2.6096000000000004`}, {
+                   6.9358, 1.2296000000000005`}, {9.1698, 
+                   0.49960000000000004`}, {11.4998, 0.49960000000000004`}, {
+                   11.4998, 2.4996000000000005`}, {9.5958, 
+                   2.4996000000000005`}, {7.768800000000001, 
+                   3.0966000000000005`}, {6.2168, 4.2266}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.7799999999999999, 0.7799999999999999, 
+                    0.7799999999999999], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{16.783199999999997`, 4.2266}, {
+                   15.231199999999998`, 3.0966000000000005`}, {
+                   13.404199999999998`, 2.4996000000000005`}, {
+                   11.500199999999996`, 2.4996000000000005`}, {
+                   11.500199999999996`, 0.49960000000000004`}, {
+                   13.830199999999998`, 0.49960000000000004`}, {
+                   16.064199999999996`, 1.2296000000000005`}, {
+                   17.961199999999998`, 2.6096000000000004`}, {
+                   16.783199999999997`, 4.2266}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.8510000000000001, 0.8510000000000001, 
+                    0.8510000000000001], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{20.0566, 8.718699999999998}, {19.4696, 
+                   6.911699999999998}, {18.3376, 5.358699999999999}, {16.7836,
+                    4.226699999999998}, {17.9606, 2.6096999999999984`}, {
+                   19.8586, 3.9906999999999986`}, {21.2416, 
+                   5.890699999999999}, {21.9586, 8.101699999999997}, {20.0566,
+                    8.718699999999998}}}]}, {
+                  FaceForm[{
+                    RGBColor[
+                    0.6749999999999999, 0.6749999999999999, 
+                    0.6749999999999999], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{2.9434, 8.718699999999998}, {1.0414, 
+                   8.101699999999997}, {1.7584, 5.890699999999999}, {3.1414, 
+                   3.9906999999999986`}, {5.0394, 2.6096999999999984`}, {
+                   6.2164, 4.226699999999998}, {4.6624, 5.358699999999999}, {
+                   3.5304, 6.911699999999998}, {2.9434, 
+                   8.718699999999998}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.537, 0.537, 0.537], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}}}, {{{6.2168, 18.7734}, {5.0388, 20.3904}, {6.9358, 
+                   21.7704}, {9.1698, 22.5004}, {11.4998, 22.5004}, {11.4998, 
+                   20.5004}, {9.5958, 20.5004}, {7.768800000000001, 
+                   19.903399999999998`}, {6.2168, 18.7734}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.584, 0.584, 0.584], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {0, 1, 0}, {1, 3, 3}, {0, 1, 
+                   0}}}, {{{5.0391, 20.3906}, {3.1421, 19.008599999999998`}, {
+                   1.7591, 17.1096}, {1.0411000000000006`, 
+                   14.898599999999998`}, {2.9431000000000007`, 14.2816}, {
+                   3.5301000000000005`, 16.0876}, {4.662100000000001, 
+                   17.6416}, {6.2171, 18.7736}, {5.0391, 20.3906}}}]}, {
+                  FaceForm[{
+                    RGBColor[0.631, 0.631, 0.631], 
+                    Opacity[1.]}], 
+                  
+                  FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                   3}, {1, 3, 3}, {0, 1, 0}}}, {{{1.041, 14.8984}, {
+                   0.6819999999999999, 13.7944}, {0.4999999999999999, 
+                   12.650400000000001`}, {0.4999999999999999, 11.5004}, {
+                   0.4999999999999999, 10.3494}, {0.6819999999999999, 
+                   9.206400000000002}, {1.041, 8.101400000000002}, {
+                   2.9429999999999996`, 8.7184}, {2.649, 9.624400000000001}, {
+                   2.5, 10.5594}, {2.5, 11.5004}, {2.5, 12.4404}, {2.649, 
+                   13.3764}, {2.9429999999999996`, 14.281400000000001`}, {
+                   1.041, 14.8984}}}]}}, AspectRatio -> Automatic, 
+                ImageSize -> {24., 24.}, PlotRange -> {{0., 24.}, {0., 24.}}], 
+               GridBox[{{
+                  RowBox[{
+                    TagBox["\"Task UUID: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    "\"cf280677-e99b-4262-bdbb-199de696a2d7\"", 
+                    "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Task environment: \"", "SummaryItemAnnotation"],
+                     "\[InvisibleSpace]", 
+                    TagBox["\"Session\"", "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Task type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"Scheduled\"", "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox[
+                    "\"Evaluation expression: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    
+                    RowBox[{
+                    "WolframCryptoPostmanBotProcessUpdates", "[", "]"}], 
+                    Short], "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Run interval: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["1", "SummaryItem"]}]}, {
+                  RowBox[{
+                    TagBox["\"Total run count: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["604800", "SummaryItem"]}]}}, 
+                GridBoxAlignment -> {
+                 "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, AutoDelete -> 
+                False, GridBoxItemSize -> {
+                 "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                GridBoxSpacings -> {
+                 "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                BaseStyle -> {
+                 ShowStringCharacters -> False, NumberMarks -> False, 
+                  PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+             GridBoxAlignment -> {"Rows" -> {{Top}}}, AutoDelete -> False, 
+             GridBoxItemSize -> {
+              "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+             BaselinePosition -> {1, 1}]}, 
+          Dynamic[Typeset`open$$], ImageSize -> Automatic]}, "SummaryPanel"], 
+       DynamicModuleValues :> {}], 
+      StyleBox["]", "NonInterpretableSummary"]}]},
+   "CopyTag",
+   DisplayFunction->(#& ),
+   InterpretationFunction->(
+    "TaskObject[<|TaskUUID -> cf280677-e99b-4262-bdbb-199de696a2d7, \
+TaskEnvironment -> Session, TaskType -> Scheduled, <<3>>, \
+HandlerFunctionsKeys -> {Task, TaskUUID, TaskType, TaskStatus, \
+TaskEnvironment, HandlerFunctions, HandlerFunctionsKeys, EventName, \
+EvaluationExpression, <<4>>, Rem<<11>>unt, NextScheduledTime, TotalRunCount, \
+MessageOutput, PrintOutput}, AutoRemove -> True|>]"& )],
+  False,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{
+  3.791994523000498*^9, 3.7919945673936987`*^9, 3.791995111266655*^9, {
+   3.791996900194607*^9, 3.7919969087816486`*^9}, 3.792000059123026*^9, 
+   3.7920689923465834`*^9, 3.792081260324606*^9, 3.792081366905071*^9},
+ CellLabel->"Out[30]=",ExpressionUUID->"1522e858-0960-420c-bd4c-5c4e9995b8e4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatchQ", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}], "[", 
+    "\"\<result\>\"", "]"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"__", "?", "updateQ"}], "}"}]}], "]"}]], "Code",
+ CellChangeTimes->{{3.792081416874298*^9, 3.7920814335733776`*^9}},
+ CellLabel->"In[33]:=",ExpressionUUID->"e5aecb77-af73-498a-985a-30dd5d1d7e10"],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{3.7920814340553756`*^9},
+ CellLabel->"Out[33]=",ExpressionUUID->"3036ca96-3bbd-4cd4-b46e-8394d4a09507"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getUpdates", "[", "WolframCryptoPostmanBot", "]"}], "[", 
+  "\"\<result\>\"", "]"}]], "Code",
+ CellChangeTimes->{{3.792081380847131*^9, 3.792081409338298*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"8ccbf305-bb8f-47b7-a2c1-8e52c1e81832"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.792081391061199*^9, 3.792081410589266*^9}, 
+   3.7921175014326897`*^9},
+ CellLabel->"Out[36]=",ExpressionUUID->"597036b3-adaa-4bb6-93d6-16fb44defb4d"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 157, 3, 67, "Section",ExpressionUUID->"5c537172-4551-4721-8790-241666590120"],
+Cell[740, 27, 601, 13, 105, "Code",ExpressionUUID->"42cea520-3b9f-49cb-87cb-55f05bf10723"],
+Cell[1344, 42, 371, 9, 50, "Code",ExpressionUUID->"1060ec43-aaf1-4830-b8e9-bfe7637297d6"],
+Cell[1718, 53, 157, 3, 34, "Text",ExpressionUUID->"9bc1c2b8-aa52-456b-b9b7-32cefa2dd7b1"],
+Cell[1878, 58, 103, 1, 50, "Code",ExpressionUUID->"3ea7d817-04a1-447e-a9fa-e6f18621606f"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2018, 64, 156, 3, 67, "Section",ExpressionUUID->"59145208-a037-4940-85d8-741066456587"],
+Cell[CellGroupData[{
+Cell[2199, 71, 225, 3, 50, "Code",ExpressionUUID->"db7a0475-f2f8-462c-9773-b7c726d27bbf"],
+Cell[2427, 76, 1148, 22, 71, "Output",ExpressionUUID->"d3efc607-5217-4d77-bf51-a34dbaa33663"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3612, 103, 230, 3, 50, "Code",ExpressionUUID->"8a57f2f3-35d0-4418-9121-6c912839f4df"],
+Cell[3845, 108, 15653, 311, 641, "Output",ExpressionUUID->"eae63ae5-ec4c-428d-bcbe-b57d2e71fc60"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19547, 425, 165, 3, 67, "Section",ExpressionUUID->"7e5f9690-e679-4f83-a5c0-0f6de90d14ee"],
+Cell[19715, 430, 920, 18, 88, "Code",ExpressionUUID->"c79d0021-25fa-48a3-a560-60b2e881ff7e"],
+Cell[CellGroupData[{
+Cell[20660, 452, 413, 8, 50, "Code",ExpressionUUID->"eb2d1993-8f10-403c-91e6-0eb7a646e1d9"],
+Cell[21076, 462, 375, 6, 32, "Output",ExpressionUUID->"7a213086-68b8-4bc6-8041-160dcfd8fa37"]
+}, Open  ]],
+Cell[21466, 471, 839, 19, 105, "Code",ExpressionUUID->"fd882dc0-d290-493b-9d68-b0410202f650"],
+Cell[CellGroupData[{
+Cell[22330, 494, 364, 7, 50, "Code",ExpressionUUID->"f8d4214c-1807-41ee-9c4f-8527ece6c338"],
+Cell[22697, 503, 325, 4, 32, "Output",ExpressionUUID->"cb60c49c-d964-4ff1-b27a-a69f1ac7a6d9"]
+}, Open  ]],
+Cell[23037, 510, 522, 11, 87, "Code",ExpressionUUID->"5eb8df92-9792-49ee-9026-7538badc0b5b"],
+Cell[CellGroupData[{
+Cell[23584, 525, 386, 8, 50, "Code",ExpressionUUID->"e9f8e020-0926-4b20-88d1-13445d0af283"],
+Cell[23973, 535, 228, 3, 32, "Output",ExpressionUUID->"1e5b09f8-71a6-409b-adcf-2ef59aaf896c"]
+}, Open  ]],
+Cell[24216, 541, 741, 17, 105, "Code",ExpressionUUID->"5a2fa68f-fbc8-4da6-a6a3-ca6060889fe8"],
+Cell[CellGroupData[{
+Cell[24982, 562, 255, 4, 50, "Code",ExpressionUUID->"f4c8b3a2-9ff7-414e-a243-271b4c1a022d"],
+Cell[25240, 568, 15556, 310, 641, "Output",ExpressionUUID->"613431a3-b142-4ea9-a647-2f03e47333fd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[40833, 883, 223, 3, 50, "Code",ExpressionUUID->"490a1927-ba60-4296-91fd-a82065c512bc"],
+Cell[41059, 888, 477, 9, 32, "Output",ExpressionUUID->"ca780339-377e-4540-954c-c06c3eb231c0"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41585, 903, 176, 3, 67, "Section",ExpressionUUID->"73e3a9d4-6c60-4902-9bfe-c09c9c8a00e7"],
+Cell[41764, 908, 296, 8, 100, "Text",ExpressionUUID->"a67e0f59-e7b4-4f44-80d2-2203cf3bd7af"],
+Cell[42063, 918, 147, 3, 34, "Text",ExpressionUUID->"29a4964d-a9f5-4169-bfc6-a25302ee36da"],
+Cell[42213, 923, 985, 20, 213, "Code",ExpressionUUID->"f54de89c-8971-4aa6-8d97-1808ab0c2247"],
+Cell[43201, 945, 152, 3, 34, "Text",ExpressionUUID->"e9ac4adb-02c1-4236-b3f1-78a16803df81"],
+Cell[43356, 950, 2292, 46, 177, "Code",ExpressionUUID->"5b1534c5-255a-4b54-8636-d6c2144126a1"],
+Cell[45651, 998, 2008, 41, 123, "Code",ExpressionUUID->"f3707500-9a23-4b52-ba4a-546e7e3a3612"],
+Cell[47662, 1041, 201, 4, 34, "Text",ExpressionUUID->"e96675c5-2b08-4826-be86-0c2879d572be"],
+Cell[47866, 1047, 2343, 47, 177, "Code",ExpressionUUID->"1640a168-5c3e-448b-a35c-963f68bd3ecb"],
+Cell[50212, 1096, 2578, 63, 177, "Code",ExpressionUUID->"6c729242-a2d0-402c-92b5-54186191e56a"],
+Cell[52793, 1161, 148, 3, 34, "Text",ExpressionUUID->"1613768d-36d1-433d-8700-9130dbb059e5"],
+Cell[52944, 1166, 1187, 28, 123, "Code",ExpressionUUID->"8a47d7d0-7e20-469d-a928-cddf6955db6b"],
+Cell[54134, 1196, 155, 3, 34, "Text",ExpressionUUID->"68c88fa0-d22f-44e0-9319-f0eb71c26187"],
+Cell[54292, 1201, 1384, 32, 213, "Code",ExpressionUUID->"d1f90027-0d15-4798-9b9b-78b37cd3a303"],
+Cell[55679, 1235, 155, 3, 34, "Text",ExpressionUUID->"f36a1ca4-d688-48d4-8a40-28cf252ad40d"],
+Cell[55837, 1240, 575, 12, 69, "Code",ExpressionUUID->"df89d5d1-c88b-4b9f-aba2-73ac1c8139fd"],
+Cell[56415, 1254, 683, 13, 69, "Code",ExpressionUUID->"a03f8dc6-50f5-45eb-8fd3-aca293645260"],
+Cell[57101, 1269, 520, 11, 69, "Code",ExpressionUUID->"d95272e1-9f99-4226-8149-c855c9ad1e56"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57658, 1285, 153, 3, 67, "Section",ExpressionUUID->"f3e1f792-04ef-4529-a55d-ae2b436cd91e"],
+Cell[CellGroupData[{
+Cell[57836, 1292, 252, 4, 50, "Code",ExpressionUUID->"cb8872fb-e4d9-4131-bd76-cfcc5765421b"],
+Cell[58091, 1298, 327, 5, 32, "Output",ExpressionUUID->"e49b0340-d7a5-4e25-90ed-4b6e3b1bb861"]
+}, Open  ]],
+Cell[58433, 1306, 1968, 43, 213, "Code",ExpressionUUID->"7bae627a-88ce-4ed3-854b-e32c857aa776"],
+Cell[CellGroupData[{
+Cell[60426, 1353, 710, 14, 69, "Code",ExpressionUUID->"f4a3e8b4-11f5-44f3-b07b-0ce89388ad75"],
+Cell[61139, 1369, 31420, 562, 103, "Output",ExpressionUUID->"1522e858-0960-420c-bd4c-5c4e9995b8e4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[92596, 1936, 397, 9, 50, "Code",ExpressionUUID->"e5aecb77-af73-498a-985a-30dd5d1d7e10"],
+Cell[92996, 1947, 155, 2, 32, "Output",ExpressionUUID->"3036ca96-3bbd-4cd4-b46e-8394d4a09507"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[93188, 1954, 273, 5, 50, "Code",ExpressionUUID->"8ccbf305-bb8f-47b7-a2c1-8e52c1e81832"],
+Cell[93464, 1961, 218, 4, 32, "Output",ExpressionUUID->"597036b3-adaa-4bb6-93d6-16fb44defb4d"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

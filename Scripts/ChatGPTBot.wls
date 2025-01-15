@@ -1,75 +1,61 @@
 #!/usr/bin/env wolframscript
 (* ::Package:: *)
 
-(* ::Section:: *)
-(*Installation*)
-
-
-(* ::Text:: *)
-(*If TelegramBot \:0438 OpenAILink packages are not already installed, you can install them like this:*)
-
-
-PacletInstall["ChristopherWolfram/OpenAILink"]; 
+PacletInstall["KirillBelov/GPTLink"]; 
 PacletInstall["KirillBelov/Objects"]; 
 PacletInstall["KirillBelov/TelegramBot"]; 
 
 
-(* ::Section:: *)
-(*Needs*)
-
-
-(* ::Text:: *)
-(*After installation, you must load into the current session:*)
-
-
 <<KirillBelov`TelegramBot`
-<<ChristopherWolfram`OpenAILink`
+<<KirillBelov`GPTLink`
 
 
-(* ::Section:: *)
-(*GPT3.5 Simple Interface*)
+<<KirillBelov`GPTLink`
 
 
-(* ::Text:: *)
-(*Next step. You need to create a wrapper over the functions from the OpenAILink package, such that it can save previous requests and responses in the history. This function should take a chat ID and text as input and return only text:*)
+wolframAlpha::usage = 
+"wolframAlpha[query] call WolframAlpha using query string. \
+WolframAlpha - search engine based on knowledge. \
+Works only in English."; 
 
 
-chatGPT[chatId_, text_String] := 
-Module[{userMessage, assistantMessage, chat, errorText = ""}, 
-	If[Not[KeyExistsQ[$chats, chatId]], $chats[chatId] = {}]; 
-	chat = $chats[chatId]; 
+wolframAlpha[query_String] := 
+Echo[ToString[WolframAlpha[Echo[TextTranslation[query, "English"], "Wolfram Alpha Query"], "ShortAnswer"]], "Wolfram Alpha Answer"]
 
-	userMessage = OpenAIChatMessageObject["user", text]; 
-	AppendTo[chat, userMessage]; 
 
-	assistantMessage = Check[
-		OpenAIChatComplete[chat], 
-		chat = {userMessage}; 
-		errorText = "[HISTORY REMOVED]\n"; 
-		OpenAIChatComplete[chat, OpenAITemperature -> 0.25], 
-		OpenAIChatComplete::openAIResponseFailureMessage
+chatGPT[chatId_, text_String, callback_] := 
+Module[{userMessage, assistantMessage, chat}, 
+	If[Not[KeyExistsQ[$chats, chatId]], 
+		$chats[chatId] = GPTChatObject["Tools" -> {wolframAlpha}, 
+			"APIToken" :> SystemCredential["TYPINGMIND_API_KEY"], 
+			"Endpoint" -> "https://api.typingmind.com/api", 
+			"Logger" -> Function[Echo[#Body, #Event]]
+		]
 	]; 
-
-	AppendTo[chat, assistantMessage]; 
-	$chats[chatId] = chat; 
-
-	(*Return*)
-	errorText <> assistantMessage[[-1, "Text"]]
+	chat = $chats[chatId]; 
+	GPTChatCompleteAsync[chat, text, callback]
 ]
 
 
 handler[bot_TelegramBot, update_Association] := 
-Module[{user, chatId, text, result}, 
+Module[{user, chatId, text}, 
 	chatId = update["message", "chat", "id"]; 
 	text = update["message", "text"]; 
-	Print[update]; 
-	result = chatGPT[chatId, text]; 
-	Print[sendMessage[bot, chatId, result, "parseMode" -> "markdown"]]; 
+	Echo[update, "Telegram Update"]; 
+	chatGPT[chatId, StringTrim[text, "/"], Function[gptChat, 
+		Echo[
+			sendMessage[bot, chatId, gptChat["Messages"][[-1, "content"]], 
+				"parseMode" -> "markdown", "replyToMessageId" -> update["message", "message_id"]
+			], 
+			"Telegram send Message"
+		]
+	]]; 
 ]
 
 
 $chats = <||>; 
-$OpenAIKey = "<your OpenAI API Key>"; 
-bot = TelegramBot["<yuor telegram bot API token>"]; 
-task = CreateBotSession[bot, handler, {1, 60 * 60 * 24 * 7 * 4 * 12}]; 
-While[task["TaskStatus"] == "Running", Pause[0.1]]; 
+bot = TelegramBot["6155042972:AAHjGFYnzlVT0oG8UxB_5xgAMM4lAKtfcRw"]; 
+task = CreateBotSession[bot, handler, {2, 60 * 60 * 24 * 7 * 4 * 12}]; 
+If[Head@$FrontEnd =!= FrontEndObject, 
+	While[task["TaskStatus"] == "Running", Pause[0.1]]; 
+]

@@ -108,6 +108,10 @@ sendMediaGroup::usage =
 "sendMediaGroup[bot, chatId, mediaList] send several media elements."; 
 
 
+deleteMessage::usage = 
+"deleteMessage[bot, chatId, messageId] delete message from chat."; 
+
+
 (* ::Section::Closed:: *)
 (*Private context*)
 
@@ -406,18 +410,38 @@ Options[sendMessage] = {
 	"replyToMessageId" -> Automatic, 
 	"allowSendingWithoutReply" -> Automatic, 
 	"replyMarkup" -> Automatic
-}
+}; 
 
 
 SyntaxInformation[sendMessage] = {
 	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
 	"OptionNames" -> optionNames[{exec, sendMessage}]
-}
+}; 
 
 
 TelegramBot /: sendMessage[bot_TelegramBot, chatId: _String | _Integer, text_String, 
 	opts: OptionsPattern[{exec, sendMessage}]] := 
-exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]
+exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]; 
+
+
+(* ::Subsection:: *)
+(*deleteMessage*)
+
+
+Options[deleteMessage] = {
+	
+}; 
+
+
+SyntaxInformation[deleteMessage] = {
+	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+	"OptionNames" -> optionNames[{exec, deleteMessage}]
+}; 
+
+
+TelegramBot /: deleteMessage[bot_TelegramBot, chatId: _String | _Integer, messageId_Integer, 
+	opts: OptionsPattern[{exec, sendMessage}]] := 
+exec[bot, {"deleteMessage", "chatId" -> chatId, "messageId" -> messageId, opts}, opts]; 
 
 
 (* ::Subsection:: *)
@@ -461,14 +485,14 @@ Options[editMessageText] = {
 }
 
 
-SyntaxInformation[sendMessage] = {
+SyntaxInformation[editMessageText] = {
 	"ArgumentsPattern" -> {_, _, _, _, OptionsPattern[]}, 
 	"OptionNames" -> optionNames[{exec, editMessageText}]
 }; 
 
 
 TelegramBot /: editMessageText[bot_TelegramBot, chatId: _String | _Integer, messageId: _String | _Integer, 
-	text_String, opts: OptionsPattern[{exec, sendMessage}]] := 
+	text_String, opts: OptionsPattern[{exec, editMessageText}]] := 
 exec[bot, {"editMessageText", 
 	"chatId" -> chatId, "messageId" -> messageId, "text" -> text, opts
 }, opts]; 

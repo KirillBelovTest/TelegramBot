@@ -30,7 +30,13 @@ Begin["`Private`"];
 (*Implementation*)
 
 
-CreateType[TelegramBot, init, {"Token", "History", "Logger"}]; 
+CreateType[TelegramBot, init, {
+	"Token" :> SystemCredential["TELEGRAM_BOT_TOKEN"], 
+	"History", 
+	"Logger", 
+	"Async" -> True, 
+	"UpdateHandler" -> Function["Hello!"]
+}]; 
 
 
 TelegramBot[token_?StringQ] := 
