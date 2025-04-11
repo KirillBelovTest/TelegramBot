@@ -9,7 +9,7 @@
 
 
 BeginPackage["KirillBelov`TelegramBot`API`", {
-	"KirillBelov`TelegramBot`Type`"
+    "KirillBelov`TelegramBot`Type`"
 }]
 
 
@@ -35,6 +35,10 @@ bot@close[] another way to call this method"
 getUpdates::usage = 
 "getUpdates[bot] get currents updates of the bot
 bot@getUpdates[] another way to call this method"
+
+
+getChatMember::usage = 
+"getUpdates[bot, chatId, userId] get info about the user on managed chat."
 
 
 setWebhook::usage = 
@@ -152,33 +156,33 @@ url[[1]]
 
 encode[key_String, photo: imagePattern[]] := 
 key -> <|
-	"Content" -> ExportString[photo, "PNG"], 
-	"Name" -> key, 
-	"MIMEType" -> "image/png"
+    "Content" -> ExportString[photo, "PNG"], 
+    "Name" -> key, 
+    "MIMEType" -> "image/png"
 |>
 
 
 encode[key_String, audio_Audio] := 
 key -> <|
-	"Content" -> ExportString[audio, "MP3"], 
-	"Name" -> key, 
-	"MIMEType" -> "audio/mpeg"
+    "Content" -> ExportString[audio, "MP3"], 
+    "Name" -> key, 
+    "MIMEType" -> "audio/mpeg"
 |>
 
 
 encode[key_String, video_Video] := 
 key -> <|
-	"Content" -> ExportString[video, "MP4"], 
-	"Name" -> key, 
-	"MIMEType" -> "video/mp4"
+    "Content" -> ExportString[video, "MP4"], 
+    "Name" -> key, 
+    "MIMEType" -> "video/mp4"
 |>
 
 
 encode[key_String, animation_Manipulate] := 
 key -> <|
-	"Content" -> ExportString[animation, "MP4"], 
-	"Name" -> key, 
-	"MIMEType" -> "video/mp4"
+    "Content" -> ExportString[animation, "MP4"], 
+    "Name" -> key, 
+    "MIMEType" -> "video/mp4"
 |>
 
 
@@ -187,83 +191,83 @@ expr
 
 
 Options[exec] = {
-	"Endpoint" -> "https://api.telegram.org", 
-	"Form" -> "JSON", 
-	"Encoder" -> encode, 
-	"Deserializer" -> deserialize
+    "Endpoint" -> "https://api.telegram.org", 
+    "Form" -> "JSON", 
+    "Encoder" -> encode, 
+    "Deserializer" -> deserialize
 }
 
 
 exec[bot_TelegramBot, {method_String, params_Association}, OptionsPattern[]] := 
 Module[{token, evaluate, history, logger, 
-	endpoint, encoder, deserializer, form, 
-	requestParameters, url, requestBody, contentType, request, httpMethod, 
-	response, responseBody, result}, 
-	
-	token = bot["Token"]; 
-	history = bot["History"]; 
-	logger = bot["Logger"]; 
-	endpoint = OptionValue["Endpoint"]; 
-	encoder = OptionValue["Encoder"];
-	deserializer = OptionValue["Deserializer"]; 
-	form = OptionValue["Form"]; 
-	
-	requestParameters = KeyValueMap[encoder] @ DeleteCases[params, Automatic]; 
-	
-	url = Switch[form, 
-		"Query", URLBuild[{endpoint, "bot" <> token, method}, requestParameters], 
-		_, URLBuild[{endpoint, "bot" <> token, method}]
-	]; 
-	
-	httpMethod = If[form == "Query", "GET", "POST"];
-	
-	requestBody = Switch[form, 
-		"Query", "", 
-		"URLEncoded", URLBuild[{}, requestParameters], 
-		"JSON", ImportString[ExportString[requestParameters, "JSON"], "Text"], 
-		"FormData", requestParameters
-	];
-	
-	contentType = Switch[form, 
-		"Query", None, 
-		"URLEncoded", "application/x-www-form-urlencoded; charset=utf-8", 
-		"JSON", "application/json; charset=utf-8", 
-		"FormData", "multipart/form-data"
-	]; 
-	
-	request = HTTPRequest[url, <|
-		Method -> httpMethod,
-		"ContentType" -> contentType, 
-		"Body" -> requestBody
-	|>]; 
-	
-	response = URLRead[request];
-	responseBody = response["Body"];
-	
-	result = deserializer[responseBody]; 
-	
-	logger[history, request, response]; 
-	
-	Return[result]
+    endpoint, encoder, deserializer, form, 
+    requestParameters, url, requestBody, contentType, request, httpMethod, 
+    response, responseBody, result}, 
+    
+    token = bot["Token"]; 
+    history = bot["History"]; 
+    logger = bot["Logger"]; 
+    endpoint = OptionValue["Endpoint"]; 
+    encoder = OptionValue["Encoder"];
+    deserializer = OptionValue["Deserializer"]; 
+    form = OptionValue["Form"]; 
+    
+    requestParameters = KeyValueMap[encoder] @ DeleteCases[params, Automatic]; 
+    
+    url = Switch[form, 
+        "Query", URLBuild[{endpoint, "bot" <> token, method}, requestParameters], 
+        _, URLBuild[{endpoint, "bot" <> token, method}]
+    ]; 
+    
+    httpMethod = If[form == "Query", "GET", "POST"];
+    
+    requestBody = Switch[form, 
+        "Query", "", 
+        "URLEncoded", URLBuild[{}, requestParameters], 
+        "JSON", ImportString[ExportString[requestParameters, "JSON"], "Text"], 
+        "FormData", requestParameters
+    ];
+    
+    contentType = Switch[form, 
+        "Query", None, 
+        "URLEncoded", "application/x-www-form-urlencoded; charset=utf-8", 
+        "JSON", "application/json; charset=utf-8", 
+        "FormData", "multipart/form-data"
+    ]; 
+    
+    request = HTTPRequest[url, <|
+        Method -> httpMethod,
+        "ContentType" -> contentType, 
+        "Body" -> requestBody
+    |>]; 
+    
+    response = URLRead[request];
+    responseBody = response["Body"];
+    
+    result = deserializer[responseBody]; 
+    
+    logger[history, request, response]; 
+    
+    Return[result]
 ]
 
 
 exec[bot_TelegramBot, {method_String, params: OptionsPattern[{}]}, opts: OptionsPattern[{}]] := 
 exec[
-	bot, 
-	{
-		method, 
-		<|KeyValueMap[
-			StringReplace[
-				ToString[#1], 
-				Map[
-					Function[c, c -> "_" <> ToLowerCase[c]], 
-					CharacterRange["A", "Z"]
-				]
-			] -> #2&
-		] @ <|FilterRules[Flatten[{params}], Except[Options[exec]]]|>|>
-	}, 
-	FilterRules[Flatten[{opts}], Options[exec]]
+    bot, 
+    {
+        method, 
+        <|KeyValueMap[
+            StringReplace[
+                ToString[#1], 
+                Map[
+                    Function[c, c -> "_" <> ToLowerCase[c]], 
+                    CharacterRange["A", "Z"]
+                ]
+            ] -> #2&
+        ] @ <|FilterRules[Flatten[{params}], Except[Options[exec]]]|>|>
+    }, 
+    FilterRules[Flatten[{opts}], Options[exec]]
 ]
 
 
@@ -276,8 +280,8 @@ exec[
 
 
 SyntaxInformation[getMe] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec}]
 }
 
 
@@ -290,8 +294,8 @@ exec[bot, {"getMe"}, opts]
 
 
 SyntaxInformation[logOut] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec}]
 }
 
 
@@ -305,8 +309,8 @@ exec[bot, {"logOut"}, opts]
 
 
 SyntaxInformation[close] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec}]
 }
 
 
@@ -320,16 +324,16 @@ exec[bot, {"close"}, opts]
 
 
 Options[getUpdates] = {
-	"offset" -> Automatic, 
-	"limit" -> Automatic, 
-	"timeout" -> Automatic, 
-	"allowedUpdates" -> Automatic
+    "offset" -> Automatic, 
+    "limit" -> Automatic, 
+    "timeout" -> Automatic, 
+    "allowedUpdates" -> Automatic
 }
 
 
 SyntaxInformation[getUpdates] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, getUpdates}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, getUpdates}]
 }
 
 
@@ -338,23 +342,30 @@ getUpdates[bot_TelegramBot, opts: OptionsPattern[{exec, getUpdates}]] :=
 exec[bot, {"getUpdates", opts}, opts]
 
 
+(**)
+
+
+TelegramBot /: getChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
+exec[bot, {"getChatMember", "chat_id" -> chatId, "user_id" -> userId, opts}, opts];
+
+
 (* ::Subsection:: *)
 (*setWebhook*)
 
 
 Options[setWebhook] = {
-	"certificate" -> Automatic, 
-	"ipAddress" -> Automatic, 
-	"maxConnections" -> Automatic, 
-	"allowedUpdates" -> Automatic, 
-	"dropPendingUpdates" -> Automatic, 
-	"secretToken" -> Automatic
+    "certificate" -> Automatic, 
+    "ipAddress" -> Automatic, 
+    "maxConnections" -> Automatic, 
+    "allowedUpdates" -> Automatic, 
+    "dropPendingUpdates" -> Automatic, 
+    "secretToken" -> Automatic
 }
 
 
 SyntaxInformation[setWebhook] = {
-	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, setWebhook}]
+    "ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, setWebhook}]
 }
 
 
@@ -368,13 +379,13 @@ exec[bot, {"setWebhook", "url" -> url, opts}, opts]
 
 
 Options[deleteWebhook] = {
-	"dropPendingUpdates" -> Automatic
+    "dropPendingUpdates" -> Automatic
 }
 
 
 SyntaxInformation[deleteWebhook] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, deleteWebhook}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, deleteWebhook}]
 }
 
 
@@ -387,8 +398,8 @@ exec[bot, {"deleteWebhook", opts}, opts]
 
 
 SyntaxInformation[getWebhookInfo] = {
-	"ArgumentsPattern" -> {_., OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec}]
+    "ArgumentsPattern" -> {_., OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec}]
 }
 
 
@@ -401,26 +412,26 @@ exec[bot, {"getWebhookInfo"}, opts]
 
 
 Options[sendMessage] = {
-	"messageThreadId" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"entities" -> Automatic, 
-	"disableWebPagePreview" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "entities" -> Automatic, 
+    "disableWebPagePreview" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }; 
 
 
 SyntaxInformation[sendMessage] = {
-	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendMessage}]
+    "ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendMessage}]
 }; 
 
 
 TelegramBot /: sendMessage[bot_TelegramBot, chatId: _String | _Integer, text_String, 
-	opts: OptionsPattern[{exec, sendMessage}]] := 
+    opts: OptionsPattern[{exec, sendMessage}]] := 
 exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts]; 
 
 
@@ -429,18 +440,18 @@ exec[bot, {"sendMessage", "chatId" -> chatId, "text" -> text, opts}, opts];
 
 
 Options[deleteMessage] = {
-	
+    
 }; 
 
 
 SyntaxInformation[deleteMessage] = {
-	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, deleteMessage}]
+    "ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, deleteMessage}]
 }; 
 
 
 TelegramBot /: deleteMessage[bot_TelegramBot, chatId: _String | _Integer, messageId_Integer, 
-	opts: OptionsPattern[{exec, sendMessage}]] := 
+    opts: OptionsPattern[{exec, sendMessage}]] := 
 exec[bot, {"deleteMessage", "chatId" -> chatId, "messageId" -> messageId, opts}, opts]; 
 
 
@@ -449,26 +460,26 @@ exec[bot, {"deleteMessage", "chatId" -> chatId, "messageId" -> messageId, opts},
 
 
 Options[sendMediaGroup] = {
-	"messageThreadId" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyParameters" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyParameters" -> Automatic
 }
 
 
 SyntaxInformation[sendMediaGroup] = {
-	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendMediaGroup}]
+    "ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendMediaGroup}]
 }
 
 
 TelegramBot /: sendMediaGroup[bot_TelegramBot, chatId: _String | _Integer, media_List, 
-	opts: OptionsPattern[{exec, sendMediaGroup}]] := 
+    opts: OptionsPattern[{exec, sendMediaGroup}]] := 
 exec[bot, {"sendMediaGroup", "chatId" -> chatId, "media" -> 
-	Map[Function[<|
-		"type" -> "photo", 
-		"media" -> #
-	|>], media]
+    Map[Function[<|
+        "type" -> "photo", 
+        "media" -> #
+    |>], media]
 , opts}, opts]
 
 
@@ -477,24 +488,24 @@ exec[bot, {"sendMediaGroup", "chatId" -> chatId, "media" ->
 
 
 Options[editMessageText] = {
-	"inlineMessageId" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"entities" -> Automatic, 
-	"disableWebPagePreview" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "inlineMessageId" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "entities" -> Automatic, 
+    "disableWebPagePreview" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[editMessageText] = {
-	"ArgumentsPattern" -> {_, _, _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, editMessageText}]
+    "ArgumentsPattern" -> {_, _, _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, editMessageText}]
 }; 
 
 
 TelegramBot /: editMessageText[bot_TelegramBot, chatId: _String | _Integer, messageId: _String | _Integer, 
-	text_String, opts: OptionsPattern[{exec, editMessageText}]] := 
+    text_String, opts: OptionsPattern[{exec, editMessageText}]] := 
 exec[bot, {"editMessageText", 
-	"chatId" -> chatId, "messageId" -> messageId, "text" -> text, opts
+    "chatId" -> chatId, "messageId" -> messageId, "text" -> text, opts
 }, opts]; 
 
 
@@ -503,14 +514,14 @@ exec[bot, {"editMessageText",
 
 
 Options[editMessageReplyMarkup] = {
-	"inlineMessageId" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "inlineMessageId" -> Automatic, 
+    "replyMarkup" -> Automatic
 }; 
 
 
 SyntaxInformation[editMessageReplyMarkup] = {
-	"ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, editMessageReplyMarkup}]
+    "ArgumentsPattern" -> {_, _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, editMessageReplyMarkup}]
 }; 
 
 
@@ -523,20 +534,20 @@ exec[bot, {"editMessageReplyMarkup", "chatId" -> chatId, "messageId" -> messageI
 
 
 Options[forwardMessage] = {
-	"messageThreadId" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic
 }
 
 
 SyntaxInformation[forwardMessage] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, forwardMessage}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, forwardMessage}]
 }
 
 
 TelegramBot /: forwardMessage[bot_TelegramBot, chatId: _String | _Integer, fromChatId: _String | _Integer, 
-	messageId_Integer, opts: OptionsPattern[{exec, forwardMessage}]] := 
+    messageId_Integer, opts: OptionsPattern[{exec, forwardMessage}]] := 
 exec[bot, {"forwardMessage", "chatId" -> chatId, "fromChatId" -> fromChatId, "messageId" -> messageId, opts}, opts]
 
 
@@ -545,36 +556,36 @@ exec[bot, {"forwardMessage", "chatId" -> chatId, "fromChatId" -> fromChatId, "me
 
 
 Options[sendPhoto] = {
-	"messageThreadId" -> Automatic, 
-	"caption" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"captionEntities" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "caption" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "captionEntities" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[sendPhoto] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendPhoto}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendPhoto}]
 }
 
 
 TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo: imagePattern[], 
-	opts: OptionsPattern[{exec, sendPhoto}]] := 
+    opts: OptionsPattern[{exec, sendPhoto}]] := 
 exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts, "Form" -> "FormData"]
 
 
 TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo: _String | _URL, 
-	opts: OptionsPattern[{exec, sendPhoto}]] := 
+    opts: OptionsPattern[{exec, sendPhoto}]] := 
 exec[bot, {"sendPhoto", "chatId" -> chatId, "photo" -> photo, opts}, opts]
 
 
 TelegramBot /: sendPhoto[bot_TelegramBot, chatId: _String | _Integer, photo_, 
-	opts: OptionsPattern[{exec, sendPhoto}]] := 
+    opts: OptionsPattern[{exec, sendPhoto}]] := 
 sendPhoto[bot, chatId, Rasterize[photo], opts]
 
 
@@ -583,35 +594,35 @@ sendPhoto[bot, chatId, Rasterize[photo], opts]
 
 
 Options[sendAudio] = {
-	"messageThreadId" -> Automatic, 
-	"caption" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"captionEntities" -> Automatic, 
-	"duration" -> Automatic, 
-	"performer" -> Automatic, 
-	"title" -> Automatic, 
-	"thumb" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "caption" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "captionEntities" -> Automatic, 
+    "duration" -> Automatic, 
+    "performer" -> Automatic, 
+    "title" -> Automatic, 
+    "thumb" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[sendAudio] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendAudio}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendAudio}]
 }
 
 
 TelegramBot /: sendAudio[bot_TelegramBot, chatId: _String | _Integer, audio_Audio, 
-	opts: OptionsPattern[{exec, sendAudio}]] := 
+    opts: OptionsPattern[{exec, sendAudio}]] := 
 exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts, "Form" -> "FormData"]
 
 
 TelegramBot /: sendAudio[bot_TelegramBot, chatId: _String | _Integer, audio: _String | _URL, 
-	opts: OptionsPattern[{exec, sendAudio}]] := 
+    opts: OptionsPattern[{exec, sendAudio}]] := 
 exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts]
 
 
@@ -620,34 +631,34 @@ exec[bot, {"sendAudio", "chatId" -> chatId, "audio" -> audio, opts}, opts]
 
 
 Options[sendDocument] = {
-	"messageThreadId" -> Automatic, 
-	"thumb" -> Automatic, 
-	"caption" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"captionEntities" -> Automatic, 
-	"title" -> Automatic, 
-	"disableContentTypeDetection" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "thumb" -> Automatic, 
+    "caption" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "captionEntities" -> Automatic, 
+    "title" -> Automatic, 
+    "disableContentTypeDetection" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[sendDocument] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendDocument}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendDocument}]
 }
 
 
 TelegramBot /: sendDocument[bot_TelegramBot, chatId: _String | _Integer, document_File, 
-	opts: OptionsPattern[{exec, sendDocument}]] := 
+    opts: OptionsPattern[{exec, sendDocument}]] := 
 exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts, "Form" -> "FormData"]
 
 
 TelegramBot /: sendDocument[bot_TelegramBot, chatId: _String | _Integer, document: _String | _URL, 
-	opts: OptionsPattern[{exec, sendDocument}]] := 
+    opts: OptionsPattern[{exec, sendDocument}]] := 
 exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, opts]
 
 
@@ -656,36 +667,36 @@ exec[bot, {"sendDocument", "chatId" -> chatId, "document" -> document, opts}, op
 
 
 Options[sendVideo] = {
-	"messageThreadId" -> Automatic, 
-	"duration" -> Automatic, 
-	"width" -> Automatic, 
-	"height" -> Automatic, 
-	"thumb" -> Automatic, 
-	"caption" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"captionEntities" -> Automatic, 
-	"supports_Streaming" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "duration" -> Automatic, 
+    "width" -> Automatic, 
+    "height" -> Automatic, 
+    "thumb" -> Automatic, 
+    "caption" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "captionEntities" -> Automatic, 
+    "supports_Streaming" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[sendVideo] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendVideo}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendVideo}]
 }
 
 
 TelegramBot /: sendVideo[bot_TelegramBot, chatId: _String | _Integer, video_Video, 
-	opts: OptionsPattern[{exec, sendVideo}]] := 
+    opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts, "Form" -> "FormData"]
 
 
 TelegramBot /: sendVideo[bot_TelegramBot, chatId: _String | _Integer, video: _String | _URL, 
-	opts: OptionsPattern[{exec, sendVideo}]] := 
+    opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts]
 
 
@@ -694,35 +705,35 @@ exec[bot, {"sendVideo", "chatId" -> chatId, "video" -> video, opts}, opts]
 
 
 Options[sendAnimation] = {
-	"messageThreadId" -> Automatic, 
-	"duration" -> Automatic, 
-	"width" -> Automatic, 
-	"height" -> Automatic, 
-	"thumb" -> Automatic, 
-	"caption" -> Automatic, 
-	"parseMode" -> Automatic, 
-	"captionEntities" -> Automatic, 
-	"disableNotification" -> Automatic, 
-	"protectContent" -> Automatic, 
-	"replyToMessageId" -> Automatic, 
-	"allowSendingWithoutReply" -> Automatic, 
-	"replyMarkup" -> Automatic
+    "messageThreadId" -> Automatic, 
+    "duration" -> Automatic, 
+    "width" -> Automatic, 
+    "height" -> Automatic, 
+    "thumb" -> Automatic, 
+    "caption" -> Automatic, 
+    "parseMode" -> Automatic, 
+    "captionEntities" -> Automatic, 
+    "disableNotification" -> Automatic, 
+    "protectContent" -> Automatic, 
+    "replyToMessageId" -> Automatic, 
+    "allowSendingWithoutReply" -> Automatic, 
+    "replyMarkup" -> Automatic
 }
 
 
 SyntaxInformation[sendAnimation] = {
-	"ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, sendAnimation}]
+    "ArgumentsPattern" -> {_., _, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, sendAnimation}]
 }
 
 
 TelegramBot /: sendAnimation[bot_TelegramBot, chatId: _String | _Integer, animation_Manipulate, 
-	opts: OptionsPattern[{exec, sendVideo}]] := 
+    opts: OptionsPattern[{exec, sendVideo}]] := 
 exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts, "Form" -> "FormData"]
 
 
 TelegramBot /: sendAnimation[bot_TelegramBot, chatId: _String | _Integer, animation: _String | _URL, 
-	opts: OptionsPattern[{exec, sendAnimation}]] := 
+    opts: OptionsPattern[{exec, sendAnimation}]] := 
 exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts}, opts]
 
 
@@ -731,19 +742,19 @@ exec[bot, {"sendAnimation", "chatId" -> chatId, "animation" -> animation, opts},
 
 
 Options[getUserProfilePhotos] = {
-	"offset" -> Automatic, 
-	"limit" -> Automatic
+    "offset" -> Automatic, 
+    "limit" -> Automatic
 }
 
 
 SyntaxInformation[getUserProfilePhotos] = {
-	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, getUserProfilePhotos}]
+    "ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, getUserProfilePhotos}]
 }
 
 
 TelegramBot /: getUserProfilePhotos[bot_TelegramBot, userId: _String | _Integer, 
-	opts: OptionsPattern[{exec, getUserProfilePhotos}]] := 
+    opts: OptionsPattern[{exec, getUserProfilePhotos}]] := 
 exec[bot, {"getUserProfilePhotos", "userId" -> userId, opts}, opts]
 
 
@@ -752,21 +763,21 @@ exec[bot, {"getUserProfilePhotos", "userId" -> userId, opts}, opts]
 
 
 Options[answerCallbackQuery] = {
-	"text" -> Automatic, 
-	"showAlert" -> Automatic, 
-	"url" -> Automatic, 
-	"cacheTime" -> Automatic
+    "text" -> Automatic, 
+    "showAlert" -> Automatic, 
+    "url" -> Automatic, 
+    "cacheTime" -> Automatic
 }
 
 
 SyntaxInformation[answerCallbackQuery] = {
-	"ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
-	"OptionNames" -> optionNames[{exec, answerCallbackQuery}]
+    "ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, answerCallbackQuery}]
 }
 
 
 TelegramBot /: answerCallbackQuery[bot_TelegramBot, callbackQueryId: _String | _Integer, 
-	opts: OptionsPattern[{exec, answerCallbackQuery}]] := 
+    opts: OptionsPattern[{exec, answerCallbackQuery}]] := 
 exec[bot, {"answerCallbackQuery", "callbackQueryId" -> callbackQueryId, opts}, opts]
 
 

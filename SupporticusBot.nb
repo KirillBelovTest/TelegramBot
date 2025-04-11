@@ -1,0 +1,604 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     25662,        596]
+NotebookOptionsPosition[     23489,        561]
+NotebookOutlinePosition[     23896,        577]
+CellTagsIndexPosition[     23853,        574]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"SetDirectory", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9533562582835464`*^9, 3.9533562678805065`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"74e256ad-d0f7-f04a-94bf-9d96ec1a3a5b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"PacletDirectoryLoad", "[", 
+    RowBox[{"NotebookDirectory", "[", "]"}], "]"}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9532563133743553`*^9, 3.9532563310426807`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"18b7d192-a3f4-4040-8c5e-530cb27474dd"],
+
+Cell[BoxData[
+ RowBox[{"<<", "KirillBelov`TelegramBot`"}]], "Code",
+ CellChangeTimes->{{3.953256337537533*^9, 3.953256344171669*^9}},
+ CellLabel->"In[3]:=",ExpressionUUID->"f8e24a67-ba00-f846-a47e-f7db962e5914"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"bot", " ", "=", " ", 
+    RowBox[{
+    "TelegramBot", 
+     "[", "\"\<7679621349:AAF_ME81Z-gq-jwU2sSNGwU7NWuKzGu4VDE\>\"", "]"}]}], 
+   ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9532563480375977`*^9, 3.9532563538986187`*^9}, 
+   3.9532563912998333`*^9, 3.9532621637219257`*^9, {3.953358923449375*^9, 
+   3.953358924991375*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"c95432af-7ed4-e04c-9c08-da291e88ebb0"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"session", " ", "=", " ", 
+    RowBox[{"CreateBotSession", "[", 
+     RowBox[{"bot", ",", " ", "handler", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"10", ",", " ", "20000000"}], "}"}]}], "]"}]}], ";"}], 
+  " "}]], "Code",
+ CellChangeTimes->{{3.9532625165798664`*^9, 3.9532625466314373`*^9}, {
+  3.953269813644209*^9, 3.953269813752714*^9}, {3.9533589486966457`*^9, 
+  3.953358955827196*^9}, {3.9533801621894608`*^9, 3.9533801667271442`*^9}},
+ CellLabel->"In[5]:=",ExpressionUUID->"bc2b43b1-97ee-be4f-94f8-8a6df8f98272"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"!", 
+      RowBox[{"ListQ", "[", "history", "]"}]}], ",", " ", 
+     RowBox[{"history", " ", "=", " ", 
+      RowBox[{"{", "}"}]}]}], "]"}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.953262678421837*^9, 3.9532627125874577`*^9}, {
+  3.953269817794138*^9, 3.9532698178902264`*^9}, {3.953335726716055*^9, 
+  3.9533357365759583`*^9}},
+ CellLabel->"In[6]:=",ExpressionUUID->"19e5b017-e026-2948-a783-23ea3130390b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"handler", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"(", "\[IndentingNewLine]", "\t", 
+      RowBox[{
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"history", ",", " ", "#2"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\t", 
+       RowBox[{"newUserEventReply", "[", "##", "]"}], ";", "\n", "\t", 
+       RowBox[{"saveAssocToDatabase", "[", 
+        RowBox[{"\"\<supporticus.sqlite\>\"", ",", " ", "\"\<updates\>\"", ",",
+          " ", "#2"}], "]"}], ";", "\[IndentingNewLine]", "\t", 
+       RowBox[{"Echo", "[", 
+        RowBox[{"{", "##", "}"}], "]"}]}], "\[IndentingNewLine]", ")"}], 
+     "&"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.953262535782379*^9, 3.953262560847332*^9}, {
+  3.953262718339243*^9, 3.9532627304030647`*^9}, {3.953263782852049*^9, 
+  3.9532637931360645`*^9}, {3.9532642994866695`*^9, 3.9532643092672615`*^9}, {
+  3.953269849049711*^9, 3.9532698491208553`*^9}, {3.9533357154355335`*^9, 
+  3.953335716943825*^9}, {3.953356302775753*^9, 3.953356323367687*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"ef287bca-fac4-9248-998a-4ed189335ffb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"newUserEventQ", "[", 
+     RowBox[{"bot_", ",", " ", 
+      RowBox[{"update_", "?", "AssociationQ"}]}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"KeyExistsQ", "[", 
+      RowBox[{"update", ",", " ", "\"\<message\>\""}], "]"}], " ", "&&", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"update", "[", 
+       RowBox[{"\"\<message\>\"", ",", " ", "\"\<chat\>\"", ",", 
+        " ", "\"\<id\>\""}], "]"}], "==", 
+      RowBox[{"-", "1002635107081"}]}], " ", "&&", "\[IndentingNewLine]", 
+     RowBox[{"KeyExistsQ", "[", 
+      RowBox[{
+       RowBox[{"update", "[", "\"\<message\>\"", "]"}], ",", 
+       " ", "\"\<new_chat_members\>\""}], "]"}]}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9532639723105984`*^9, 3.9532640544831924`*^9}, {
+   3.953264871598896*^9, 3.953264882837366*^9}, 3.9532649557026367`*^9, {
+   3.9533357073505325`*^9, 3.953335707669735*^9}},
+ CellLabel->"In[8]:=",ExpressionUUID->"6e49c071-26db-cb44-bec1-5aa5bfe95275"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"newUserEventReply", "[", 
+      RowBox[{"bot_", ",", " ", "update_"}], "]"}], " ", "/;", " ", 
+     RowBox[{"newUserEventQ", "[", 
+      RowBox[{"bot", ",", " ", "update"}], "]"}]}], ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"sendMessage", "[", 
+     RowBox[{"bot", ",", " ", 
+      RowBox[{"update", "[", 
+       RowBox[{"\"\<message\>\"", ",", " ", "\"\<chat\>\"", ",", 
+        " ", "\"\<id\>\""}], "]"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"\"\<\:041f\:0440\:0438\:0432\:0435\:0442\:0441\:0442\:0432\
+\:0443\:044e, @\>\"", " ", "<>", " ", 
+       RowBox[{"StringRiffle", "[", 
+        RowBox[{
+         RowBox[{"update", "[", 
+          RowBox[{"[", 
+           
+           RowBox[{"\"\<message\>\"", ",", " ", "\"\<new_chat_members\>\"", ",",
+             " ", "All", ",", " ", "\"\<username\>\""}], "]"}], "]"}], ",", 
+         " ", "\"\< @\>\""}], "]"}], " ", "<>", 
+       " ", "\"\<!\n\:041f\:043e\:0436\:0430\:043b\:0443\:0439\:0441\:0442\
+\:0430, \:043f\:0440\:043e\:0447\:0438\:0442\:0430\:0439\:0442\:0435 \:0432\
+\:043d\:0438\:043c\:0430\:0442\:0435\:043b\:044c\:043d\:043e \:0437\:0430\
+\:043a\:0440\:0435\:043f\:043b\:0435\:043d\:043d\:044b\:0435 \:0441\:043e\
+\:043e\:0431\:0449\:0435\:043d\:0438\:0435 \:0438 \:043d\:0430\:043f\:0438\
+\:0448\:0438\:0442\:0435 \:043f\:043e\:0441\:0442-\:0437\:043d\:0430\:043a\
+\:043e\:043c\:0441\:0442\:0432\:043e.\n\n\
+[\:041f\:0440\:0430\:0432\:0438\:043b\:0430](https://t.me/c/2635107081/1/4)\n\
+[\:0417\:043d\:0430\:043a\:043e\:043c\:0441\:0442\:0432\:043e](https://t.me/c/\
+2635107081/1/8)\>\""}], ",", " ", "\[IndentingNewLine]", "\t", 
+      RowBox[{"\"\<parseMode\>\"", " ", "->", " ", "\"\<markdown\>\""}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9532640612411137`*^9, 3.9532642886707497`*^9}, {
+   3.9532643434433575`*^9, 3.9532643619422092`*^9}, 3.9532645081346874`*^9, {
+   3.9533356302703705`*^9, 3.9533356864883804`*^9}, {3.9533357666450825`*^9, 
+   3.9533357695977592`*^9}},
+ CellLabel->"In[9]:=",ExpressionUUID->"769d4542-740b-1b44-ab9e-f0bd12d0c0ee"],
+
+Cell[CellGroupData[{
+
+Cell["DB", "Section",
+ CellChangeTimes->{{3.9533463077314243`*^9, 
+  3.953346307744692*^9}},ExpressionUUID->"676f59e2-ce05-7149-94be-\
+0b3a5dd485fd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Needs", "[", "\"\<DatabaseLink`\>\"", "]"}], ";"}]], "Code",
+ CellChangeTimes->{{3.9533542666235924`*^9, 3.95335426853862*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"07262a6f-af53-5d49-9479-84b39689ab31"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"flatAssoc", "[", 
+     RowBox[{"assoc_", "?", "AssociationQ"}], "]"}], " ", ":=", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"KeySort", "[", 
+     RowBox[{"<|", 
+      RowBox[{"KeyValueMap", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"flatAssoc", "[", 
+          RowBox[{"#1", ",", " ", "#2"}], "]"}], "&"}], ",", " ", "assoc"}], 
+       "]"}], "|>"}], "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.953341901998722*^9, 3.953342017862406*^9}, {
+  3.953359071673601*^9, 3.9533590753048134`*^9}},
+ CellLabel->"In[11]:=",ExpressionUUID->"56a5dd1f-406d-524f-ac7b-041fe3663965"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"flatAssoc", "[", 
+     RowBox[{"key_String", ",", " ", 
+      RowBox[{"assoc_", "?", "AssociationQ"}]}], "]"}], " ", ":=", " ", "\n", 
+    RowBox[{"KeyValueMap", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"flatAssoc", "[", 
+        RowBox[{
+         RowBox[{"key", " ", "<>", " ", "\"\<__\>\"", " ", "<>", " ", "#1"}], 
+         ",", " ", "#2"}], "]"}], "&"}], ",", " ", "assoc"}], "]"}]}], ";"}], 
+  " "}]], "Code",
+ CellChangeTimes->{{3.9533420122107925`*^9, 3.953342129300249*^9}},
+ CellLabel->"In[12]:=",ExpressionUUID->"a36a667e-a44a-1040-9ec5-8a5828586a0a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"flatAssoc", "[", 
+     RowBox[{"key_String", ",", " ", 
+      RowBox[{"array_", "?", "ListQ"}]}], "]"}], " ", ":=", " ", "\n", 
+    RowBox[{"MapIndexed", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"flatAssoc", "[", 
+        RowBox[{
+         RowBox[{"key", " ", "<>", " ", "\"\<__\>\"", " ", "<>", " ", 
+          RowBox[{"ToString", "[", 
+           RowBox[{"#2", "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ",", " ", "#1"}], "]"}], 
+       "&"}], ",", " ", "array"}], "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9533420122107925`*^9, 3.953342129300249*^9}, {
+  3.953342295995264*^9, 3.953342335072714*^9}, {3.9533423901704903`*^9, 
+  3.9533423940986156`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"3fcd84fb-118c-cd47-97e0-094f36fb993d"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"flatAssoc", "[", 
+     RowBox[{"key_String", ",", " ", "value_"}], "]"}], " ", ":=", " ", "\n", 
+    RowBox[{"key", " ", "->", " ", "value"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9533421332974243`*^9, 3.953342159912657*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"c11e5a67-5d48-0748-b7cd-32cfed838736"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"createDatabaseConnection", "[", "dbFile_String", "]"}], " ", ":=",
+     " ", "\n", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"connection", ",", " ", "dbFileFull"}], "}"}], ",", " ", "\n", 
+      "\t", 
+      RowBox[{
+       RowBox[{"dbFileFull", " ", "=", " ", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"!", 
+           RowBox[{"FileExistsQ", "[", "dbFile", "]"}]}], ",", " ", "\n", 
+          "\t\t", 
+          RowBox[{"FileNameJoin", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Directory", "[", "]"}], ",", " ", "dbFile"}], "}"}], 
+           "]"}], ",", " ", "\n", "\t\t", 
+          RowBox[{"AbsoluteFileName", "[", "dbFile", "]"}]}], "\n", "\t", 
+         "]"}]}], ";", " ", "\n", "\t", "\n", "\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"AssociationQ", "[", "$databaseConnections", "]"}]}], ",", 
+         " ", "\n", "\t\t", 
+         RowBox[{
+          RowBox[{"$databaseConnections", " ", "=", " ", 
+           RowBox[{"<|", "|>"}]}], ";"}]}], " ", "\n", "\t", "]"}], ";", "\n",
+        "\t", "\n", "\t", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"!", 
+          RowBox[{"KeyExistsQ", "[", 
+           RowBox[{"$databaseConnections", ",", " ", "dbFileFull"}], "]"}]}], 
+         ",", " ", "\n", "\t\t", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"$databaseConnections", "[", "dbFileFull", "]"}], " ", "=",
+            " ", 
+           RowBox[{"OpenSQLConnection", "[", 
+            RowBox[{"JDBC", "[", 
+             RowBox[{"\"\<SQLite\>\"", ",", " ", "dbFileFull"}], "]"}], 
+            "]"}]}], ";"}]}], " ", "\n", "\t", "]"}], ";", "\n", "\t\t", "\n",
+        "\t", 
+       RowBox[{"(*", "Return", "*)"}], "\n", "\t", 
+       RowBox[{"$databaseConnections", "[", "dbFileFull", "]"}]}]}], "\n", 
+     "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9533464808510857`*^9, 3.9533466534282207`*^9}, {
+  3.9533467572234325`*^9, 3.953346767355932*^9}, {3.9533473119535656`*^9, 
+  3.953347312060898*^9}, {3.953348084523224*^9, 3.953348125993017*^9}, {
+  3.953348302638935*^9, 3.9533483225421104`*^9}, {3.9533528203412876`*^9, 
+  3.9533528247604504`*^9}},
+ CellLabel->"In[15]:=",ExpressionUUID->"5fc9dd4d-4ef5-f744-9da6-92c7b5d5b92e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"assocToDatabaseTableSchema", "[", 
+     RowBox[{"assoc_", "?", "AssociationQ"}], "]"}], " ", ":=", " ", "\n", 
+    RowBox[{"KeySort", "[", 
+     RowBox[{"<|", 
+      RowBox[{
+       RowBox[{"KeyValueMap", "[", "\n", "\t", 
+        RowBox[{
+         RowBox[{"#1", " ", "->", " ", 
+          RowBox[{"Which", "[", "\n", "\t\t", 
+           RowBox[{
+            RowBox[{"StringQ", "[", "#2", "]"}], ",", " ", "\"\<TEXT\>\"", ",",
+             " ", "\n", "\t\t", 
+            RowBox[{"IntegerQ", "[", "#2", "]"}], ",", " ", "\"\<INTEGER\>\"",
+             ",", " ", "\n", "\t\t", 
+            RowBox[{"NumericQ", "[", "#2", "]"}], ",", " ", "\"\<REAL\>\"", ",",
+             " ", "\n", "\t\t", 
+            RowBox[{"BooleanQ", "[", "#2", "]"}], ",", " ", "\"\<BOOLEAN\>\"",
+             ",", " ", "\n", "\t\t", "True", ",", " ", "\"\<TEXT\>\""}], "\n",
+            "\t", "]"}]}], "\n", "&"}], "]"}], " ", "@", " ", "assoc"}], 
+      "|>"}], "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.9533473347885647`*^9, 3.953347356906063*^9}, {
+  3.9533474153553085`*^9, 3.95334742959758*^9}, {3.95334772807609*^9, 
+  3.95334798982724*^9}, {3.9533480410795364`*^9, 3.953348064540924*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"c7bb640a-c620-664f-88f6-f708bec0561f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"updateDatabaseTableSchema", "[", 
+   RowBox[{
+   "connection_", ",", " ", "dbFile_", ",", " ", "tableName_", ",", " ", 
+    RowBox[{"newSchema_", "?", "AssociationQ"}]}], "]"}], " ", ":=", " ", 
+  "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "dbFileFull", " ", ",", " ", "schemaDiff", ",", " ", "createQuery", ",", 
+      " ", "alterQuery", ",", " ", "columns", ",", " ", "oldSchema"}], "}"}], 
+    ",", " ", "\n", "\t", "\n", "\t", 
+    RowBox[{
+     RowBox[{"dbFileFull", " ", "=", " ", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"!", 
+         RowBox[{"FileExistsQ", "[", "dbFile", "]"}]}], ",", " ", "\n", 
+        "\t\t", 
+        RowBox[{"FileNameJoin", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Directory", "[", "]"}], ",", " ", "dbFile"}], "}"}], 
+         "]"}], ",", " ", "\n", "\t\t", 
+        RowBox[{"AbsoluteFileName", "[", "dbFile", "]"}]}], "\n", "\t", 
+       "]"}]}], ";", " ", "\n", "\t", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"AssociationQ", "[", "$databaseTableSchemas", "]"}]}], ",", 
+       " ", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"$databaseTableSchemas", " ", "=", " ", 
+         RowBox[{"<|", "|>"}]}], ";"}]}], " ", "\n", "\t", "]"}], ";", "\n", 
+     "\t", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"KeyExistsQ", "[", 
+         RowBox[{"$databaseTableSchemas", ",", " ", "dbFileFull"}], "]"}]}], ",",
+        " ", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"$databaseTableSchemas", "[", "dbFileFull", "]"}], " ", "=", 
+         " ", 
+         RowBox[{"<|", "|>"}]}], ";"}]}], " ", "\n", "\t", "]"}], ";", "\n", 
+     "\t", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"!", 
+        RowBox[{"KeyExistsQ", "[", 
+         RowBox[{
+          RowBox[{"$databaseTableSchemas", "[", "dbFileFull", "]"}], ",", " ",
+           "tableName"}], "]"}]}], ",", " ", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"$databaseTableSchemas", "[", 
+          RowBox[{"dbFileFull", ",", " ", "tableName"}], "]"}], " ", "=", " ", 
+         RowBox[{"<|", "|>"}]}], ";"}]}], " ", "\n", "\t", "]"}], ";", "\n", 
+     "\t", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"$databaseTableSchemas", "[", 
+          RowBox[{"dbFileFull", ",", " ", "tableName"}], "]"}], " ", "===", 
+         " ", 
+         RowBox[{"<|", "|>"}]}], " ", "&&", " ", 
+        RowBox[{"newSchema", " ", "=!=", " ", 
+         RowBox[{"<|", "|>"}]}]}], ",", " ", "\n", "\t\t", 
+       RowBox[{
+        RowBox[{"columns", " ", "=", " ", 
+         RowBox[{"StringRiffle", "[", 
+          RowBox[{
+           RowBox[{"KeyValueMap", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+              "#1", " ", "<>", " ", "\"\< \>\"", " ", "<>", " ", "#2"}], 
+              "&"}], ",", " ", "newSchema"}], "]"}], ",", " ", "\"\<, \>\""}],
+           "]"}]}], ";", "\n", "\t\t", 
+        RowBox[{
+         RowBox[{"$databaseTableSchemas", "[", 
+          RowBox[{"dbFileFull", ",", " ", "tableName"}], "]"}], " ", "=", " ",
+          "newSchema"}], ";", " ", "\n", "\t", "\n", "\t\t", 
+        RowBox[{"createQuery", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+          "StringTemplate", 
+           "[", "\"\<CREATE TABLE IF NOT EXISTS `1` (`2`)\>\"", "]"}], "[", 
+          RowBox[{"tableName", ",", " ", "columns"}], "]"}]}], ";", " ", "\n",
+         "\t\t", 
+        RowBox[{"SQLExecute", "[", 
+         RowBox[{"connection", ",", " ", "createQuery"}], "]"}], ";"}]}], 
+      "\n", "\t", "]"}], ";", "\n", "\t", "\n", "\t", 
+     RowBox[{"oldSchema", " ", "=", " ", 
+      RowBox[{"$databaseTableSchemas", "[", 
+       RowBox[{"dbFileFull", ",", " ", "tableName"}], "]"}]}], ";", " ", "\n",
+      "\t", "\n", "\t", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"oldSchema", " ", "=!=", " ", "newSchema"}], ",", " ", "\n", 
+       "\t\t", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"$databaseTableSchemas", "[", 
+          RowBox[{"dbFileFull", ",", " ", "tableName"}], "]"}], " ", "=", " ", 
+         RowBox[{"Join", "[", 
+          RowBox[{"oldSchema", ",", " ", "newSchema"}], "]"}]}], ";", "\n", 
+        "\t\t", 
+        RowBox[{"schemaDiff", " ", "=", " ", 
+         RowBox[{"KeyComplement", "[", 
+          RowBox[{"{", 
+           RowBox[{"newSchema", ",", " ", "oldSchema"}], "}"}], "]"}]}], ";", 
+        " ", "\n", "\t\t", "\n", "\t\t", 
+        RowBox[{"alterQuery", " ", "=", " ", 
+         RowBox[{
+         "StringTemplate", "[", "\"\<ALTER TABLE `1` ADD COLUMN `2` `3`\>\"", 
+          "]"}]}], ";", " ", "\n", "\t\t", "\n", "\t\t", 
+        RowBox[{"KeyValueMap", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"SQLExecute", "[", 
+            RowBox[{"connection", ",", " ", 
+             RowBox[{"alterQuery", "[", 
+              RowBox[{"tableName", ",", " ", "#1", ",", " ", "#2"}], "]"}]}], 
+            "]"}], "&"}], ",", " ", "schemaDiff"}], "]"}], ";"}]}], " ", "\n",
+       "\t", "]"}], ";"}]}], "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.953347319588217*^9, 3.95334732634918*^9}, {
+   3.9533477243107624`*^9, 3.9533477253470345`*^9}, {3.953348326624569*^9, 
+   3.9533484093811474`*^9}, {3.953348441490589*^9, 3.953348508781536*^9}, {
+   3.9533486838505783`*^9, 3.9533487017278137`*^9}, {3.953348735502329*^9, 
+   3.953348740035593*^9}, {3.9533491008647385`*^9, 3.9533491112233067`*^9}, {
+   3.953350865944971*^9, 3.953350918072626*^9}, {3.953351497327244*^9, 
+   3.9533515096137447`*^9}, {3.953351687376974*^9, 3.9533517735755405`*^9}, {
+   3.9533518097584267`*^9, 3.9533520301410427`*^9}, {3.953352199822262*^9, 
+   3.9533522728981304`*^9}, {3.953352341385689*^9, 3.9533525034728584`*^9}, {
+   3.953352549647854*^9, 3.953352550804203*^9}, {3.953352701719158*^9, 
+   3.9533528063663616`*^9}, {3.9533532559002857`*^9, 3.9533532662002506`*^9}, 
+   3.953353915022585*^9, {3.9533545069199905`*^9, 3.953354512861944*^9}, {
+   3.95335476352701*^9, 3.953354766392662*^9}, {3.9533548754316463`*^9, 
+   3.9533548946321793`*^9}, {3.953354991661417*^9, 3.9533550250949497`*^9}, {
+   3.953356163862629*^9, 3.953356176512535*^9}, {3.9533570391488075`*^9, 
+   3.9533570408332043`*^9}, {3.953358330759424*^9, 3.9533583323708553`*^9}, {
+   3.953359991470793*^9, 3.9533599960592957`*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"71bd0be4-b876-1243-a7af-0fcd503e0ffb"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"insertAssoc", "[", 
+   RowBox[{"conn_", ",", " ", "table_String", ",", " ", 
+    RowBox[{"flatedAssoc_", "?", "AssociationQ"}]}], "]"}], " ", ":=", " ", 
+  "\n", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"insertQuery", ",", " ", "columns", ",", " ", "values"}], "}"}], 
+    ",", " ", "\n", "\t", 
+    RowBox[{
+     RowBox[{"columns", " ", "=", " ", 
+      RowBox[{"Keys", "[", "flatedAssoc", "]"}]}], ";", " ", "\n", "\t", 
+     RowBox[{"values", " ", "=", " ", 
+      RowBox[{"Values", "[", "flatedAssoc", "]"}]}], ";", " ", "\n", "\t", 
+     RowBox[{"SQLInsert", "[", 
+      RowBox[{
+      "conn", ",", " ", "table", ",", " ", "columns", ",", " ", "values"}], 
+      "]"}], ";"}]}], " ", "\n", "]"}]}]], "Code",
+ CellChangeTimes->{{3.9533538364144325`*^9, 3.9533539240869045`*^9}, {
+   3.9533539989372807`*^9, 3.953354113298317*^9}, 3.9533545183753757`*^9, {
+   3.9533547089246597`*^9, 3.9533547100892277`*^9}, {3.9533549093431377`*^9, 
+   3.953354916124195*^9}, {3.9533550328002796`*^9, 3.9533550386159286`*^9}, 
+   3.953355211248913*^9, {3.953356022281332*^9, 3.9533560949037323`*^9}, {
+   3.9533561568413277`*^9, 3.9533561593695717`*^9}},
+ CellLabel->"In[18]:=",ExpressionUUID->"01315178-2f17-5d44-9a30-20a6e8d9cb98"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"saveAssocToDatabase", "[", 
+     RowBox[{"db_String", ",", " ", "table_String", ",", " ", 
+      RowBox[{"assoc_", "?", "AssociationQ"}]}], "]"}], " ", ":=", " ", "\n", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "flatedAssoc", ",", " ", "conn", ",", " ", "assocSchema", ",", " ", 
+        "tableSchema"}], "}"}], ",", " ", "\n", "\t", 
+      RowBox[{
+       RowBox[{"flatedAssoc", " ", "=", " ", 
+        RowBox[{"flatAssoc", "[", "assoc", "]"}]}], ";", " ", "\n", "\t", 
+       RowBox[{"conn", " ", "=", " ", 
+        RowBox[{"createDatabaseConnection", "[", "db", "]"}]}], ";", " ", 
+       "\n", "\t", 
+       RowBox[{"assocSchema", " ", "=", " ", 
+        RowBox[{"assocToDatabaseTableSchema", "[", "flatedAssoc", "]"}]}], ";",
+        " ", "\n", "\t", 
+       RowBox[{"updateDatabaseTableSchema", "[", 
+        RowBox[{
+        "conn", ",", " ", "db", ",", " ", "table", ",", " ", "assocSchema"}], 
+        "]"}], ";", " ", "\n", "\t", 
+       RowBox[{"insertAssoc", "[", 
+        RowBox[{"conn", ",", " ", "table", ",", " ", "flatedAssoc"}], "]"}], 
+       ";"}]}], " ", "\n", "]"}]}], ";"}], " "}]], "Code",
+ CellChangeTimes->{{3.953346342339634*^9, 3.953346355338724*^9}, {
+  3.953346785079588*^9, 3.9533468111420155`*^9}, {3.953347259920286*^9, 
+  3.9533472955722218`*^9}, {3.9533488323903694`*^9, 3.9533490628840103`*^9}, {
+  3.953352577138584*^9, 3.953352580605379*^9}, {3.953352866791029*^9, 
+  3.953352869901762*^9}, {3.953353852302513*^9, 3.953353866318447*^9}, {
+  3.9533544403442745`*^9, 3.9533544403884087`*^9}, {3.953354682364647*^9, 
+  3.9533546827273884`*^9}},
+ CellLabel->"In[19]:=",ExpressionUUID->"297bb383-9eba-b441-958b-b8688c07053d"]
+}, Open  ]]
+},
+WindowSize->{1920, 1011.75},
+WindowMargins->{{-6, Automatic}, {Automatic, -6}},
+FrontEndVersion->"14.2 for Microsoft Windows (64-bit) (December 26, 2024)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"4d61df99-b9c3-ae4a-935e-0ec503167c6d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 290, 6, 50, "Code",ExpressionUUID->"74e256ad-d0f7-f04a-94bf-9d96ec1a3a5b"],
+Cell[847, 28, 297, 6, 50, "Code",ExpressionUUID->"18b7d192-a3f4-4040-8c5e-530cb27474dd"],
+Cell[1147, 36, 211, 3, 50, "Code",ExpressionUUID->"f8e24a67-ba00-f846-a47e-f7db962e5914"],
+Cell[1361, 41, 455, 11, 50, "Code",ExpressionUUID->"c95432af-7ed4-e04c-9c08-da291e88ebb0"],
+Cell[1819, 54, 569, 12, 50, "Code",ExpressionUUID->"bc2b43b1-97ee-be4f-94f8-8a6df8f98272"],
+Cell[2391, 68, 496, 12, 50, "Code",ExpressionUUID->"19e5b017-e026-2948-a783-23ea3130390b"],
+Cell[2890, 82, 1121, 22, 137, "Code",ExpressionUUID->"ef287bca-fac4-9248-998a-4ed189335ffb"],
+Cell[4014, 106, 1057, 24, 102, "Code",ExpressionUUID->"6e49c071-26db-cb44-bec1-5aa5bfe95275"],
+Cell[5074, 132, 2161, 41, 190, "Code",ExpressionUUID->"769d4542-740b-1b44-ab9e-f0bd12d0c0ee"],
+Cell[CellGroupData[{
+Cell[7260, 177, 149, 3, 66, "Section",ExpressionUUID->"676f59e2-ce05-7149-94be-0b3a5dd485fd"],
+Cell[7412, 182, 241, 4, 50, "Code",ExpressionUUID->"07262a6f-af53-5d49-9479-84b39689ab31"],
+Cell[7656, 188, 656, 17, 67, "Code",ExpressionUUID->"56a5dd1f-406d-524f-ac7b-041fe3663965"],
+Cell[8315, 207, 630, 16, 67, "Code",ExpressionUUID->"a36a667e-a44a-1040-9ec5-8a5828586a0a"],
+Cell[8948, 225, 832, 20, 67, "Code",ExpressionUUID->"3fcd84fb-118c-cd47-97e0-094f36fb993d"],
+Cell[9783, 247, 374, 8, 67, "Code",ExpressionUUID->"c11e5a67-5d48-0748-b7cd-32cfed838736"],
+Cell[10160, 257, 2375, 57, 348, "Code",ExpressionUUID->"5fc9dd4d-4ef5-f744-9da6-92c7b5d5b92e"],
+Cell[12538, 316, 1320, 27, 208, "Code",ExpressionUUID->"c7bb640a-c620-664f-88f6-f708bec0561f"],
+Cell[13861, 345, 6559, 147, 717, "Code",ExpressionUUID->"71bd0be4-b876-1243-a7af-0fcd503e0ffb"],
+Cell[20423, 494, 1285, 26, 137, "Code",ExpressionUUID->"01315178-2f17-5d44-9a30-20a6e8d9cb98"],
+Cell[21711, 522, 1762, 36, 172, "Code",ExpressionUUID->"297bb383-9eba-b441-958b-b8688c07053d"]
+}, Open  ]]
+}
+]
+*)
+
