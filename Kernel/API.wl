@@ -56,6 +56,14 @@ getWebhookInfo::usage =
 bot@getWebhookInfo[] another way to call this method";
 
 
+exportChatInviteLink::usage =
+"exportChatInviteLink[bot, chatId] get invite link for the chatId.";
+
+
+getFilePath::usage =
+"getFilePath[bot, fileId] get file path of the fileId."
+
+
 sendMessage::usage = 
 "sendMessage[bot, chatId, text] send text messages
 bot@sendMessage[chatId, text] another way to call this method."
@@ -289,6 +297,19 @@ TelegramBot /: getMe[bot_TelegramBot, opts: OptionsPattern[{exec}]] :=
 exec[bot, {"getMe"}, opts]
 
 
+(*getFilePath*)
+
+
+SyntaxInformation[getFilePath] = {
+    "ArgumentsPattern" -> {_, _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec}]
+}
+
+
+TelegramBot /: getFilePath[bot_TelegramBot, fileId_String, opts: OptionsPattern[{exec}]] := 
+exec[bot, {"getFile", "file_id" -> fileId, opts}, opts]; 
+
+
 (* ::Subsection:: *)
 (*logOut*)
 
@@ -345,7 +366,8 @@ exec[bot, {"getUpdates", opts}, opts]
 (**)
 
 
-TelegramBot /: getChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
+TelegramBot /: 
+getChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
 exec[bot, {"getChatMember", "chat_id" -> chatId, "user_id" -> userId, opts}, opts];
 
 
@@ -372,6 +394,29 @@ SyntaxInformation[setWebhook] = {
 TelegramBot /: 
 setWebhook[bot_TelegramBot, url_String, opts: OptionsPattern[{exec, setWebhook}]] := 
 exec[bot, {"setWebhook", "url" -> url, opts}, opts]
+
+
+(* ::Subsection:: *)
+(*exportChatInviteLink*)
+
+
+Options[exportChatInviteLink] = {
+    "name" -> Automatic, 
+    "expireDate" -> Automatic, 
+    "memberLimit" -> Automatic, 
+    "createsJoinRequest" -> Automatic
+}
+
+
+SyntaxInformation[exportChatInviteLink] = {
+    "ArgumentsPattern" -> {_., _, OptionsPattern[]}, 
+    "OptionNames" -> optionNames[{exec, setWebhook}]
+}
+
+
+TelegramBot /: 
+exportChatInviteLink[bot_TelegramBot, chatId_Integer, opts: OptionsPattern[{exec, exportChatInviteLink}]] := 
+exec[bot, {"exportChatInviteLink", "chat_id" -> chatId, opts}, opts]; 
 
 
 (* ::Subsection:: *)

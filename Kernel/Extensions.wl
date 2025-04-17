@@ -9,8 +9,8 @@
 
 
 BeginPackage["KirillBelov`TelegramBot`Extensions`", {
-	"KirillBelov`TelegramBot`Type`", 
-	"KirillBelov`TelegramBot`API`"
+    "KirillBelov`TelegramBot`Type`", 
+    "KirillBelov`TelegramBot`API`"
 }]; 
 
 
@@ -61,19 +61,24 @@ Begin["`Private`"];
 
 TelegramBot /: ImportTelegramFile[bot_TelegramBot, fileId_String] := 
 Module[{filePath, url}, 
-	filePath = getFile[bot, fileId]["result", "file_path"]; 
-	url = StringTemplate["https://api.telegram.org/file/bot`1`/`2`"][bot["Token"], filePath]; 
-	Import[url]
+    filePath = getFilePath[bot, fileId]["result", "file_path"]; 
+    url = StringTemplate["https://api.telegram.org/file/bot`1`/`2`"][bot["Token"], filePath]; 
+    Import[url]
 ]; 
 
 
-TelegramBot /: HandleBotUpdates[bot_TelegramBot, updateHandler_] := 
+Options[HandleBotUpdates] = {
+    "timeout" -> 0.1
+};
+
+
+TelegramBot /: HandleBotUpdates[bot_TelegramBot, updateHandler_, opts: OptionsPattern[{HandleBotUpdates}]] := 
 Module[{updates}, 
-	updates = getUpdates[bot]["result"]; 
-	If[updates != {}, 
-		Do[updateHandler[bot, update], {update, updates}]; 
-		getUpdates[bot, "offset" -> updates[[-1, "update_id"]] + 1]
-	]
+    updates = getUpdates[bot, "timeout" -> OptionValue[HandleBotUpdates, Flatten[{opts}], "timeout"]]["result"]; 
+    If[updates != {}, 
+        Do[updateHandler[bot, update], {update, updates}]; 
+        getUpdates[bot, "offset" -> updates[[-1, "update_id"]] + 1, "timeout" -> OptionValue[HandleBotUpdates, Flatten[{opts}], "timeout"]]
+    ]
 ]; 
 
 
@@ -83,59 +88,59 @@ HandleBotUpdates[bot, bot["UpdateHandler"]];
 
 
 TelegramBot /: CreateBotSession[bot_TelegramBot, updateHandler: _Symbol | _Function, timespec_List] := (
-	deleteWebhook[bot]; 
-	With[{task = SessionSubmit[ScheduledTask[HandleBotUpdates[bot, updateHandler], timespec]]}, 
-		task
-	]
+    deleteWebhook[bot]; 
+    With[{task = SessionSubmit[ScheduledTask[HandleBotUpdates[bot, updateHandler], timespec]]}, 
+        task
+    ]
 ); 
 
 
 TelegramBot /: CreateBotSession[bot_TelegramBot, updateHandler: _Symbol | _Function] := 
 Module[{timespec}, 
-	timespec = bot["Timespec"]; 
-	CreateBotSession[bot, updateHandler, timespec]
+    timespec = bot["Timespec"]; 
+    CreateBotSession[bot, updateHandler, timespec]
 ]; 
 
 
 TelegramBot /: CreateBotSession[bot_TelegramBot, timespec_List] := 
 Module[{updateHandler}, 
-	updateHandler = bot["UpdateHandler"]; 
-	CreateBotSession[bot, updateHandler, timespec]
+    updateHandler = bot["UpdateHandler"]; 
+    CreateBotSession[bot, updateHandler, timespec]
 ]; 
 
 
 TelegramBot /: CreateBotSession[bot_TelegramBot] := 
 Module[{updateHandler, timespec}, 
-	timespec = bot["Timespec"]; 
-	updateHandler = bot["UpdateHandler"]; 
-	CreateBotSession[bot, updateHandler, timespec]
+    timespec = bot["Timespec"]; 
+    updateHandler = bot["UpdateHandler"]; 
+    CreateBotSession[bot, updateHandler, timespec]
 ]; 
 
 
 TelegramBot /: DeployBotWebhook[bot_TelegramBot, updateHandler: _Symbol | _Function, webhookName_String] := 
 Module[{apiFunction, webhook}, 
-	apiFunction = APIFunction[{}, updateHandler[bot, ImportString[HTTPRequestData["Body"], "RawJSON"]]&]; 
-	webhook = CloudDeploy[apiFunction, webhookName, Permissions -> "Public"]; 
-	setWebhook[bot, webhook[[1]]]; 
-	bot["Webhook"] = webhook
+    apiFunction = APIFunction[{}, updateHandler[bot, ImportString[HTTPRequestData["Body"], "RawJSON"]]&]; 
+    webhook = CloudDeploy[apiFunction, webhookName, Permissions -> "Public"]; 
+    setWebhook[bot, webhook[[1]]]; 
+    bot["Webhook"] = webhook
 ]; 
 
 
 TelegramBot /: DeployBotWebhook[bot_TelegramBot, updateHandler: _Symbol | _Function] := 
 Module[{webhook = Hash[bot["Token"], "SHA", "HexString"]}, 
-	DeployBotWebhook[bot, updateHandler, webhook]
+    DeployBotWebhook[bot, updateHandler, webhook]
 ]; 
 
 
 TelegramBot /: DeployBotWebhook[bot_TelegramBot, webhookName_String] := 
 Module[{updateHandler = bot["UpdateHandler"]}, 
-	DeployBotWebhook[bot, updateHandler, webhookName]
+    DeployBotWebhook[bot, updateHandler, webhookName]
 ]; 
 
 
 TelegramBot /: DeployBotWebhook[bot_TelegramBot] := 
 Module[{updateHandler = bot["UpdateHandler"], webhook = Hash[bot["Token"], "SHA", "HexString"]}, 
-	DeployBotWebhook[bot, updateHandler, webhook]
+    DeployBotWebhook[bot, updateHandler, webhook]
 ]; 
 
 
