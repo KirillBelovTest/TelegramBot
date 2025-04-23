@@ -38,7 +38,11 @@ bot@getUpdates[] another way to call this method"
 
 
 getChatMember::usage = 
-"getUpdates[bot, chatId, userId] get info about the user on managed chat."
+"getUpdates[bot, chatId, userId] get info about the user on managed chat."; 
+
+
+banChatMember::usage = 
+"banChatMember[bot, chatId, userId] get info about the user on managed chat."
 
 
 setWebhook::usage = 
@@ -363,12 +367,23 @@ getUpdates[bot_TelegramBot, opts: OptionsPattern[{exec, getUpdates}]] :=
 exec[bot, {"getUpdates", opts}, opts]
 
 
-(**)
+(*getChatMember*)
 
 
-TelegramBot /: 
-getChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
+TelegramBot /: getChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
 exec[bot, {"getChatMember", "chat_id" -> chatId, "user_id" -> userId, opts}, opts];
+
+
+(*banChatMember*)
+
+
+Options[banChatMember] = {
+    "untilDate" :> Automatic
+};
+
+
+TelegramBot /: banChatMember[bot_TelegramBot, chatId_, userId_, opts : OptionsPattern[{exec}]] := 
+exec[bot, {"banChatMember", "chat_id" -> chatId, "user_id" -> userId, opts}, opts];
 
 
 (* ::Subsection:: *)
