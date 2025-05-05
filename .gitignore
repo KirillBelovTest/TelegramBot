@@ -1,2 +1,4 @@
 # git ignore file
 /build
+/.venv
+/.env
