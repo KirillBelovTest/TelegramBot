@@ -1,0 +1,7 @@
+pyaes==1.6.1
+pyasn1==0.6.1
+pyzmq==26.4.0
+rsa==4.9.1
+setuptools==80.3.1
+Telethon==1.40.0
+zmq==0.0.0
