@@ -1,11 +1,18 @@
 (* ::Package:: *)
 
-BeginPackage["KirillBelov`TelegramBot`"]
+BeginPackage["KirillBelov`TelegramBot`"];
 
 
-EndPackage[]
+EndPackage[];
 
 
-Get["KirillBelov`TelegramBot`Type`"]
-Get["KirillBelov`TelegramBot`API`"]
-Get["KirillBelov`TelegramBot`Extensions`"]
+Get["KirillBelov`TelegramBot`Type`"];
+
+
+Get["KirillBelov`TelegramBot`API`"];
+
+
+Get["KirillBelov`TelegramBot`Extensions`"];
+
+
+Get["KirillBelov`TelegramBot`TelethonClient`"];
