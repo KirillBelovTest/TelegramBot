@@ -7,6 +7,14 @@ TelethonClient::usage =
 "TelethonClient[apiId, apiHash, phoneNumber, sessionName] creates a new Telethon client with the given parameters.";
 
 
+telethonConnectedQ::usage =
+"telethonConnectedQ[client] check connection.";
+
+
+telethonAuthorizedQ::usage =
+"telethonAuthorizedQ[client] check if the client is authorized.";
+
+
 telethonConnect::usage =
 "telethonConnect[client] connects the Telethon client to the Telegram servers.";
 
@@ -15,20 +23,16 @@ telethonDisconnect::usage =
 "telethonDisconnect[client] disconnects from the Telegram servers.";
 
 
-telethonIsConnected::usage =
-"telethonIsConnected[client] check connection.";
-
-
-telethonIsUserAuthorized::usage =
-"telethonIsUserAuthorized[client] check authorization.";
+telethonSendCodeRequest::usage =
+"telethonSendCodeRequest[client] request the code for signing in.";
 
 
 telethonSignIn::usage =
 "telethonSignIn[client, code] sign in using code.";
 
 
-telethonSendCodeRequest::usage =
-"telethonSendCodeRequest[client] request the code for signing in.";
+telethonGetMessages::usage =
+"telethonGetMessages[client, channel] get messages from the specified channel.";
 
 
 Begin["`Private`"];
@@ -48,8 +52,8 @@ With[{id = "telethon_client_" <>
             "id" -> id, 
             "api_id" -> apiId, 
             "api_hash" -> apiHash, 
-            "phoneNumber" -> phoneNumber, 
-            "sessionName" -> sessionName
+            "phone_number" -> phoneNumber, 
+            "session_name" -> sessionName
         |>]; 
 
         py @ StringTemplate[
@@ -64,20 +68,33 @@ from telethon_client import TelethonClient
 ];
 
 
-telethonConnect[TelethonClient[assoc_?AssociationQ]] := 
+telethonConnectedQ[TelethonClient[assoc_?AssociationQ]] := 
+py @ StringTemplate["`id`.is_connected()"] @ assoc;
+
+
+telethonAuthorizedQ[TelethonClient[assoc_?AssociationQ]] := 
+py @ StringTemplate["`id`.is_authorized()"] @ assoc;
+
+
+telethonConnect[client: TelethonClient[assoc_?AssociationQ]] := 
 py @ StringTemplate["`id`.connect()"] @ assoc;
+
 
 
 telethonDisconnect[TelethonClient[assoc_?AssociationQ]] := 
 py @ StringTemplate["`id`.disconnect()"] @ assoc;
 
 
-telethonSignIn[TelethonClient[assoc_?AssociationQ], code_String] := 
+telethonSendCodeRequest[TelethonClient[assoc_?AssociationQ]] := 
+py @ StringTemplate["`id`.send_code_request()"] @ assoc;
+
+
+telethonSignIn[TelethonClient[assoc_?AssociationQ], code: _String | _Integer] := 
 py @ StringTemplate["`id`.sign_in(`code`)"] @ Append[assoc, "code" -> code];
 
 
 telethonGetMessages[TelethonClient[assoc_?AssociationQ], username_String] := 
-py @ StringTemplate["`id`.get_messages(`username`)"] @ Append[assoc, "username" -> username];
+py @ StringTemplate["`id`.get_messages('`username`')"] @ Append[assoc, "username" -> username];
 
 
 With[{directory = DirectoryName[$InputFileName, 2]}, 
