@@ -44,14 +44,6 @@ PacletObject[
           }
         },
         "Symbols" -> {
-          "KirillBelov`TelegramBot`CreateBotSession",
-          "KirillBelov`TelegramBot`DeployBotWebhook",
-          "KirillBelov`TelegramBot`getMe",
-          "KirillBelov`TelegramBot`getUpdates",
-          "KirillBelov`TelegramBot`HandleBotUpdates",
-          "KirillBelov`TelegramBot`ImportTelegramFile",
-          "KirillBelov`TelegramBot`sendMessage",
-          "KirillBelov`TelegramBot`sendPhoto",
           "KirillBelov`TelegramBot`TelegramBot"
         }
       },
@@ -59,6 +51,17 @@ PacletObject[
         "Documentation",
         "Root" -> "Documentation",
         "Language" -> "English"
+      },
+      {
+        "Asset",
+        "Assets" -> {
+          {"License", "./LICENSE"},
+          {"ReadMe", "./README.md"},
+          {"Python", "./Python"},
+          {"Scripts", "./Scripts"}, 
+          {"PythonRequirements", "./requirements.txt"}, 
+          {"PythonSetup", "./setup.py"}
+        }
       }
     }
   |>
