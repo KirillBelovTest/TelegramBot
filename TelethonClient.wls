@@ -17,54 +17,37 @@ client = TelethonClient[
 telethonConnect[client]
 
 
+telethonAuthorizedQ[client]
+
+
 telethonSignIn[client, 26596]
 
 
-msgs = telethonGetMessages[client, "dutchpm"]
+msgs = telethonGetMessages[client, "propromochannel"]; 
 
 
-Length @ msgs
+ByteCount[msgs]
 
 
-DeleteDuplicates @ Flatten @ Map[Keys] @ msgs
+Length[msgs]
 
 
-getReactionsCount[___] := 0; 
-getReactionsCount[assoc_?AssociationQ] := Total[assoc["results"][[All, "count"]]]
+Length @ Select[#post&] @ msgs
 
 
-getForwardsCount[___] := 0; 
-getForwardsCount[count_Integer] := count
+toSchema[assoc_?AssociationQ] := Association[KeyValueMap[#1 -> toSchema[#2]&, assoc]]
 
 
-channelStatistics[client_, channel_] := 
-channelStatistics[client, channel] = 
-Query[All, <|
-	"date" -> "date" /* DateString, 
-	"views" -> "views", 
-	"reactions" -> "reactions" /* getReactionsCount, 
-	"forwards" -> "forwards" /* getForwardsCount
-|>] @ 
-Select[KeyExistsQ[#, "views"]&] @  
-telethonGetMessages[client, channel]
+toSchema[list_?ListQ] := DeleteDuplicates[Map[toSchema, list]]
 
 
-DateListPlot[
-	Query[All, {"date" /* DateObject, "views"}] @ 
-	channelStatistics[client, "WolframMathematicaChannel"]
-]
+toSchema[bool_?BooleanQ] := "Boolean"
 
 
-DateListPlot[
-	Query[All, {"date" /* DateObject, "views"}] @ 
-	channelStatistics[client, "dutchpm"]
-]
+toSchema[Null] := "Null"
 
 
-DateListPlot[
-	Query[All, {"date" /* DateObject, "views"}] @ 
-	channelStatistics[client, "propromochannel"]
-]
+toSchema[expr_] := ToString[Head[expr]]
 
 
-propromochannel
+Export["file.json", toSchema[msgs[[1]]], "RawJSON"]
