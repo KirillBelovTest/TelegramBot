@@ -9,7 +9,7 @@ PacletObject[
     "SourceControlURL" -> "https://github.com/KirillBelovTest/TelegramBot",
     "License" -> "MIT",
     "PublisherID" -> "KirillBelov",
-    "Version" -> "1.0.18",
+    "Version" -> "1.0.19",
     "WolframVersion" -> "13+",
     "Dependencies" -> {},
     "PrimaryContext" -> "KirillBelov`TelegramBot`",
@@ -37,6 +37,10 @@ PacletObject[
           {
             "KirillBelov`TelegramBot`TelethonClient`",
             "TelethonClient.wl"
+          },
+          {
+            "KirillBelov`TelegramBot`PythonVenv`",
+            "PythonVenv.wl"
           }
         },
         "Symbols" -> {
