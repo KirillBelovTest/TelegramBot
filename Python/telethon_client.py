@@ -2,6 +2,7 @@ import asyncio
 from telethon import TelegramClient
 from telethon.errors import FloodWaitError
 from telethon.tl.functions.messages import GetHistoryRequest
+from telethon.tl.functions.stats import *
 
 class TelethonClient:
     def __init__(self, api_id, api_hash, phone_number, session_name):
@@ -90,3 +91,13 @@ class TelethonClient:
                 break
 
         return [message.to_dict() for message in all_messages]
+
+    def get_statistics(self, channel, message_id) -> list:
+        """Get channel statistics for the specified message id."""
+        print(f"[TelethonClient] Fetching statistics from channel: {channel}")
+
+        loop = asyncio.get_event_loop()
+
+        channel_entity = loop.run_until_complete(self.client.get_entity(channel))
+
+        return loop.run_until_complete(self.client.get_stats(channel_entity)).to_dict()

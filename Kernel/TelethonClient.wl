@@ -35,6 +35,10 @@ telethonGetMessages::usage =
 "telethonGetMessages[client, channel] get messages from the specified channel.";
 
 
+telethonGetStatistics::usage = 
+"telethonGetStatistics[client, channel, messageId] get statistics for th message.";
+
+
 Begin["`Private`"];
 
 
@@ -68,6 +72,29 @@ from telethon_client import TelethonClient
 ];
 
 
+toArg[s_String] := "'" <> s <> "'"; 
+
+
+toArg[s_Symbol] := ToString[s]; 
+
+
+toArg[s_?NumberQ] := ToString[s]; 
+
+
+TelethonClient[assoc_?AssociationQ][(type_Symbol)[args_?AssociationQ, serializer_: None]] := 
+py @ 
+StringTemplate["import asyncio
+import telethon.tl.functions.stats as stats
+import telethon.tl.functions.messages as messages
+import telethon.tl.functions.channels as channels
+asyncio.get_event_loop().run_until_complete(`id`.client(`Type`(`args`)))`serializer`"] @ 
+Join[assoc, <|
+    "Type" -> StringTrim[Context[type], "`"] <> "." <> SymbolName[type], 
+    "args" -> StringRiffle[KeyValueMap[#1 <> "=" <> toArg[#2]&, args], ", "], 
+    "serializer" -> If[serializer === None, "", "." <> serializer <> "()"]
+|>];
+
+
 telethonConnectedQ[TelethonClient[assoc_?AssociationQ]] := 
 py @ StringTemplate["`id`.is_connected()"] @ assoc;
 
@@ -78,7 +105,6 @@ py @ StringTemplate["`id`.is_authorized()"] @ assoc;
 
 telethonConnect[client: TelethonClient[assoc_?AssociationQ]] := 
 py @ StringTemplate["`id`.connect()"] @ assoc;
-
 
 
 telethonDisconnect[TelethonClient[assoc_?AssociationQ]] := 
@@ -95,6 +121,11 @@ py @ StringTemplate["`id`.sign_in(`code`)"] @ Append[assoc, "code" -> code];
 
 telethonGetMessages[TelethonClient[assoc_?AssociationQ], username_String] := 
 py @ StringTemplate["`id`.get_messages('`username`')"] @ Append[assoc, "username" -> username];
+
+
+telethonGetStatistics[TelethonClient[assoc_?AssociationQ], username_String, messageId: _String | _Integer] := 
+py @ StringTemplate["`id`.get_statistics('`username`', `message_id`)"] @ 
+Join[assoc, <|"username" -> username, "message_id" -> messageId|>];
 
 
 With[{directory = DirectoryName[$InputFileName, 2]}, 
