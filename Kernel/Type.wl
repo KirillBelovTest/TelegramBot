@@ -31,11 +31,11 @@ Begin["`Private`"];
 
 
 CreateType[TelegramBot, init, {
-	"Token" :> SystemCredential["TELEGRAM_BOT_TOKEN"], 
-	"History", 
-	"Logger", 
-	"Async" -> True, 
-	"UpdateHandler" -> Function["Hello!"]
+    "Token" :> SystemCredential["TELEGRAM_BOT_TOKEN"], 
+    "History", 
+    "Logger", 
+    "Async" -> True, 
+    "UpdateHandler" -> Function["Hello!"]
 }]; 
 
 
@@ -49,14 +49,14 @@ TelegramBot["Token" -> token];
 
 init[bot_TelegramBot] := 
 Module[{info, name}, 
-	bot["History"] = CreateDataStructure["RingBuffer", 1024]; 
-	bot["Logger"] = Function[{history, request, response}, 
-		history["PushBack", <|"Time" -> Now, "Request" -> request, "Response" -> response|>]
-	]; 
-	
-	info = KirillBelov`TelegramBot`API`getMe[bot]; 
-	name = info["result", "username"]; 
-	bot["Name"] = name; 
+    bot["History"] = CreateDataStructure["RingBuffer", 1024]; 
+    bot["Logger"] = Function[{history, request, response}, 
+        history["PushBack", <|"Time" -> Now, "Request" -> request, "Response" -> response|>]
+    ]; 
+    
+    info = KirillBelov`TelegramBot`API`getMe[bot]; 
+    name = info["result", "username"]; 
+    bot["Name"] = name; 
 ]; 
 
 
