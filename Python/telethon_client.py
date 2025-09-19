@@ -52,12 +52,11 @@ class TelethonClient:
         print("[TelethonClient] SignIn with code: " + str(code))
         loop.run_until_complete(self.client.sign_in(phone=self.phone_number, code=code))
 
-    def get_messages(self, channel) -> list:
+    def get_messages(self, channel, limit=100) -> list:
         """Get messages from a channel"""
         loop = asyncio.get_event_loop()
         all_messages = []
         offset_id = 0
-        limit = 100
 
         print(f"[TelethonClient] Fetching messages from channel: {channel}")
 
@@ -101,3 +100,55 @@ class TelethonClient:
         channel_entity = loop.run_until_complete(self.client.get_entity(channel))
 
         return loop.run_until_complete(self.client.get_stats(channel_entity)).to_dict()
+
+    def get_user_info(self, user_id) -> dict:
+        """Get user information"""
+        loop = asyncio.get_event_loop()
+        user_entity = loop.run_until_complete(self.client.get_entity(user_id))
+        return user_entity.to_dict()
+
+    def send_file(self, channel, file_path) -> None:
+        """Send a file to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_file(channel, file_path))
+
+    def send_audio(self, channel, audio_path) -> None:
+        """Send an audio file to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_file(channel, audio_path))
+
+    def send_video(self, channel, video_path) -> None:
+        """Send a video file to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_file(channel, video_path))
+
+    def send_photo(self, channel, photo_path) -> None:
+        """Send a photo file to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_file(channel, photo_path))
+
+    def send_document(self, channel, document_path) -> None:
+        """Send a document file to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_file(channel, document_path))
+
+    def send_message(self, channel, message) -> None:
+        """Send a message to a channel"""
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(self.client.send_message(channel, message))
+
+    def get_channel_info(self, channel) -> dict:
+        """Get channel information"""
+        loop = asyncio.get_event_loop()
+        channel_entity = loop.run_until_complete(self.client.get_entity(channel))
+
+    def find_channel_by_username(self, username) -> dict:
+        """Find a channel by username"""
+        loop = asyncio.get_event_loop()
+        channel_entity = loop.run_until_complete(self.client.get_entity(username))
+        return channel_entity.to_dict()
+
+    def find_message_by_text(self, channel, text) -> dict:
+        """Find a message by text"""
+        loop = asyncio.get_event_loop()
+        messages = loop.run_until_complete(self.client.get_messages(channel, search=text))
